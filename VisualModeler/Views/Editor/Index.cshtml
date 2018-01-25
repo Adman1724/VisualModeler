@@ -1,0 +1,85 @@
+﻿@model VisualModeler.Models.CanvasObjectModel
+
+@{
+    ViewBag.Title = "Index";
+}
+@section Scripts{
+<script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
+<script src="../../Scripts/js/classes/class.js"></script>
+<link rel="stylesheet" href="css/style.css">
+    
+<script>
+    $(document).ready(function () {
+        var canvas = new fabric.Canvas('c');
+        fabric.loadSVGFromURL( 'http://svgur.com/i/58k.svg', function (objects) {
+            canvas.add.apply(canvas, objects);
+            canvas.renderAll();
+        });
+    });
+
+    // create a rectangle object
+
+
+
+
+// "add" rectangle onto canvas
+
+
+</script>}
+
+<h2>Index</h2>
+
+<div>
+    <h4>CanvasObjectModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edited)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edited)
+        </dd>
+
+    </dl>
+</div>
+<div class="canvas1">
+    <canvas id="c" width="800" height="800"></canvas>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
