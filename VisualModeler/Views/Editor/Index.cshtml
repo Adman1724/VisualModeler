@@ -11,11 +11,9 @@
 <script>
     $(document).ready(function () {
         var canvas = new fabric.Canvas('c');
-        fabric.loadSVGFromURL( 'http://svgur.com/i/58k.svg', function (objects) {
-            canvas.add.apply(canvas, objects);
-            canvas.renderAll();
+        first.draw(canvas);
         });
-    });
+    
 
     // create a rectangle object
 
