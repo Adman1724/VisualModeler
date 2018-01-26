@@ -1,0 +1,157 @@
+﻿.loginTable {
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #DED9D9;
+    width: 500px;
+    height: 370px;
+}
+h2{
+    font-size:2em;
+}
+.container {
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    vertical-align: central;
+}
+.loginItems {
+    display: block;
+    font-size:1.6em;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: #FFFFFF;
+}
+.loginEmail {
+    display:flex;
+
+}
+.loginEmailT {
+    display: block;
+    width: 100%;
+    height: 34px;
+    float:right;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: white;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #DED9D9 ;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.loginEmailLabel{
+    display:block;
+    width:35%;
+    padding-bottom:10px;
+    float:left;
+}
+.loginEmailTextBox {
+    display: block;
+    padding-bottom: 10px;
+    width: 65%;
+    float: right;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 1.5em;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+    .btn:focus {
+        outline: thin dotted #333;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        color: #333333;
+        text-decoration: none;
+    }
+
+    .btn:active,
+    .btn.active {
+        background-image: none;
+        outline: 0;
+        -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+.btn-primary {
+    color: #ffffff;
+    background-color: #2F80ED;
+    border-color: #DED9D9;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open .dropdown-toggle.btn-primary {
+        color: #2F80ED;
+        background-color: white;
+        border-color: #2F80ED;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active,
+    .open .dropdown-toggle.btn-primary {
+        background-image: none;
+    }
+    .checkBoxR{
+        display:inline-block;
+        padding-top: 10px;
+        padding-left:50px;
+        font-size:0.7em;
+        float:right;
+    }
+.loginLinkLeft {
+    display: block;
+    font-size:0.7em;
+    width: 50%;
+    float: left;
+    color: #2F80ED;
+    text-align:left;
+}
+
+.loginLinkRight {
+    display: block;
+    font-size: 0.7em;
+    width: 50%;
+    float: right;
+    color: #2F80ED;
+    text-align: right;
+}
+.button{
+    display:block; 
+    padding-top:10px;
+}
+.buttonLogin{
+    float:right;
+    padding-right:50px;
+}
+.loginItems1 {
+    display: flex;
+    width:80%;
+    font-size: 1.6em;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: #FFFFFF;
+}

@@ -42,23 +42,23 @@ namespace VisualModeler.Models
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "E-mail")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "E-mail")]
+        [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Heslo")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Zapamatovat uživatele")]
+        [Display(Name = "Remenber user")]
         public bool RememberMe { get; set; }
     }
 
@@ -66,18 +66,18 @@ namespace VisualModeler.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "E-mail")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} musí obsahovat alespoň {2} znaků.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} must consist {2} charts.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Heslo")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Potvrzení hesla")]
-        [Compare("Password", ErrorMessage = "Heslo a potvrzení hesla se neshodují.")]
+        [Display(Name = "Re-type password")]
+        [Compare("Password", ErrorMessage = "Password doesn't same")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -85,18 +85,18 @@ namespace VisualModeler.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "E-mail")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} musí obsahovat alespoň {2} znaků.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} must consist {2} charts.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Heslo")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Potvrzení hesla")]
-        [Compare("Password", ErrorMessage = "Heslo a potvrzení hesla se neshodují.")]
+        [Display(Name = "Re-type password")]
+        [Compare("Password", ErrorMessage = "Password doesn't same")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -106,7 +106,7 @@ namespace VisualModeler.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "E-mail")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 }
