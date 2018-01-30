@@ -155,3 +155,10 @@ h2{
     padding-right: 50px;
     background: #FFFFFF;
 }
+.can {
+    width: auto;
+    height: auto;
+    border: 2px solid black;
+    margin: 30px;
+    overflow: auto;
+}

@@ -1,7 +1,66 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Styles.Render("~/Content/StyleLogin.css")
+
+
+
+@{
+    Layout = null;
 }
+<script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
+<script src="../../Scripts/js/classes/class.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("columnB").style.height = screen.height;
+      
+        document.getElementById("can").style.height = document.getElementById("columnB").style.height;
+        var canvasOptions = {
+            perPixelTargetFind: true,
+            targetFindTolerance: 5,
+            freeDrawingColor: '#e0e0e0',
+            freeDrawingLineWidth: 2,
+            controlsAboveOverlay: true
+        };
+        var canvasId = 'c';
+
+        var canvas = new fabric.Canvas(canvasId, canvasOptions);
+        canvas.isDrawingMode = 1;
+    });
+</script>
+
+@{
+    ViewBag.Title = "Draw";
+}
+
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">
+            <h3>@ViewBag.Message</h3>
+
+        </div>
+        <div class="col-lg-10" id="columnB">
+            <div class="can" id="can">
+                <canvas id="c" width="1000px" height="1000px" />
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <h3>@ViewBag.Message</h3>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+</div>
 
 <p>Use this area to provide additional information.</p>
