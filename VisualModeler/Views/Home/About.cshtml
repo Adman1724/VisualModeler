@@ -27,7 +27,11 @@
         var canvasId = 'c';
 
         var canvas = new fabric.Canvas(canvasId, canvasOptions);
-        canvas.isDrawingMode = 1;
+        //canvas.isDrawingMode = 1;
+        var first = new ClassObject(100, 100, 200, 50, DEFAULT_NAME);
+        
+        first.addExtends("nieco");
+        first.draw(canvas);
     });
 </script>
 
