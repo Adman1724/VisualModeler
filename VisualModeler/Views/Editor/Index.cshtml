@@ -4,18 +4,23 @@
     ViewBag.Title = "Index";
 }
 @section Scripts{
-<script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
-<script src="../../Scripts/js/classes/class.js"></script>
-<link rel="stylesheet" href="css/style.css">
-    
-<script>
-    $(document).ready(function () {
-        var canvas = new fabric.Canvas('c');
-        first.draw(canvas);
-        });
-    
+    <script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
+    <script src="../../Scripts/js/classes/class.js"></script>
+    <script src="../../Scripts/js/classes/classObject.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
-    // create a rectangle object
+    <script>
+        $(document).ready(function () {
+            var canvas = new fabric.Canvas('c');
+
+            var first = new ClassObject(100, 100, 200, DEFAULT_NAME);
+            first.initObject()
+            first.draw();
+            canvas.add(first.group);
+        });
+
+
+        // create a rectangle object
 
 
 
@@ -23,7 +28,7 @@
 // "add" rectangle onto canvas
 
 
-</script>}
+    </script>}
 
 <h2>Index</h2>
 

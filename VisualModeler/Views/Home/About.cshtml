@@ -1,6 +1,8 @@
-﻿@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
-@Styles.Render("~/Content/StyleLogin.css")
+﻿
+
+@Styles.Render("~/Content/Editor.css")
+
+@Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
 
 
 
@@ -9,37 +11,177 @@
 }
 <script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
 <script src="../../Scripts/js/classes/class.js"></script>
+<script src="../../Scripts/js/classes/classObject.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
 
 <script>
+
     $(document).ready(function () {
         document.getElementById("columnB").style.height = screen.height;
-      
+
         document.getElementById("can").style.height = document.getElementById("columnB").style.height;
         var canvasOptions = {
-            perPixelTargetFind: true,
-            targetFindTolerance: 5,
-            freeDrawingColor: '#e0e0e0',
-            freeDrawingLineWidth: 2,
-            controlsAboveOverlay: true
         };
         var canvasId = 'c';
 
         var canvas = new fabric.Canvas(canvasId, canvasOptions);
-        //canvas.isDrawingMode = 1;
-        var first = new ClassObject(100, 100, 200, 50, DEFAULT_NAME);
-        
-        first.addExtends("nieco");
+        var nieco = 'nieco';
+        var first = new ClassObject(100, 100, 200, DEFAULT_NAME, false, nieco, canvas);
+        first.initObject();
         first.draw(canvas);
+        var rect = new fabric.Rect({
+            left: 100,
+            top: 100,
+            fill: 'red',
+            width: 20,
+            height: 20
+        });
+
+        // "add" rectangle onto canvas
+        canvas.add(rect);
+        var rect1 = new fabric.Rect({
+            left: 200,
+            top: 200,
+            fill: 'red',
+            width: 20,
+            height: 20
+        });
+
+        // "add" rectangle onto canvas
+        canvas.add(rect1);
+        var rect2 = new fabric.Rect({
+            left: 300,
+            top: 300,
+            fill: 'red',
+            width: 20,
+            height: 20
+        });
+
+        // "add" rectangle onto canvas
+        canvas.add(rect2);
+        var rect3 = new fabric.Rect({
+            left: 400,
+            top: 400,
+            fill: 'red',
+            width: 20,
+            height: 20
+        });
+
+        // "add" rectangle onto canvas
+        canvas.add(rect3);
+        var rect4 = new fabric.Rect({
+            left: 500,
+            top: 500,
+            fill: 'red',
+            width: 20,
+            height: 20
+        });
+
+        // "add" rectangle onto canvas
+        canvas.add(rect4);
+        // first.addExtends("nieco");
+        // first.addItem('+ adam : String');
+        // first.addItem('+ adam1 : String');
+        // first.addItem('+ adam 2: String');
+        // first.addItem('+ adam3 : String');
+        // first.addItem('+ adam4 : String');
+        //first.addItem('+ adam5 : String');
+        //first.addItem('+ adam6 : String');
+        //first.addItem('+ adam7 : String');
+        // first.draw(canvas);
+        canvas.add(first.group);
+        document.getElementById('add').onclick = function () {
+            canvas.clear();
+            first.addItem('+ item : String ');
+
+            canvas.add(first.group);
+            canvas.add(first.group2);
+            //first.draw(canvas);
+
+        }
+
+
+
     });
+
+
+
+
+</script>
+
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
 </script>
 
 @{
-    ViewBag.Title = "Draw";
+    ViewBag.Title = "DrawMa.io";
 }
+<div class="menu">
+    <div class="title-left">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <div class="title-center">
+        <div class="item-container">
+        <div class="item-box">
+            <i class="material-icons">near_me</i>
+            <p class="item-box">Move</p>
+        </div>
+        <div class="item-box">
+            <i class="material-icons">fullscreen</i>
+        <p class="item-box">Select</p>
+    </div>
+        <div class="item-box">
+            <i class="material-icons">close</i>
+             <p class="item-box">Remove</p>
+        </div>
+        <div class="item-box">
+            <i class="material-icons">save</i>
+            <p class="item-box">Save</p>
+        </div>
+            </div>
+        <div class="search-box">
+            <i class="material-icons">search</i>
+            <input type="text" placeholder="Search..">
 
-<h2>@ViewBag.Title.</h2>
+        </div>
+
+    </div>
+<div class="title-right">
+
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn"> <i class="material-icons md-48">reorder</i></button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+    <button class="dropbtn"> <i class="material-icons md-48">account_box</i></button>
+</div>
+</div>
+
+<button type="button" id="add">Add</button>
+
 <h3>@ViewBag.Message</h3>
 <div class="container">
     <div class="row">
@@ -49,7 +191,7 @@
         </div>
         <div class="col-lg-10" id="columnB">
             <div class="can" id="can">
-                <canvas id="c" width="1000px" height="1000px" />
+                <canvas id="c" width="1000" height="1000" />
             </div>
         </div>
         <div class="col-lg-1">
