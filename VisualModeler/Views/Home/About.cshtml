@@ -16,7 +16,7 @@
 
 
 <script>
-
+    var first;
     $(document).ready(function () {
         document.getElementById("columnB").style.height = screen.height;
 
@@ -27,83 +27,100 @@
 
         var canvas = new fabric.Canvas(canvasId, canvasOptions);
         var nieco = 'nieco';
-        var first = new ClassObject(100, 100, 200, DEFAULT_NAME, false, nieco, canvas);
+        first = new ClassObject(0, 0, 200, DEFAULT_NAME, false, nieco, canvas);
         first.initObject();
         first.draw(canvas);
-        var rect = new fabric.Rect({
-            left: 100,
-            top: 100,
-            fill: 'red',
-            width: 20,
-            height: 20
-        });
+        var secound = new ClassObject(0, 0, 200, DEFAULT_NAME, false, nieco, canvas);
+        secound.initObject();
+        secound.draw(canvas);
+        //var rect = new fabric.Rect({
+        //    left: 100,
+        //    top: 100,
+        //    fill: 'red',
+        //    width: 20,
+        //    height: 20
+        //});
 
-        // "add" rectangle onto canvas
-        canvas.add(rect);
-        var rect1 = new fabric.Rect({
-            left: 200,
-            top: 200,
-            fill: 'red',
-            width: 20,
-            height: 20
-        });
+        //// "add" rectangle onto canvas
+        //canvas.add(rect);
+        //var rect1 = new fabric.Rect({
+        //    left: 200,
+        //    top: 200,
+        //    fill: 'red',
+        //    width: 20,
+        //    height: 20
+        //});
 
-        // "add" rectangle onto canvas
-        canvas.add(rect1);
-        var rect2 = new fabric.Rect({
-            left: 300,
-            top: 300,
-            fill: 'red',
-            width: 20,
-            height: 20
-        });
+        //// "add" rectangle onto canvas
+        //canvas.add(rect1);
+        //var rect2 = new fabric.Rect({
+        //    left: 300,
+        //    top: 300,
+        //    fill: 'red',
+        //    width: 20,
+        //    height: 20
+        //});
 
-        // "add" rectangle onto canvas
-        canvas.add(rect2);
-        var rect3 = new fabric.Rect({
-            left: 400,
-            top: 400,
-            fill: 'red',
-            width: 20,
-            height: 20
-        });
+        //// "add" rectangle onto canvas
+        //canvas.add(rect2);
+        //var rect3 = new fabric.Rect({
+        //    left: 400,
+        //    top: 400,
+        //    fill: 'red',
+        //    width: 20,
+        //    height: 20
+        //});
 
-        // "add" rectangle onto canvas
-        canvas.add(rect3);
-        var rect4 = new fabric.Rect({
-            left: 500,
-            top: 500,
-            fill: 'red',
-            width: 20,
-            height: 20
-        });
+        //// "add" rectangle onto canvas
+        //canvas.add(rect3);
+        //var rect4 = new fabric.Rect({
+        //    left: 500,
+        //    top: 500,
+        //    fill: 'red',
+        //    width: 20,
+        //    height: 20
+        //});
 
-        // "add" rectangle onto canvas
-        canvas.add(rect4);
-        // first.addExtends("nieco");
-        // first.addItem('+ adam : String');
-        // first.addItem('+ adam1 : String');
-        // first.addItem('+ adam 2: String');
-        // first.addItem('+ adam3 : String');
-        // first.addItem('+ adam4 : String');
-        //first.addItem('+ adam5 : String');
-        //first.addItem('+ adam6 : String');
-        //first.addItem('+ adam7 : String');
-        // first.draw(canvas);
+        //// "add" rectangle onto canvas
+        //canvas.add(rect4);
+        //// first.addExtends("nieco");
+        //// first.addItem('+ adam : String');
+        //// first.addItem('+ adam1 : String');
+        //// first.addItem('+ adam 2: String');
+        //// first.addItem('+ adam3 : String');
+        //// first.addItem('+ adam4 : String');
+        ////first.addItem('+ adam5 : String');
+        ////first.addItem('+ adam6 : String');
+        ////first.addItem('+ adam7 : String');
+        //// first.draw(canvas);
+        
         canvas.add(first.group);
+        canvas.add(secound.group);
         document.getElementById('add').onclick = function () {
             canvas.clear();
             first.addItem('+ item : String ');
 
             canvas.add(first.group);
-            canvas.add(first.group2);
+            canvas.add(secound.group);
+           
+            //first.draw(canvas);
+
+        }
+        document.getElementById('add1').onclick = function () {
+            canvas.clear();
+            secound.addItem('+ item : String ');
+            canvas.add(first.group);
+            canvas.add(secound.group);
+
+
             //first.draw(canvas);
 
         }
 
 
-
+       
     });
+
 
 
 
@@ -169,18 +186,20 @@
 <div class="title-right">
 
     <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn"> <i class="material-icons md-48">reorder</i></button>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-        </div>
+        
+            <button onclick="myFunction()" class="dropbtn"> <i class="material-icons md-48">reorder</i></button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
     </div>
     <button class="dropbtn"> <i class="material-icons md-48">account_box</i></button>
 </div>
 </div>
 
-<button type="button" id="add">Add</button>
+<button type="button" id="add">Add First</button>
+<button type="button" id="add1">Add Secound</button>
 
 <h3>@ViewBag.Message</h3>
 <div class="container">
