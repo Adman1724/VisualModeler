@@ -14,6 +14,8 @@
 <script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
 <script src="../../Scripts/js/classes/class.js"></script>
 <script src="../../Scripts/js/classes/classObject.js"></script>
+<script src="../../Scripts/js/Use-case/Actor.js"></script>
+<script src="../../Scripts/js/Use-case/UseCase.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
@@ -46,6 +48,12 @@
         var secound = new ClassObject(0, 0, 200, DEFAULT_NAME, false, nieco, canvas);
         secound.initObject();
         secound.draw(canvas);
+        var three = new Actor(100, 100, 100, nieco);
+        three.initObject();
+        three.draw(canvas);
+        var four = new UseCase(200, 200, 200, nieco);
+        four.initObject();
+        four.draw(canvas);
         //var rect = new fabric.Rect({
         //    left: 100,
         //    top: 100,
@@ -109,12 +117,16 @@
 
         canvas.add(first.group);
         canvas.add(secound.group);
+        canvas.add(three.group);
+        canvas.add(four.group);
         document.getElementById('add').onclick = function () {
             canvas.clear();
             first.addItem('+ item : String ');
-
+            canvas.add(three.group);
             canvas.add(first.group);
             canvas.add(secound.group);
+            canvas.add(four.group);
+
 
             //first.draw(canvas);
 
@@ -124,6 +136,8 @@
             secound.addItem('+ item : String ');
             canvas.add(first.group);
             canvas.add(secound.group);
+            canvas.add(three.group);
+            canvas.add(four.group);
 
 
             //first.draw(canvas);
@@ -222,9 +236,11 @@
         <ul class="list-unstyled components">
             <li class="active">
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <ul class="collapse list-unstyled " id="homeSubmenu">
+                    <div class="list-inline">
                     <li><a href="#">Home 1</a></li>
                     <li><a href="#">Home 2</a></li>
+                        </div>
                     <li><a href="#">Home 3</a></li>
                 </ul>
             </li>
