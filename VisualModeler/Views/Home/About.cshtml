@@ -1,6 +1,8 @@
 ﻿
 
 @Styles.Render("~/Content/Editor.css")
+@Styles.Render("~/Content/bootstrap.css")
+@Styles.Render("~/Content/collapsMenu.css")
 
 @Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
 
@@ -13,6 +15,17 @@
 <script src="../../Scripts/js/classes/class.js"></script>
 <script src="../../Scripts/js/classes/classObject.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- Bootstrap Js CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
 
 
 <script>
@@ -93,7 +106,7 @@
         ////first.addItem('+ adam6 : String');
         ////first.addItem('+ adam7 : String');
         //// first.draw(canvas);
-        
+
         canvas.add(first.group);
         canvas.add(secound.group);
         document.getElementById('add').onclick = function () {
@@ -102,7 +115,7 @@
 
             canvas.add(first.group);
             canvas.add(secound.group);
-           
+
             //first.draw(canvas);
 
         }
@@ -118,7 +131,7 @@
         }
 
 
-       
+
     });
 
 
@@ -156,26 +169,30 @@
 <div class="menu">
     <div class="title-left">
         <h2>@ViewBag.Title</h2>
+        <button type="button" id="sidebarCollapse" class="btn btn-info1 navbar-btn">
+            <i class="glyphicon glyphicon-align-left"></i>
+           
+        </button>
     </div>
     <div class="title-center">
         <div class="item-container">
-        <div class="item-box">
-            <i class="material-icons">near_me</i>
-            <p class="item-box">Move</p>
-        </div>
-        <div class="item-box">
-            <i class="material-icons">fullscreen</i>
-        <p class="item-box">Select</p>
-    </div>
-        <div class="item-box">
-            <i class="material-icons">close</i>
-             <p class="item-box">Remove</p>
-        </div>
-        <div class="item-box">
-            <i class="material-icons">save</i>
-            <p class="item-box">Save</p>
-        </div>
+            <div class="item-box">
+                <i class="material-icons">near_me</i>
+                <p class="item-box">Move</p>
             </div>
+            <div class="item-box">
+                <i class="material-icons">fullscreen</i>
+                <p class="item-box">Select</p>
+            </div>
+            <div class="item-box">
+                <i class="material-icons">close</i>
+                <p class="item-box">Remove</p>
+            </div>
+            <div class="item-box">
+                <i class="material-icons">save</i>
+                <p class="item-box">Save</p>
+            </div>
+        </div>
         <div class="search-box">
             <i class="material-icons">search</i>
             <input type="text" placeholder="Search..">
@@ -183,49 +200,79 @@
         </div>
 
     </div>
-<div class="title-right">
+    <div class="title-right">
 
-    <div class="dropdown">
-        
+        <div class="dropdown">
+
             <button onclick="myFunction()" class="dropbtn"> <i class="material-icons md-48">reorder</i></button>
             <div id="myDropdown" class="dropdown-content">
                 <a href="#">Link 1</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
             </div>
-    </div>
-    <button class="dropbtn"> <i class="material-icons md-48">account_box</i></button>
-</div>
-</div>
-
-<button type="button" id="add">Add First</button>
-<button type="button" id="add1">Add Secound</button>
-
-<h3>@ViewBag.Message</h3>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1">
-            <h3>@ViewBag.Message</h3>
-
         </div>
-        <div class="col-lg-10" id="columnB">
-            <div class="can" id="can">
-                <canvas id="c" width="1000" height="1000" />
+        <button class="dropbtn"> <i class="material-icons md-48">account_box</i></button>
+    </div>
+</div>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        
+
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="#">Home 1</a></li>
+                    <li><a href="#">Home 2</a></li>
+                    <li><a href="#">Home 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li><button type="button" id="add">Add First</button></li>
+            <li><button type="button" id="add1">Add Secound</button></li>
+        </ul>
+    </nav>
+  
+
+    
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-lg-10" id="columnB">
+                <div class="can" id="can">
+                    <canvas id="c" width="1000" height="1000" />
+                </div>
             </div>
+          
+
+
+
         </div>
-        <div class="col-lg-1">
-            <h3>@ViewBag.Message</h3>
-        </div>
+
+
+
 
 
 
     </div>
 
-
-
-
-
-
+    <p>Use this area to provide additional information.</p>
 </div>
-
-<p>Use this area to provide additional information.</p>
