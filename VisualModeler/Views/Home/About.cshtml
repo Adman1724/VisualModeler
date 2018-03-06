@@ -19,6 +19,9 @@
 <script src="../../Scripts/js/Use-case/Actor.js"></script>
 <script src="../../Scripts/js/Use-case/UseCase.js"></script>
 <script src="../../Scripts/js/Use-case/System.js"></script>
+<script src="../../Scripts/js/squence/ObjectSeq.js"></script>
+<script src="../../Scripts/js/squence/Activation.js"></script>
+<script src="../../Scripts/js/squence/Lifeline.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
@@ -61,6 +64,22 @@
     }
     function addActor() {
         createActor(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addObjectSeq() {
+        createObjectSeq(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addActivation() {
+        createActivation(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+
+    function addLifeline() {
+        createLifeline(canvas, canvasItems);
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
@@ -170,14 +189,14 @@
                 <a href="#Class" data-toggle="collapse" aria-expanded="false">Class Diagrams</a>
                 <ul class="collapse list-unstyled " id="Class">
                     <div class="list-inline">
-                        <li><a href="#" onclick="addClass()" > <img src="~/Content/MenuItems/class.png" alt="Image"  style="width:100px;"/></a></li>
+                        <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:100px;" /></a></li>
                         <li><a href="#">Home 2</a></li>
                     </div>
                     <li><a href="#">Home 3</a></li>
                 </ul>
             </li>
             <li>
-               
+
                 <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
                 <ul class="collapse list-unstyled" id="pag1">
                     <div class="list-inline">
@@ -186,8 +205,24 @@
                     </div>
                     <div class="list-inline">
                         <li><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
-               </div>
-                        </ul>
+                   
+                    </div>
+                </ul>
+            </li>
+            <li>
+
+                <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
+                <ul class="collapse list-unstyled" id="seq">
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
+                        <li><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                    </div>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                    </div>
+                </ul>
             </li>
             <li>
                 <a href="#">Portfolio</a>
