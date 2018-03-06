@@ -75,3 +75,11 @@
 
     }
 }
+function createActor(canvas, array) {
+    var three = new Actor(0, 0, 100, 'Actor');
+    three.initObject();
+    three.draw(canvas);
+    array.push(three);
+
+
+}

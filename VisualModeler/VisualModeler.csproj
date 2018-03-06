@@ -226,6 +226,9 @@
     <Content Include="Content\collapsMenu.css" />
     <Content Include="Content\Editor.css" />
     <Content Include="Content\Exports\1.svg" />
+    <Content Include="Content\MenuItems\actor.png" />
+    <Content Include="Content\MenuItems\class.png" />
+    <Content Include="Content\MenuItems\usecase.png" />
     <Content Include="Content\StyleLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -245,6 +248,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\classes\classObject.js" />
+    <Content Include="Scripts\js\function\CanvasManupulation.js" />
+    <Content Include="Scripts\js\function\RightMenuDynamic.js" />
     <Content Include="Scripts\js\Use-case\Actor.js" />
     <Content Include="Scripts\js\Use-case\UseCase.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

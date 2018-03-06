@@ -14,6 +14,7 @@
 }
 <script src="../../Scripts/fabric.js-1.7.22/dist/fabric.min.js"></script>
 <script src="../../Scripts/js/classes/class.js"></script>
+<script src="../../Scripts/js/function/CanvasManupulation.js"></script>
 <script src="../../Scripts/js/classes/classObject.js"></script>
 <script src="../../Scripts/js/Use-case/Actor.js"></script>
 <script src="../../Scripts/js/Use-case/UseCase.js"></script>
@@ -40,6 +41,23 @@
 
 <script>
     var first;
+    var canvas;
+    var canvasItems;
+    function addClass() {
+        createClass(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addUsecase() {
+        createUsecase(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addActor() {
+        createActor(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
     $(document).ready(function () {
        
 
@@ -48,7 +66,8 @@
         };
         var canvasId = 'c';
 
-        var canvas = new fabric.Canvas(canvasId, canvasOptions);
+        canvas = new fabric.Canvas(canvasId, canvasOptions);
+        canvas.backgroundColor = "#F2F2F2";
         var nieco = 'nieco';
         first = new ClassObject(0, 0, 200, DEFAULT_NAME, false, nieco, canvas);
         first.initObject();
@@ -62,78 +81,19 @@
         var four = new UseCase(200, 200, 200, nieco);
         four.initObject();
         four.draw(canvas);
-        //var rect = new fabric.Rect({
-        //    left: 100,
-        //    top: 100,
-        //    fill: 'red',
-        //    width: 20,
-        //    height: 20
-        //});
+        canvasItems = [];
+        canvasItems.push(first);
+        canvasItems.push(secound);
+        canvasItems.push(three);
+        canvasItems.push(four);
+        
 
-        //// "add" rectangle onto canvas
-        //canvas.add(rect);
-        //var rect1 = new fabric.Rect({
-        //    left: 200,
-        //    top: 200,
-        //    fill: 'red',
-        //    width: 20,
-        //    height: 20
-        //});
-
-        //// "add" rectangle onto canvas
-        //canvas.add(rect1);
-        //var rect2 = new fabric.Rect({
-        //    left: 300,
-        //    top: 300,
-        //    fill: 'red',
-        //    width: 20,
-        //    height: 20
-        //});
-
-        //// "add" rectangle onto canvas
-        //canvas.add(rect2);
-        //var rect3 = new fabric.Rect({
-        //    left: 400,
-        //    top: 400,
-        //    fill: 'red',
-        //    width: 20,
-        //    height: 20
-        //});
-
-        //// "add" rectangle onto canvas
-        //canvas.add(rect3);
-        //var rect4 = new fabric.Rect({
-        //    left: 500,
-        //    top: 500,
-        //    fill: 'red',
-        //    width: 20,
-        //    height: 20
-        //});
-
-        //// "add" rectangle onto canvas
-        //canvas.add(rect4);
-        //// first.addExtends("nieco");
-        //// first.addItem('+ adam : String');
-        //// first.addItem('+ adam1 : String');
-        //// first.addItem('+ adam 2: String');
-        //// first.addItem('+ adam3 : String');
-        //// first.addItem('+ adam4 : String');
-        ////first.addItem('+ adam5 : String');
-        ////first.addItem('+ adam6 : String');
-        ////first.addItem('+ adam7 : String');
-        //// first.draw(canvas);
-
-        canvas.add(first.group);
-        canvas.add(secound.group);
-        canvas.add(three.group);
-        canvas.add(four.group);
+        canvasAdd(canvasItems, canvas);
         document.getElementById('add').onclick = function () {
             canvas.clear();
-            first.addItem('+ item : String ');
-            canvas.add(three.group);
-            canvas.add(first.group);
-            canvas.add(secound.group);
-            canvas.add(four.group);
+            canvasItems[0].addItem('+ item : String ');
+            canvasAdd(canvasItems, canvas);
+            
 
 
             //first.draw(canvas);
@@ -141,11 +101,8 @@
         }
         document.getElementById('add1').onclick = function () {
             canvas.clear();
-            secound.addItem('+ item : String ');
-            canvas.add(first.group);
-            canvas.add(secound.group);
-            canvas.add(three.group);
-            canvas.add(four.group);
+            canvasItems[1].addItem('+ item : String ');
+            canvasAdd(canvasItems, canvas);
 
 
             //first.draw(canvas);
@@ -219,22 +176,24 @@
 
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul class="collapse list-unstyled " id="homeSubmenu">
+                <a href="#Class" data-toggle="collapse" aria-expanded="false">Class Diagrams</a>
+                <ul class="collapse list-unstyled " id="Class">
                     <div class="list-inline">
-                        <li><a href="#">Home 1</a></li>
+                        <li><a href="#" onclick="addClass()" > <img src="~/Content/MenuItems/class.png" alt="Image"  style="width:100px;"/></a></li>
                         <li><a href="#">Home 2</a></li>
                     </div>
                     <li><a href="#">Home 3</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">About</a>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li><a href="#">Page 1</a></li>
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
+               
+                <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
+                <ul class="collapse list-unstyled" id="pag1">
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
+                        <li><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
+                    </div>
+                        <li><a href="#">Page 3</a></li>
                 </ul>
             </li>
             <li>

@@ -45,3 +45,11 @@
 
     }
 }
+function createUsecase(canvas, array) {
+    var four = new UseCase(200, 200, 200, 'Title');
+    four.initObject();
+    four.draw(canvas);
+    array.push(four);
+
+
+}

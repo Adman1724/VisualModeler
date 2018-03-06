@@ -174,3 +174,11 @@ class ClassObject {
         
     }
 }
+function createClass(canvas, array) {
+    var first = new ClassObject(0, 0, 200, DEFAULT_NAME, false, 'inteface', canvas);
+    first.initObject();
+    first.draw(canvas);
+    array.push(first);
+
+
+}
