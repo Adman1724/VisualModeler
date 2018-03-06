@@ -18,6 +18,7 @@
 <script src="../../Scripts/js/classes/classObject.js"></script>
 <script src="../../Scripts/js/Use-case/Actor.js"></script>
 <script src="../../Scripts/js/Use-case/UseCase.js"></script>
+<script src="../../Scripts/js/Use-case/System.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
@@ -53,6 +54,11 @@
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
+    function addSystem() {
+        createSystem(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
     function addActor() {
         createActor(canvas, canvasItems);
         canvas.clear();
@@ -68,24 +74,9 @@
 
         canvas = new fabric.Canvas(canvasId, canvasOptions);
         canvas.backgroundColor = "#F2F2F2";
-        var nieco = 'nieco';
-        first = new ClassObject(0, 0, 200, DEFAULT_NAME, false, nieco, canvas);
-        first.initObject();
-        first.draw(canvas);
-        var secound = new ClassObject(0, 0, 200, DEFAULT_NAME, false, nieco, canvas);
-        secound.initObject();
-        secound.draw(canvas);
-        var three = new Actor(100, 100, 100, nieco);
-        three.initObject();
-        three.draw(canvas);
-        var four = new UseCase(200, 200, 200, nieco);
-        four.initObject();
-        four.draw(canvas);
+        
         canvasItems = [];
-        canvasItems.push(first);
-        canvasItems.push(secound);
-        canvasItems.push(three);
-        canvasItems.push(four);
+        
         
 
         canvasAdd(canvasItems, canvas);
@@ -193,8 +184,10 @@
                         <li><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
                         <li><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
                     </div>
-                        <li><a href="#">Page 3</a></li>
-                </ul>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
+               </div>
+                        </ul>
             </li>
             <li>
                 <a href="#">Portfolio</a>

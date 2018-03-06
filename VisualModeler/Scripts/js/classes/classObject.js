@@ -10,6 +10,7 @@ class ClassObject {
         this.itemsArray = [];
         this.metodsArray = [];
         this.height = 50;
+        this.type = 'classobject';
         this.extends = extendsBool;
         this.extendsText = extendsText;
         this.canvas = canvas;

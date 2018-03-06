@@ -4,6 +4,7 @@
         this.posY = posY;
         this.width = width;
         this.name = name;
+        this.type = 'actor';
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
