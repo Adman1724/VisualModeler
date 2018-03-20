@@ -22,6 +22,10 @@
 <script src="../../Scripts/js/squence/ObjectSeq.js"></script>
 <script src="../../Scripts/js/squence/Activation.js"></script>
 <script src="../../Scripts/js/squence/Lifeline.js"></script>
+<script src="../../Scripts/js/activity/ConditionCheck.js"></script>
+<script src="../../Scripts/js/activity/StartOfProcess.js"></script>
+<script src="../../Scripts/js/activity/Terminator.js"></script>
+<script src="../../Scripts/js/activity/ActivityObject.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
@@ -80,6 +84,26 @@
 
     function addLifeline() {
         createLifeline(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addConditionCheck(){
+        createConditionCheck(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addStartOfProcess() {
+        createStartOfProcess(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addTerminator() {
+        createTerminator(canvas, canvasItems);
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addActivityObject() {
+        createActivityObject(canvas, canvasItems);
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
@@ -205,7 +229,7 @@
                     </div>
                     <div class="list-inline">
                         <li><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
-                   
+
                     </div>
                 </ul>
             </li>
@@ -220,6 +244,22 @@
                     </div>
                     <div class="list-inline">
                         <li><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                    </div>
+                </ul>
+            </li>
+            <li>
+
+                <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
+                <ul class="collapse list-unstyled" id="activityDiagrams">
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
+                        <li><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                    </div>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
+                        <li><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
 
                     </div>
                 </ul>
