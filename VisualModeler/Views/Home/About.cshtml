@@ -278,37 +278,86 @@
         </ul>
     </nav>
 
-
-
-   
                 <div class="can" id="can">
                     <canvas id="c" width="1900" height="1000" />
                 </div>
            
-
-
-
-
-      
-
-
-
-
-
-
-    
+  
     <nav id="sidebarR">
 
 
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul class="collapse list-unstyled " id="homeSubmenu">
+                <a href="#classObjectS" data-toggle="collapse" aria-expanded="false">Class Object</a>
+                <ul class="collapse list-unstyled " id="classObjectS">
                     <div class="list-inline">
-                        <li><a href="#">Home 1</a></li>
-                        <li><a href="#">Home 2</a></li>
+                        <div class="backgroundLi">
+                            <div class="properties">
+                                <label for="classObjectName">Name</label>
+                                <input class="form-control" id="classObjctName" type="text">
+                            </div>
+                            <div class="properties">
+                                <label for="classObjectExtends">Extends</label>
+                                <input class="form-control" id="classObjctExtends" type="text">
+                            </div>
+                            <div class="properties">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="sel1">Item text:</label>
+                                        <input class="form-control" id="itemTextAdd" type="text">
+                                        <label for="sel2"></label>
+                                        <select multiple class="form-control" id="sel2">
+                                            <option>-name : string</option>
+                                            <option>-healthy : int</option>
+                                            <option>-age : int</option>
+                                            <option>-power : int</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <button type="button" id="addItem" class="btn btn-info1 navbar-btn"><i>ADD ITEM</i></button>
+                                <button type="button" id="removeItem" class="btn btn-info1 navbar-btn" style="background-color: red;"><i>REMOVE</i></button>
+
+                            </div>
+                            <div class="properties">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="sel1">Metods text:</label>
+                                        <input class="form-control" id="metodTextAdd" type="text">
+                                        <label for="sel2"></label>
+                                        <select multiple class="form-control" id="sel2">
+                                            <option>+setEnemy()</option>
+                                            <option>+getHealth()</option>
+                                            <option>+isDeath() : bool</option>
+                                            <option>+getName()</option>
+                                            <option>+hit()</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <button type="button" id="addMetod" class="btn btn-info1 navbar-btn"><i>ADD METOD</i></button>
+                                <button type="button" id="removeMetod" class="btn btn-info1 navbar-btn" style="background-color: red;"><i>REMOVE</i></button>
+
+                            </div>
+                        </div>
                     </div>
-                    <li><a href="#">Home 3</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="#actorS" data-toggle="collapse" aria-expanded="false">Actor</a>
+                <ul class="collapse list-unstyled " id="actorS">
+                    <div class="list-inline">
+                        <div class="backgroundLi">
+                            <div class="properties">
+                                <label for="actorName">Name</label>
+                                <input class="form-control" id="actorName" type="text">
+                            </div>
+                           
+                           
+                              
+                        </div>
+                    </div>
+
                 </ul>
             </li>
             <li>
