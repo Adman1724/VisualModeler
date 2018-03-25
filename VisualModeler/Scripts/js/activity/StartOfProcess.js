@@ -1,5 +1,5 @@
 ﻿class StartOfProcess {
-    constructor(posX, posY, height) {
+    constructor(posX, posY, height, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -37,12 +38,4 @@
 
 
     }
-}
-function createStartOfProcess(canvas, array) {
-    var four = new StartOfProcess(0, 0, 35);
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

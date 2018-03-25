@@ -237,6 +237,7 @@
     <Content Include="Content\MenuItems\system.png" />
     <Content Include="Content\MenuItems\terminator.png" />
     <Content Include="Content\MenuItems\usecase.png" />
+    <Content Include="Content\Pattern\option.html" />
     <Content Include="Content\StyleLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -261,6 +262,7 @@
     <Content Include="Scripts\js\activity\Terminator.js" />
     <Content Include="Scripts\js\classes\classObject.js" />
     <Content Include="Scripts\js\function\CanvasManupulation.js" />
+    <Content Include="Scripts\js\function\Creator.js" />
     <Content Include="Scripts\js\function\RightMenuDynamic.js" />
     <Content Include="Scripts\js\squence\Activation.js" />
     <Content Include="Scripts\js\squence\Lifeline.js" />
@@ -271,6 +273,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Content\Pattern\Actor.html" />
+    <Content Include="Content\Pattern\ClassObject.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,5 +1,5 @@
 ﻿class Activation {
-    constructor(posX, posY, width, height, name) {
+    constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -43,11 +44,4 @@
 
     }
 }
-function createActivation(canvas, array) {
-    var four = new Activation(200, 200, 30, 250, ':Object');
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
 
-
-}

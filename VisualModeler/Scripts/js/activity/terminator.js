@@ -1,5 +1,5 @@
 ﻿class Terminator {
-    constructor(posX, posY, height) {
+    constructor(posX, posY, height, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -49,12 +50,4 @@
 
 
     }
-}
-function createTerminator(canvas, array) {
-    var four = new Terminator(0, 0, 35);
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

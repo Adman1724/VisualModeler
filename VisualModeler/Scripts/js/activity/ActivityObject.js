@@ -1,5 +1,5 @@
 ﻿class ActivityObject {
-    constructor(posX, posY, width, height, name) {
+    constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -55,12 +56,4 @@
 
 
     }
-}
-function createActivityObject(canvas, array) {
-    var four = new ActivityObject(200, 200, 150, 50, 'Activities');
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

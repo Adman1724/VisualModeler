@@ -1,5 +1,5 @@
 ﻿class ConditionCheck {
-    constructor(posX, posY, height) {
+    constructor(posX, posY, height, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -43,12 +44,4 @@
 
 
     }
-}
-function createConditionCheck(canvas, array) {
-    var four = new ConditionCheck(0, 0, 50);
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

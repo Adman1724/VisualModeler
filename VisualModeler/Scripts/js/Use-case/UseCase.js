@@ -1,5 +1,5 @@
 ﻿class UseCase {
-    constructor(posX, posY, width, name) {
+    constructor(posX, posY, width, name, id) {
         this.posX = posX;
         this.posY = posY;
         this.width = width;
@@ -8,6 +8,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -45,12 +46,4 @@
 
 
     }
-}
-function createUsecase(canvas, array) {
-    var four = new UseCase(200, 200, 200, 'Title');
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

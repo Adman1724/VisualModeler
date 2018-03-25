@@ -1,5 +1,5 @@
 ﻿class System {
-    constructor(posX, posY, width, height, name) {
+    constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
         this.type = 'system';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -48,12 +49,4 @@
 
 
     }
-}
-function createSystem(canvas, array) {
-    var four = new System(200, 200, 200,200,'Title');
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

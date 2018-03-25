@@ -1,5 +1,5 @@
 ﻿class Actor {
-    constructor(posX, posY, width, name) {
+    constructor(posX, posY, width, name, id) {
         this.posX = posX;
         this.posY = posY;
         this.width = width;
@@ -8,6 +8,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -75,12 +76,4 @@
 
 
     }
-}
-function createActor(canvas, array) {
-    var three = new Actor(0, 0, 100, 'Actor');
-    three.initObject();
-    three.draw(canvas);
-    array.push(three);
-
-
 }

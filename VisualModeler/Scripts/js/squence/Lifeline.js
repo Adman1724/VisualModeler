@@ -1,5 +1,5 @@
 ﻿class Lifeline {
-    constructor(posX, posY, height) {
+    constructor(posX, posY, height, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -37,12 +38,4 @@
 
 
     }
-}
-function createLifeline(canvas, array) {
-    var four = new Lifeline(0,0,200);
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }

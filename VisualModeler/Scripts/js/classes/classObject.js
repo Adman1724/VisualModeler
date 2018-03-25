@@ -2,7 +2,7 @@
 var posX = 0;
 var posY = 0;
 class ClassObject {
-    constructor(posX, posY, width, name, extendsBool, extendsText,canvas) {
+    constructor(posX, posY, width, name, extendsBool, extendsText,canvas, id) {
         this.posX = posX;
         this.posY = posY;
         this.width = width;
@@ -17,6 +17,7 @@ class ClassObject {
         this.previousPosY = posY;
         this.previousPosX = posX;
         this.group = new fabric.Group([], {});
+        this.id = id;
 
 
     }
@@ -134,6 +135,37 @@ class ClassObject {
     
         
     }
+    changeName(text) {
+        this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeExtends(text) {
+        this.extendsText = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    addMetod(text) {
+        this.lenghtArrayItem();
+        var textItem = new fabric.Textbox(text + this.lenght, {
+            top: posY,
+            left: 0,
+            background: 'red',
+            fontSize: 17,
+            width: this.width,
+            // textAlign: 'left',
+            fixedWidth: this.width
+            //originX: 'left',
+            //originY: 'top'
+
+        });
+        this.metodsArray.push(textItem);
+
+        this.initObject();
+        this.draw(this.canvas);
+
+
+    }
     
     draw(canvas) {
        
@@ -149,18 +181,30 @@ class ClassObject {
         var groupFooter = new fabric.Group([this.footer], {
 
         });
+        var itemsHeight = this.height
         for (var i = 0; i < this.itemsArray.length; i++) {
-            this.itemsArray[i].left = 0;
+            this.itemsArray[i].left = 5;
             this.itemsArray[i].top = this.height + (i * 15) + 3;
+            itemsHeight = this.height + (i * 15) + 3;
+        }
+        itemsHeight += 35;
+        var groupItems = new fabric.Group(this.itemsArray, {
+
+
+        });
+       
+        for (var i = 0; i < this.metodsArray.length; i++) {
+            this.metodsArray[i].left = 5;
+            this.metodsArray[i].top = itemsHeight + (i * 15) + 3;
         }
 
-        var groupItems = new fabric.Group(this.itemsArray, {
+        var groupMetods = new fabric.Group(this.metodsArray, {
 
 
         });
 
 
-        this.group = new fabric.Group([groupHeader, groupBody, groupFooter, groupItems], {
+        this.group = new fabric.Group([groupHeader, groupBody, groupFooter, groupItems, groupMetods], {
            
         });
         this.group.width = this.width;
@@ -174,12 +218,4 @@ class ClassObject {
 
         
     }
-}
-function createClass(canvas, array) {
-    var first = new ClassObject(0, 0, 200, DEFAULT_NAME, false, 'inteface', canvas);
-    first.initObject();
-    first.draw(canvas);
-    array.push(first);
-
-
 }

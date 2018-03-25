@@ -1,5 +1,5 @@
 ﻿class ObjectSeq {
-    constructor(posX, posY, width, height, name) {
+    constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
         this.type = 'object';
         this.posY = posY;
@@ -9,6 +9,7 @@
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.id = id;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -52,12 +53,4 @@
 
 
     }
-}
-function createObjectSeq(canvas, array) {
-    var four = new ObjectSeq(200, 200, 150, 50, ':Object');
-    four.initObject();
-    four.draw(canvas);
-    array.push(four);
-
-
 }
