@@ -1,7 +1,7 @@
 ﻿class ActivityObject {
     constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
-        this.type = 'object';
+        this.type = 'usecase';
         this.posY = posY;
         this.width = width;
         this.name = name;

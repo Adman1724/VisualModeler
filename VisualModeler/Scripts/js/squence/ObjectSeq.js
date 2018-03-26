@@ -1,7 +1,7 @@
 ﻿class ObjectSeq {
     constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
-        this.type = 'object';
+        this.type = 'actor';
         this.posY = posY;
         this.width = width;
         this.name = name;

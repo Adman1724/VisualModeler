@@ -1,7 +1,7 @@
 ﻿class Terminator {
     constructor(posX, posY, height, id) {
         this.posX = posX;
-        this.type = 'object';
+        this.type = 'actor';
         this.posY = posY;
         this.width = height;
         this.name = "Terminator";

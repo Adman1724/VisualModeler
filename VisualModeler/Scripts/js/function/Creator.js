@@ -4,7 +4,7 @@
     addRightMenuItemUsecase();
     four.draw(canvas);
     array.push(four);
-    changeIdActor(id, four);
+    changeIdUsecase(id, four);
 }
 function createConditionCheck(canvas, array, id) {
     var four = new ConditionCheck(0, 0, 50, id);
@@ -81,7 +81,7 @@ function createSystem(canvas, array, id) {
     changeIdUsecase(id, four);
 }
 function createUsecase(canvas, array, id) {
-    var four = new UseCase(200, 200, 200, 'Title', 100,id);
+    var four = new UseCase(100, 100, 100, 'Title', 50,id);
     four.initObject();
     addRightMenuItemUsecase();
     four.draw(canvas);

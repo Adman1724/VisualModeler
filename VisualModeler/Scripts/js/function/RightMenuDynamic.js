@@ -53,7 +53,24 @@ function changeIdUsecase(id, item) {
     
 
 }
+function reloadRightMenu() {
+    $("#rightMenuScrollInsert").html('');
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].type == 'usecase') {
+            addRightMenuItemUsecase();
+            changeIdUsecase(canvasItems[i].id, canvasItems[i]);
+        }
+        else if (canvasItems[i].type == 'actor') {
+            addRightMenuItemActor();
+            changeIdActor(canvasItems[i].id, canvasItems[i]);
+        }
+        else if (canvasItems[i].type == 'class') {
+            addRightMenuItem();
+            changeId(canvasItems[i].id, canvasItems[i]);
 
+        }
+    }
+}
 function changeId(id, item) {
  
     $('#classObjectWidth').prop('id', id + "width");

@@ -1,7 +1,7 @@
 ﻿class Lifeline {
     constructor(posX, posY, height, id) {
         this.posX = posX;
-        this.type = 'object';
+        this.type = 'actor';
         this.posY = posY;
         this.width = 3;
         this.name = "Life line";

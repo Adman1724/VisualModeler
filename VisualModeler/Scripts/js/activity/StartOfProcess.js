@@ -1,7 +1,7 @@
 ﻿class StartOfProcess {
     constructor(posX, posY, height, id) {
         this.posX = posX;
-        this.type = 'object';
+        this.type = 'actor';
         this.posY = posY;
         this.width = height;
         this.name = "StartOfProcess";
@@ -20,9 +20,6 @@
             left: 0,
             top: 0
         });
-
-
-
     }
     changeName(text) {
         this.name = text;

@@ -1,7 +1,7 @@
 ﻿class System {
     constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
-        this.type = 'system';
+        this.type = 'usecase';
         this.posY = posY;
         this.width = width;
         this.name = name;

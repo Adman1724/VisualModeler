@@ -11,5 +11,6 @@ function removeItem(array, canvas) {
             array.splice(i, 1);
         }
     }
+    reloadRightMenu();
     canvas.remove(canvas.getActiveObject());
 }
