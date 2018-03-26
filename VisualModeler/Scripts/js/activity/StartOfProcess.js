@@ -4,7 +4,7 @@
         this.type = 'object';
         this.posY = posY;
         this.width = height;
-
+        this.name = "StartOfProcess";
         this.height = height;
         this.group = new fabric.Group([], {});
         this.previousPosY = posY;
@@ -23,6 +23,21 @@
 
 
 
+    }
+    changeName(text) {
+        this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeHeight(text) {
+        this.height = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeWidth(text) {
+        this.width = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
     }
     draw(canvas) {
 

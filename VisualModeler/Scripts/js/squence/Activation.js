@@ -29,6 +29,21 @@
 
 
     }
+    changeName(text) {
+        this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeHeight(text) {
+        this.height = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeWidth(text) {
+        this.width = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
+    }
     draw(canvas) {
 
         this.group = new fabric.Group([this.head], {

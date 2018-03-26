@@ -4,6 +4,7 @@
         this.type = 'object';
         this.posY = posY;
         this.width = 3;
+        this.name = "Life line";
      
         this.height = height;
         this.group = new fabric.Group([], {});
@@ -18,11 +19,26 @@
             fill: 'black',
             stroke: 'black',
             strokeDashArray: [5, 5],
-            strokeWidth: 3
+            strokeWidth: this.width
         });
        
 
 
+    }
+    changeName(text) {
+        this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeHeight(text) {
+        this.height = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeWidth(text) {
+        this.width = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
     }
     draw(canvas) {
 
