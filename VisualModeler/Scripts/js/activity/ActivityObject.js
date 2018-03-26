@@ -10,6 +10,7 @@
         this.previousPosY = posY;
         this.previousPosX = posX;
         this.id = id;
+        this.rx = 30;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -25,7 +26,7 @@
             strokeWidth: 2,
             originX: 'left',
             originY: 'top',
-            rx: 30,
+            rx: this.rx,
             ry:0
            
         });
@@ -41,6 +42,22 @@
 
 
         });
+    }
+    changeTitle(text) {
+        this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeHeight(text) {
+        this.height = parseInt(text);
+        this.rx = this.height / 2;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeWidth(text) {
+        this.width = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
     }
     draw(canvas) {
 

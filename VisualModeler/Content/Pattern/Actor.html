@@ -1,11 +1,23 @@
 ﻿<li>
-    <a href="#actorS" data-toggle="collapse" aria-expanded="false">Actor</a>
+    <a href="#actorS" data-toggle="collapse" id="actorString" aria-expanded="false">Actor</a>
     <ul class="collapse list-unstyled " id="actorS">
         <div class="list-inline">
             <div class="backgroundLi">
                 <div class="properties">
                     <label for="actorName">Name</label>
-                    <input class="form-control" id="actorName" type="text">
+                    <input class="form-control" id="actorName" type="text" onchange="changeName(this.id);">
+                </div>
+                <div class="properties" style="display:inline-block">
+                    <div class="propertiesInline">
+                        <div class="propertiesBlock">
+                            <label for="actorHeight">h:</label>
+                            <input class="form-control" type="number" id="actorHeight" name="quantity" onchange="changeHeight(this.id);">
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="actorWidth">w:</label>
+                            <input class="form-control" type="number" id="actorWidth" name="quantity" onchange="changeWidth(this.id);">
+                        </div>
+                    </div>
                 </div>
 
 

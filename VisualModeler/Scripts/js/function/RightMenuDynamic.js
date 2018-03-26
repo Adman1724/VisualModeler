@@ -8,15 +8,57 @@
             $("#rightMenuScrollInsert").append(data);
         }   
     });
-} 
+}
+function addRightMenuItemActor() {
+    $.ajax({
+        url: "../../Content/Pattern/Actor.html",
+        type: "get",
+        async: false,
+        success: function (data) {
+            $("#rightMenuScrollInsert").append(data);
+        }
+    });
+}
+function changeIdActor(id, item) {
+    $('#actorS').prop('id', id);
+    $('#actorString').prop('id', id + "s");
+    $('#actorName').prop('id', id + "name");
+    $('#actorHeight').prop('id', id + "height");
+    $('#actorWidth').prop('id', id + "width");
+    $('#' + id + 's').attr("href", '#' + id)
+    $('#' + id + "s").html(item.name);
+    $('#' + id + "height").val(item.height);
+    $('#' + id + "width").val(item.width);
+}
+function addRightMenuItemUsecase() {
+    $.ajax({
+        url: "../../Content/Pattern/Usecase.html",
+        type: "get",
+        async: false,
+        success: function (data) {
+            $("#rightMenuScrollInsert").append(data);
+        }
+    });
+}
+function changeIdUsecase(id, item) {
+    $('#usecaseS').prop('id', id);
+    $('#usecaseString').prop('id', id + "s");
+    $('#usecaseName').prop('id', id + "name");
+    $('#usecaseHeight').prop('id', id+"height");
+    $('#usecaseWidth').prop('id', id + "width");
+    $('#' + id + 's').attr("href", '#' + id)
+    $('#' + id + "s").html(item.name);
+    $('#' + id + "height").val(item.height);
+    $('#' + id + "width").val(item.width);
+    
+
+}
+
 function changeId(id, item) {
-    //var x = document.getElementById("classObjectS").id;
-    //x = id.toString();
+ 
+    $('#classObjectWidth').prop('id', id + "width");
     $('#classObjectS').prop('id', id); 
     $('#classObjectString').prop('id', id+"s");
-    //var b = $('#' + id);
-    //var y = document.getElementById("classObjectString").id;
-   // y = id + 's';
     $('#classObjectName').prop('id', id + "name");
     $('#classObjectExtends').prop('id', id + "extends");
     $('#itemTextAdd').prop('id', id + "addItem");
@@ -29,6 +71,8 @@ function changeId(id, item) {
     $('#removeMetod').prop('id', id + "removeMetodButton");
    $('#' + id + 's').attr("href", '#'+id)
    $('#' + id + "s").html(item.name);
+  
+   $('#' + id + "width").val(item.width);
  
 
 }
@@ -140,4 +184,43 @@ function changeExtends(clickedId) {
     canvas.clear();
     canvasAdd(canvasItems, canvas);
     
+}
+function changeTitle(clickedId) {
+    var id = findOutId(clickedId, 4);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeTitle($('#' + id + "name").val());
+
+        }
+    }
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+    $('#' + id + "s").html($('#' + id + "name").val());
+}
+function changeHeight(clickedId) {
+    var id = findOutId(clickedId, 6);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeHeight($('#' + id + "height").val());
+
+        }
+    }
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+   
+}
+function changeWidth(clickedId) {
+    var id = findOutId(clickedId, 5);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeWidth($('#' + id + "width").val());
+
+        }
+    }
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+
 }

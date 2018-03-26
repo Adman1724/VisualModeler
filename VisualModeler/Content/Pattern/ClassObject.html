@@ -5,7 +5,16 @@
             <div class="backgroundLi">
                 <div class="properties">
                     <label for="classObjectName">Name</label>
-                    <input class="form-control" id="classObjectName" type="text" onchange="changeName(this.id);" >
+                    <input class="form-control" id="classObjectName" type="text" onchange="changeName(this.id);">
+                </div>
+                <div class="properties" style="display:inline-block">
+                    <div class="propertiesInline">
+                      
+                        <div class="propertiesBlock">
+                            <label for="classObjectWidth">w:</label>
+                            <input class="form-control" type="number" id="classObjectWidth" name="quantity" onchange="changeWidth(this.id);">
+                        </div>
+                    </div>
                 </div>
                 <div class="properties">
                     <label for="classObjectExtends">Extends</label>
@@ -17,9 +26,7 @@
                             <label for="sel1">Item text:</label>
                             <input class="form-control" id="itemTextAdd" type="text">
                             <label for="sel2"></label>
-                            <select multiple class="form-control" id="itemsList">
-                               
-                            </select>
+                            <select multiple class="form-control" id="itemsList"></select>
                         </div>
                     </form>
                     <button type="button" id="addItem" class="btn btn-info1 navbar-btn" onclick="addItem(this.id)"><i>ADD ITEM</i></button>
@@ -32,9 +39,7 @@
                             <label for="sel1">Metods text:</label>
                             <input class="form-control" id="metodTextAdd" type="text">
                             <label for="sel1"></label>
-                            <select multiple class="form-control" id="metodsList">
-                                
-                            </select>
+                            <select multiple class="form-control" id="metodsList"></select>
                         </div>
                     </form>
                     <button type="button" id="addMetod" class="btn btn-info1 navbar-btn" onclick="addMetod(this.id)"><i>ADD METOD</i></button>

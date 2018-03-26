@@ -1,10 +1,10 @@
 ﻿function createActivityObject(canvas, array,id) {
     var four = new ActivityObject(200, 200, 150, 50, 'Activities', id);
-
     four.initObject();
+    addRightMenuItemUsecase();
     four.draw(canvas);
-    
     array.push(four);
+    changeIdUsecase(id, four);
 }
 function createConditionCheck(canvas, array, id) {
     var four = new ConditionCheck(0, 0, 50, id);
@@ -55,18 +55,24 @@ function createObjectSeq(canvas, array, id) {
 function createActor(canvas, array, id) {
     var three = new Actor(0, 0, 100, 'Actor', id);
     three.initObject();
+    addRightMenuItemActor();
     three.draw(canvas);
     array.push(three);
+    changeIdActor(id, three);
 }
 function createSystem(canvas, array, id) {
     var four = new System(200, 200, 200, 200, 'Title', id);
     four.initObject();
+    addRightMenuItemUsecase();
     four.draw(canvas);
     array.push(four);
+    changeIdUsecase(id, four);
 }
 function createUsecase(canvas, array, id) {
-    var four = new UseCase(200, 200, 200, 'Title', id);
+    var four = new UseCase(200, 200, 200, 'Title', 100,id);
     four.initObject();
+    addRightMenuItemUsecase();
     four.draw(canvas);
     array.push(four);
+    changeIdUsecase(id, four);
 }

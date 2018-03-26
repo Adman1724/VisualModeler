@@ -145,6 +145,12 @@ class ClassObject {
         this.initObject();
         this.draw(this.canvas);
     }
+ 
+    changeWidth(text) {
+        this.width = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
+    }
     addMetod(text) {
         this.lenghtArrayItem();
         var textItem = new fabric.Textbox(text + this.lenght, {

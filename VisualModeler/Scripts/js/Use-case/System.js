@@ -35,6 +35,21 @@
             
         });
     }
+    changeTitle(text) {
+        this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeHeight(text) {
+        this.height = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeWidth(text) {
+        this.width = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
+    }
     draw(canvas) {
 
         this.group = new fabric.Group([this.head, this.nameText], {
@@ -42,7 +57,8 @@
             
         });
 
-        this.group.width = this.width;
+        //this.group.width = this.width;
+        //this.group.height = this.height;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;
         

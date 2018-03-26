@@ -129,3 +129,10 @@ body {
    height:90%;
     overflow-y: auto;
 }
+.propertiesBlock {
+     display:block;
+    padding-bottom: 10px;
+}
+.propertiesInline{
+    display:flex;
+}
