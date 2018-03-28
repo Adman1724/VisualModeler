@@ -33,16 +33,77 @@
                 </div>
                 <div class="properties">
                     <label for="relationRightArrow">Right Arrow:</label>
-                    <select name="cars" id="relationRightArrow" onchange="changeRightArrow(this.id);">
-                        <option value="AR" style="background-image:url(../../Content/MenuItems/arrowBlack.png);width:30px;">gfghfhgfgfh</option>
-                        <option value="AG"><img src="~/Content/MenuItems/agregation.png" alt="Image" style="width:30px;" /></option>
-                        <option value="AC"><img src="~/Content/MenuItems/composition.png" alt="Image" style="width:30px;" /></option>
-                        <option value="AB"><img src="~/Content/MenuItems/arrowFullBlack.png" alt="Image" style="width:30px;" /></option>
-                        <option value="AW"><img src="~/Content/MenuItems/arrowFullWhite.png" alt="Image" style="width:30px;" /></option>
-
-                    </select>
+                    <div class="btn-group" style="margin:10px;">
+                        <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                        <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
+                        <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationRightArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/arrowBlack.png" style="width:20px;" /> Arrow
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/agregation.png" style="width:20px;" /> Aggregation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/composition.png" style="width:20px;" /> Composition
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/arrowFullBlack.png" style="width:20px;" /> Black arrow
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/arrowFullWhite.png" style="width:20px;" /> White arrow
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
+                <div class="properties">
+                    <label for="relationLeftArrow">Left Arrow:</label>
+                    <div class="btn-group" style="margin:10px;">
+                        <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                        <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
+                        <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationLeftArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/arrowBlack.png" style="width:20px;" /> Arrow
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/agregation.png" style="width:20px;" /> Aggregation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/composition.png" style="width:20px;" /> Composition
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/arrowFullBlack.png" style="width:20px;" /> Black arrow
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <img src="../../Content/MenuItems/arrowFullWhite.png" style="width:20px;" /> White arrow
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
                 <div class="properties">
                     <label for="relationLeftArrow">Left Arrow:</label>
                     <select name="cars" id="relationLeftArrow" onchange="changeLeftArrow(this.id);">

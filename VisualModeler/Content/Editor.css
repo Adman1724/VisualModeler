@@ -117,6 +117,18 @@ body {
     background: #3498DB;
     border-radius: 0px;
 }
+.btn-info2 {
+    background: white;
+    border-color: black;
+    border-radius: 3px;
+}
+    .btn-info2 a:hover {
+        border-color: #3498DB;
+    }
+    .btn-info2 a:focus {
+        border-color: #3498DB;
+    }
+
 .properties{
    width: 90%;
    padding-left: 5%;

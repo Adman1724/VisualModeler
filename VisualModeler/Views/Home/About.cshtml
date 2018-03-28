@@ -29,6 +29,7 @@
 <script src="../../Scripts/js/function/Creator.js"></script>
 <script src="../../Scripts/js/function/RightMenuDynamic.js"></script>
 <script src="../../Scripts/js/classes/ArrowClass.js"></script>
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
@@ -50,19 +51,27 @@
 </script>
 
 
+
+
 <script>
     var first;
     var canvas;
     var canvasItems;
     var id = 1;
-  
+    $(".dropdown-menu li a").click(function () {
+        var selText = $(this).text();
+        var imgSource = $(this).find('img').attr('src');
+        var img = '<img src="' + imgSource + '"/>';
+        $(this).parents('.btn-group').find('.dropdown-toggle').html(img + ' ' + selText + ' <span class="caret"></span>');
+    });
+
     function addClass() {
         createClass(canvas, canvasItems, id);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
-    function addArrowClass(tH,tB,tF) {
+    function addArrowClass(tH, tB, tF) {
         createArrowClass(canvas, canvasItems, id, tH, tB, tF);
         id++;
         canvas.clear();
@@ -105,7 +114,7 @@
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
-    function addConditionCheck(){
+    function addConditionCheck() {
         createConditionCheck(canvas, canvasItems, id);
         id++;
         canvas.clear();
@@ -133,8 +142,8 @@
         removeItem(canvasItems, canvas);
     }
     $(document).ready(function () {
-       
-        document.getElementById("can").style.height = screen.height-170;
+
+        document.getElementById("can").style.height = screen.height - 170;
         var canvasOptions = {
         };
         var canvasId = 'c';
@@ -142,7 +151,7 @@
         canvas.backgroundColor = "#F2F2F2";
         canvasItems = [];
         canvasAdd(canvasItems, canvas);
- 
+
     });
 
 </script>
@@ -171,7 +180,7 @@
                 <p class="item-box">Select</p>
             </div>
             <div class="item-box" onclick="remove()">
-                <i class="material-icons" >close</i>
+                <i class="material-icons">close</i>
                 <p class="item-box">Remove</p>
             </div>
             <div class="item-box">
@@ -188,11 +197,11 @@
     </div>
     <div class="title-right">
 
-       
 
-            <button type="button" id="sidebarCollapseR" class="btn btn-info1 navbar-btn"><i class="material-icons md-48">reorder</i></button>
-            
-       
+
+        <button type="button" id="sidebarCollapseR" class="btn btn-info1 navbar-btn"><i class="material-icons md-48">reorder</i></button>
+
+
         <button class="dropbtn"> <i class="material-icons md-48">account_box</i></button>
     </div>
 </div>
@@ -202,107 +211,103 @@
     <nav id="sidebar">
         <div class="rightMenuScroll">
 
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#Class" data-toggle="collapse" aria-expanded="false">Class Diagrams</a>
-                <ul class="collapse list-unstyled " id="Class">
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></li>
-                        <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#Class" data-toggle="collapse" aria-expanded="false">Class Diagrams</a>
+                    <ul class="collapse list-unstyled " id="Class">
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addArrowClass('AG','DD','LL')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                        <li><a href="#" onclick="addArrowClass('AG','LL','LL')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addArrowClass('AG','DD','LL')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AG','LL','LL')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addArrowClass('AR','DD','LL')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                        <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addArrowClass('AR','DD','LL')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addArrowClass('AB','DD','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                        <li><a href="#" onclick="addArrowClass('AB','LL','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addArrowClass('AB','DD','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AB','LL','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addArrowClass('AW','DD','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                        <li><a href="#" onclick="addArrowClass('AW','LL','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addArrowClass('AW','DD','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AW','LL','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addArrowClass('AC','DD','LL')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                        <li><a href="#" onclick="addArrowClass('AC','LL','LL')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addArrowClass('AC','DD','LL')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AC','LL','LL')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
 
-                    </div>
-                </ul>
-            </li>
-            <li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
 
-                <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
-                <ul class="collapse list-unstyled" id="pag1">
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
-                        <li><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
+                    <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
+                    <ul class="collapse list-unstyled" id="pag1">
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
+                            <li><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
 
-                    </div>
-                </ul>
-            </li>
-            <li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
 
-                <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
-                <ul class="collapse list-unstyled" id="seq">
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
-                        <li><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
+                    <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
+                    <ul class="collapse list-unstyled" id="seq">
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
+                            <li><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
 
-                    </div>
-                </ul>
-            </li>
-            <li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
 
-                <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
-                <ul class="collapse list-unstyled" id="activityDiagrams">
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
-                        <li><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
+                    <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
+                    <ul class="collapse list-unstyled" id="activityDiagrams">
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
+                            <li><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
 
-                    </div>
-                    <div class="list-inline">
-                        <li><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
-                        <li><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
+                        </div>
+                        <div class="list-inline">
+                            <li><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
+                            <li><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
 
-                    </div>
-                </ul>
-            </li>
-            
-        </ul>
+                        </div>
+                    </ul>
+                </li>
 
-       
-            </div>
+            </ul>
+
+
+        </div>
     </nav>
 
-                <div class="can" id="can">
-                    <canvas id="c" width="1900" height="1000" />
-                </div>
-           
- 
+    <div class="can" id="can">
+        <canvas id="c" width="1900" height="1000" />
+    </div>
+
+
     <nav id="sidebarR">
         <div class="rightMenuScroll">
 
-        <ul id="rightMenuScrollInsert" class="list-unstyled components">
-         
-           
-         
-        </ul>
+            <ul id="rightMenuScrollInsert" class="list-unstyled components"></ul>
         </div>
     </nav>
 
