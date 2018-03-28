@@ -28,6 +28,7 @@
 <script src="../../Scripts/js/activity/ActivityObject.js"></script>
 <script src="../../Scripts/js/function/Creator.js"></script>
 <script src="../../Scripts/js/function/RightMenuDynamic.js"></script>
+<script src="../../Scripts/js/classes/ArrowClass.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Js CDN -->
@@ -57,6 +58,12 @@
   
     function addClass() {
         createClass(canvas, canvasItems, id);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addArrowClass(tH,tB,tF) {
+        createArrowClass(canvas, canvasItems, id, tH, tB, tF);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
@@ -127,60 +134,16 @@
     }
     $(document).ready(function () {
        
-
         document.getElementById("can").style.height = screen.height-170;
         var canvasOptions = {
         };
         var canvasId = 'c';
-
         canvas = new fabric.Canvas(canvasId, canvasOptions);
         canvas.backgroundColor = "#F2F2F2";
-        
         canvasItems = [];
-        
-        
-
         canvasAdd(canvasItems, canvas);
-        document.getElementById('add').onclick = function () {
-           
-            for (var i = 0; i < canvasItems.length; i++) {
-                if (canvasItems[i].group == canvas.getActiveObject()) {
-                    canvasItems.splice(i, 1);
-                }
-            }
-            canvas.remove(canvas.getActiveObject());
-            $(function () {
-                $.get("../../Content/Pattern/ClassObject.html", function (data) {
-                    $("#rightMenuScrollInsert").append(data);
-                });
-            });
-
-            // canvas.clear();
-            //canvasItems[0].addItem('+ item : String ');
-            //canvasAdd(canvasItems, canvas);
-            
-
-
-            //first.draw(canvas);
-
-        }
-        document.getElementById('add1').onclick = function () {
-            canvas.clear();
-            canvasItems[1].addItem('+ item : String ');
-            canvasAdd(canvasItems, canvas);
-
-
-            //first.draw(canvas);
-
-        }
-
-
-
+ 
     });
-
-
-
-
 
 </script>
 
@@ -244,10 +207,35 @@
                 <a href="#Class" data-toggle="collapse" aria-expanded="false">Class Diagrams</a>
                 <ul class="collapse list-unstyled " id="Class">
                     <div class="list-inline">
-                        <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:100px;" /></a></li>
-                        <li><a href="#">Home 2</a></li>
+                        <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></li>
+                        <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+
                     </div>
-                    <li><a href="#">Home 3</a></li>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addArrowClass('AG','DD','LL')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                        <li><a href="#" onclick="addArrowClass('AG','LL','LL')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
+
+                    </div>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addArrowClass('AR','DD','LL')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                        <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+
+                    </div>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addArrowClass('AB','DD','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                        <li><a href="#" onclick="addArrowClass('AB','LL','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
+
+                    </div>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addArrowClass('AW','DD','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                        <li><a href="#" onclick="addArrowClass('AW','LL','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
+
+                    </div>
+                    <div class="list-inline">
+                        <li><a href="#" onclick="addArrowClass('AC','DD','LL')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                        <li><a href="#" onclick="addArrowClass('AC','LL','LL')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
+
+                    </div>
                 </ul>
             </li>
             <li>

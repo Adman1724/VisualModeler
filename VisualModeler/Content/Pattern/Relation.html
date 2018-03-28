@@ -1,0 +1,66 @@
+﻿<li>
+    <a href="#relationS" data-toggle="collapse" id="relationString" aria-expanded="false">Relation</a>
+    <ul class="collapse list-unstyled " id="relationS">
+        <div class="list-inline">
+            <div class="backgroundLi">
+                <div class="properties">
+                    <label for="relationName">Name</label>
+                    <input class="form-control" id="relationName" type="text" onchange="changeName(this.id);">
+                </div>
+                <div class="properties" style="display:inline-block">
+                    <div class="propertiesInline">
+                        <div class="propertiesBlock">
+                            <label for="relationHeight">h:</label>
+                            <input class="form-control" type="number" id="relationHeight" name="quantity" onchange="changeHeight(this.id);">
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="relationWidth">w:</label>
+                            <input class="form-control" type="number" id="relationWidth" name="quantity" onchange="changeWidth(this.id);">
+                        </div>
+                    </div>
+                </div>
+                <div class="properties" style="display:inline-block">
+                    <div class="propertiesInline">
+                        <div class="propertiesBlock">
+                            <label for="relationFontSize">Font size:</label>
+                            <input class="form-control" type="number" id="relationFontSize" name="quantity" onchange="changeFontSize(this.id);">
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="relationStrokeWidth">Stroke width:</label>
+                            <input class="form-control" type="number" id="relationStrokeWidth" name="quantity" onchange="changeStrokeWidth(this.id);">
+                        </div>
+                    </div>
+                </div>
+                <div class="properties">
+                    <label for="relationRightArrow">Right Arrow:</label>
+                    <select name="cars" id="relationRightArrow" onchange="changeRightArrow(this.id);">
+                        <option value="AR" style="background-image:url(../../Content/MenuItems/arrowBlack.png);width:30px;">gfghfhgfgfh</option>
+                        <option value="AG"><img src="~/Content/MenuItems/agregation.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AC"><img src="~/Content/MenuItems/composition.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AB"><img src="~/Content/MenuItems/arrowFullBlack.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AW"><img src="~/Content/MenuItems/arrowFullWhite.png" alt="Image" style="width:30px;" /></option>
+
+                    </select>
+
+                </div>
+                <div class="properties">
+                    <label for="relationLeftArrow">Left Arrow:</label>
+                    <select name="cars" id="relationLeftArrow" onchange="changeLeftArrow(this.id);">
+                        <option value="AR"> <img src="~/Content/MenuItems/arrowBlack.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AG"><img src="~/Content/MenuItems/agregation.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AC"><img src="~/Content/MenuItems/composition.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AB"><img src="~/Content/MenuItems/arrowFullBlack.png" alt="Image" style="width:30px;" /></option>
+                        <option value="AW"><img src="~/Content/MenuItems/arrowFullWhite.png" alt="Image" style="width:30px;" /></option>
+
+                    </select>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </ul>
+</li>

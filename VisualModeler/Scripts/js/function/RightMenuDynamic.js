@@ -9,6 +9,17 @@
         }   
     });
 }
+function addRightMenuItemRelation() {
+
+    $.ajax({
+        url: "../../Content/Pattern/Relation.html",
+        type: "get",
+        async: false,
+        success: function (data) {
+            $("#rightMenuScrollInsert").append(data);
+        }
+    });
+}
 function addRightMenuItemActor() {
     $.ajax({
         url: "../../Content/Pattern/Actor.html",
@@ -91,6 +102,26 @@ function changeId(id, item) {
   
    $('#' + id + "width").val(item.width);
  
+
+}
+function changeIdRelation(id, item) {
+
+    $('#relationWidth').prop('id', id + "width");
+    $('#relationS').prop('id', id);
+    $('#relationString').prop('id', id + "s");
+    $('#relationName').prop('id', id + "name");
+    $('#relationRightArrow').prop('id', id + "rightArrow");
+    $('#relationLeftArrow').prop('id', id + "leftArrow");
+    $('#relationFontSize').prop('id', id + "fontSize");
+    $('#relationStrokeWidth').prop('id', id + "strokeWidth");
+    $('#elationHeight').prop('id', id + "height"); 
+    $('#' + id + 's').attr("href", '#' + id)
+    $('#' + id + "s").html(item.name);
+    $('#' + id + "width").val(item.width);
+    $('#' + id + "height").val(item.height);
+    $('#' + id + "fontSize").val(item.fontSize);
+    $('#' + id + "strokeWidth").val(item.strokeWidth);
+
 
 }
 function addItem(clickedId) {

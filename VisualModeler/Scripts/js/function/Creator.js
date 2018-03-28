@@ -40,6 +40,14 @@ function createClass(canvas, array, id) {
     array.push(first);
     changeId(id, first);
 }
+function createArrowClass(canvas, array, id,tH,tB,tF) {
+    var first = new ArrowClass(0, 0, 300, 'Relation', canvas, id,tH,tB,tF);
+    first.initObject();
+    addRightMenuItemRelation();
+    first.draw(canvas);
+    array.push(first);
+    changeIdRelation(id, first);
+}
 function createActivation(canvas, array, id) {
     var four = new Activation(200, 200, 30, 250, 'Activation', id);
     four.initObject();
