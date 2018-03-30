@@ -246,7 +246,11 @@
     <Content Include="Content\MenuItems\composition_dashedLine.png" />
     <Content Include="Content\MenuItems\composition_line.png" />
     <Content Include="Content\MenuItems\condition_check.png" />
+    <Content Include="Content\MenuItems\dashedLine.png" />
+    <Content Include="Content\MenuItems\DashedLineFullLine.png" />
+    <Content Include="Content\MenuItems\FullLineDashedLine.png" />
     <Content Include="Content\MenuItems\lifeline.png" />
+    <Content Include="Content\MenuItems\line.png" />
     <Content Include="Content\MenuItems\objectseq.png" />
     <Content Include="Content\MenuItems\start_of_proces.png" />
     <Content Include="Content\MenuItems\system.png" />

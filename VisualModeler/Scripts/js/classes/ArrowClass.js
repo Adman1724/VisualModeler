@@ -49,7 +49,21 @@ class ArrowClass {
                 top: 0
             })
         }
+        else if (this.typeHead == 'NN') {
+            this.groupHeadArrow = new fabric.Group([], {
+                left: 0,
+                top: 0,
+                width: 0
+            });
+            this.endArrow = 0;
+        }
         else if (this.typeHead == 'AR') {
+            if (this.typeBody[0] == 'D') {
+                this.typeLine = [5, 5];
+            }
+            else if (this.typeBody[0] == 'L') {
+                this.typeLine = [0, 0];
+            }
             this.head1 = new fabric.Line([0, this.height / 2, this.height, 0], {
                 fill: 'black',
                 stroke: 'black',
@@ -60,8 +74,15 @@ class ArrowClass {
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.endArrow = 0;
-            this.groupHeadArrow = new fabric.Group([this.head1, this.head2], {
+            this.head3 = new fabric.Line([0, this.height / 2, this.height, this.height/2], {
+                fill: 'black',
+                stroke: 'black',
+                strokeWidth: this.strokeWidth,
+                strokeDashArray: this.typeLine
+            });
+
+            this.endArrow = this.height;
+            this.groupHeadArrow = new fabric.Group([this.head1, this.head2, this.head3], {
                 left: 0,
                 top: 0
             })
@@ -157,7 +178,7 @@ class ArrowClass {
             this.typeLine = [0, 0];
         }
         if (this.typeFooter == 'AR') {
-            this.footerWidth = 0;
+            this.footerWidth = this.height;
         }
         else if (this.typeFooter == 'AG' || this.typeFooter == 'AC') {
             this.footerWidth = 2 * this.height;
@@ -168,9 +189,9 @@ class ArrowClass {
         }
         else {
             this.footerWidth = 0;}
+       
 
-
-        this.body1Line = new fabric.Line([0, 0, (this.width - this.groupHeadArrow.width - this.nameText.width - this.footerWidth) / 2, 0], {
+        this.body1Line = new fabric.Line([0, 0, (this.width - this.endArrow - this.nameText.width - this.footerWidth) / 2, 0], {
             fill: 'black',
             stroke: 'black',
             strokeDashArray: this.typeLine,
@@ -225,14 +246,20 @@ class ArrowClass {
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.footer2 = new fabric.Line([this.height, 0, this.height, this.height / 2], {
+            this.footer2 = new fabric.Line([0,this.height, this.height, this.height / 2], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-          
-            this.groupFooterArrow = new fabric.Group([this.footer1, this.footer2], {
-                left: this.groupHeadArrow.width + this.groupBody.width,
+            this.footer3 = new fabric.Line([0, this.height/2, this.height, this.height / 2], {
+                fill: 'black',
+                stroke: 'black',
+                strokeWidth: this.strokeWidth,
+                strokeDashArray: this.typeLine
+            });
+
+            this.groupFooterArrow = new fabric.Group([this.footer1, this.footer2, this.footer3], {
+                left: this.groupHeadArrow.width + this.groupBody.width - this.strokeWidth,
                 top: 0
             });
         }
@@ -316,11 +343,11 @@ class ArrowClass {
             })
 
             this.groupFooterArrow = new fabric.Group([groupFooterArrow1, groupFooterArrow2], {
-                left: 0,
+                left: this.groupHeadArrow.width + this.groupBody.width,
                 top: 0
             });
         }
-        else {
+        else if (this.typeFooter == 'NN') {
             this.groupFooterArrow = new fabric.Group([], {
                 left: this.groupHeadArrow.width + this.groupBody.width,
                 top: 0,
@@ -345,6 +372,22 @@ class ArrowClass {
         this.initObject();
         this.draw(this.canvas);
     }
+    changeLeftArrow(text) {
+        this.typeHead = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeRightArrow(text) {
+        this.typeFooter = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeLineArrow(text) {
+        this.typeBody = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+
     draw(canvas) {
        
        

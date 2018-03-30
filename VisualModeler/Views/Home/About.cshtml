@@ -58,12 +58,7 @@
     var canvas;
     var canvasItems;
     var id = 1;
-    $(".dropdown-menu li a").click(function () {
-        var selText = $(this).text();
-        var imgSource = $(this).find('img').attr('src');
-        var img = '<img src="' + imgSource + '"/>';
-        $(this).parents('.btn-group').find('.dropdown-toggle').html(img + ' ' + selText + ' <span class="caret"></span>');
-    });
+ 
 
     function addClass() {
         createClass(canvas, canvasItems, id);
@@ -217,32 +212,32 @@
                     <ul class="collapse list-unstyled " id="Class">
                         <div class="list-inline">
                             <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AG','DD','LL')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AG','LL','LL')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AR','DD','LL')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AR','LL','LL')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AB','DD','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AB','LL','LL')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AW','DD','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AW','LL','LL')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AC','DD','LL')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AC','LL','LL')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                     </ul>
