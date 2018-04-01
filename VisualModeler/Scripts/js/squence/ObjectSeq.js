@@ -10,6 +10,7 @@
         this.previousPosY = posY;
         this.previousPosX = posX;
         this.id = id;
+        this.fontSize = 17;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -32,12 +33,17 @@
             width: this.width,
             top: (this.head.height - 17) / 2,
             left: 0,
-            fontSize: 17,
+            fontSize: this.fontSize,
             textAlign: 'center',
             textDecoration: 'underline'
            
 
         });
+    }
+    changeFontSize(text) {
+        this.fontSize = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
     }
     changeName(text) {
         this.name = text;
@@ -60,7 +66,7 @@
 
 
         });
-
+        this.group.height = this.height;
         this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;

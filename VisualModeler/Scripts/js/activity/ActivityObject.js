@@ -11,6 +11,7 @@
         this.previousPosX = posX;
         this.id = id;
         this.rx = 30;
+        this.fontSize = 17;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -36,7 +37,7 @@
             width: this.width,
             top: (this.head.height - 17) / 2,
             left: 0,
-            fontSize: 17,
+            fontSize: this.fontSize,
             textAlign: 'center'
            
 
@@ -45,6 +46,12 @@
     }
     changeTitle(text) {
         this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+
+    }
+    changeFontSize(text) {
+        this.fontSize = parseInt(text);;
         this.initObject();
         this.draw(this.canvas);
     }
@@ -65,7 +72,7 @@
 
 
         });
-
+        this.group.height = this.height;
         this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;

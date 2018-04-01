@@ -10,6 +10,7 @@
         this.previousPosY = posY;
         this.previousPosX = posX;
         this.id = id;
+        this.fontSize = 17;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -31,7 +32,7 @@
         this.nameText = new fabric.Textbox(this.name, {
             left: 5,
             top: 5,
-            fontSize: 17
+            fontSize: this.fontSize
             
         });
     }
@@ -50,6 +51,11 @@
         this.initObject();
         this.draw(this.canvas);
     }
+    changeFontSize(text) {
+        this.fontSize = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
+    }
     draw(canvas) {
 
         this.group = new fabric.Group([this.head, this.nameText], {
@@ -58,7 +64,8 @@
         });
 
         //this.group.width = this.width;
-        //this.group.height = this.height;
+        this.group.height = this.height;
+        this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;
         

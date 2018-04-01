@@ -20,6 +20,8 @@ class ArrowClass {
         this.fontSize = 17;
         this.strokeWidth = 2;
         this.angle = 270;
+        this.rightText = '0..*';
+        this.leftText = '1..*';
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -354,11 +356,55 @@ class ArrowClass {
                 width: 0
             });
         }
+        this.rightTextBox = new fabric.Textbox(this.rightText, {
+
+            top: 0,
+            left: this.width-10,
+            fontSize: this.fontSize,
+            textAlign: 'center',
+            originX: 'right',
+            originY: 'top'
+        });
+        this.leftTextBox = new fabric.Textbox(this.leftText, {
+
+            top: 0,
+            left: 10,
+            fontSize: this.fontSize,
+            textAlign: 'center',
+            originX: 'left',
+            originY: 'top'
+        });
+        this.groupText = new fabric.Group([this.leftTextBox, this.rightTextBox], {
+            left: 0,
+            top: 0,
+            width: this.width
+        });
+
 
 
     }
+    changeFontSize(text) {
+        this.fontSize = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
     changeName(text) {
         this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeStrokeWidth(text) {
+        this.strokeWidth =parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeLeftAssociation(text) {
+        this.leftText = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeRightAssociation(text) {
+        this.rightText = text;
         this.initObject();
         this.draw(this.canvas);
     }
@@ -389,14 +435,19 @@ class ArrowClass {
     }
 
     draw(canvas) {
-       
+        this.groupArrow = new fabric.Group([this.groupHeadArrow, this.groupFooterArrow, this.groupBody], {
+            left: 0,
+            top: this.height/2
+        });
+        
+
        
 
-        this.group = new fabric.Group([this.groupHeadArrow, this.groupFooterArrow, this.groupBody], {
+        this.group = new fabric.Group([this.groupArrow, this.groupText], {
             left: this.previousPosX,
             top: this.previousPosY
         });
-
+        this.group.height = this.height;
         this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;

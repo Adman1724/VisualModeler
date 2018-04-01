@@ -116,7 +116,7 @@
                 <div class="properties">
                     <label for="relationLine">Line Type:</label>
                     <div class="btn-group" style="margin:10px;">
-                       
+
                         <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationLineArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
                         <ul class="dropdown-menu" id="relationLineArrowUl">
                             <li>
@@ -139,11 +139,89 @@
                                     <img src="../../Content/MenuItems/dashedLine.png" style="width:20px;" /> Dashed line
                                 </a>
                             </li>
-                           
+
                         </ul>
                     </div>
 
                 </div>
+                <div class="properties">
+                    <div class="propertiesInline">
+                        <div class="propertiesBlock">
+                            <label for="relationLeftAssociation">Left association:</label>
+                            <div class="btn-group" style="margin:10px;">
+
+                                <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationLeftAssociation"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
+                                <ul class="dropdown-menu" id="relationLeftAssociationUl">
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '1..*');">
+                                            1..*
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '1');">
+                                            1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '0..*');">
+                                            0..*
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '0..1');">
+                                            0..1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '');">
+                                            --None--
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="relationRightAssociation">Right association:</label>
+                            <div class="btn-group" style="margin:10px;">
+
+                                <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationRightAssociation"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
+                                <ul class="dropdown-menu" id="relationRightAssociationUl">
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '1..*');">
+                                            1..*
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '1');">
+                                            1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '0..*');">
+                                            0..*
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '0..1');">
+                                            0..1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '');">
+                                            --None--
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    </div>
+
 
 
 

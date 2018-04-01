@@ -5,8 +5,19 @@
             <div class="backgroundLi">
                 <div class="properties">
                     <label for="actorName">Name</label>
-                    <input class="form-control" id="actorName" type="text" onchange="changeName(this.id);">
+                    <div class="propertiesInline">
+
+                        <div class="propertiesBlock">
+
+                            <input class="form-control" id="actorName" type="text" onchange="changeName(this.id);">
+                        </div>
+                        <div class="propertiesBlockFont">
+
+                            <input class="form-control" type="number" id="actorFontSize" name="quantity" onchange="changeFontSize(this.id);">
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="properties" style="display:inline-block">
                     <div class="propertiesInline">
                         <div class="propertiesBlock">

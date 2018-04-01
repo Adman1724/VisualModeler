@@ -10,6 +10,7 @@
         this.previousPosY = posY;
         this.previousPosX = posX;
         this.id = id;
+        this.fontSize = 0;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -20,6 +21,11 @@
             left: 0,
             top: 0
         });
+    }
+    changeFontSize(text) {
+        this.fontSize = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
     }
     changeName(text) {
         this.name = text;
@@ -42,7 +48,7 @@
 
 
         });
-
+        this.group.height = this.height;
         this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;

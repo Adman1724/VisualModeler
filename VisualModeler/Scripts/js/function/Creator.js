@@ -31,7 +31,7 @@ function createTerminator(canvas, array, id) {
     changeIdActor(id, four);
 }
 function createClass(canvas, array, id) {
-    var first = new ClassObject(0, 0, 200, DEFAULT_NAME, false, 'inteface', canvas, id);
+    var first = new ClassObject(50,50, 200, DEFAULT_NAME, false, 'inteface', canvas, id);
     first.initObject();
     addRightMenuItem();
     first.draw(canvas);
@@ -89,7 +89,7 @@ function createSystem(canvas, array, id) {
     changeIdUsecase(id, four);
 }
 function createUsecase(canvas, array, id) {
-    var four = new UseCase(100, 100, 100, 'Title', 50,id);
+    var four = new UseCase(100, 100, 200, 'Title', 50,id);
     four.initObject();
     addRightMenuItemUsecase();
     four.draw(canvas);

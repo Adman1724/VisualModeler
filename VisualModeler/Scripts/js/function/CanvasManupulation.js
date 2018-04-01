@@ -1,4 +1,5 @@
-﻿function canvasAdd(array, canvas) {
+﻿var selectedObject
+function canvasAdd(array, canvas) {
     for (var i = 0; i < array.length; i++) {
         
         canvas.add(array[i].group);
@@ -14,3 +15,4 @@ function removeItem(array, canvas) {
     reloadRightMenu();
     canvas.remove(canvas.getActiveObject());
 }
+

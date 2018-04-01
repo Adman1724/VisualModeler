@@ -44,10 +44,14 @@ function changeIdActor(id, item) {
     $('#actorName').prop('id', id + "name");
     $('#actorHeight').prop('id', id + "height");
     $('#actorWidth').prop('id', id + "width");
+    $('#actorFontSize').prop('id', id + "fontSize");
     $('#' + id + 's').attr("href", '#' + id)
     $('#' + id + "s").html(item.name);
     $('#' + id + "height").val(item.height);
     $('#' + id + "width").val(item.width);
+    $('#' + id + "name").val(item.name);
+    $('#' + id + "fontSize").val(item.fontSize);
+
 }
 function addRightMenuItemUsecase() {
     $.ajax({
@@ -65,10 +69,13 @@ function changeIdUsecase(id, item) {
     $('#usecaseName').prop('id', id + "name");
     $('#usecaseHeight').prop('id', id+"height");
     $('#usecaseWidth').prop('id', id + "width");
+    $('#usecaseFontSize').prop('id', id + "fontSize");
     $('#' + id + 's').attr("href", '#' + id)
     $('#' + id + "s").html(item.name);
     $('#' + id + "height").val(item.height);
     $('#' + id + "width").val(item.width);
+    $('#' + id + "name").val(item.name);
+    $('#' + id + "fontSize").val(item.fontSize);
     
 
 }
@@ -108,10 +115,19 @@ function changeId(id, item) {
     $('#removeItem').prop('id', id + "removeItemButton");
     $('#addMetod').prop('id', id + "addMetodButton");
     $('#removeMetod').prop('id', id + "removeMetodButton");
+    $('#classObjectFontSizeName').prop('id', id + "fontSizeName");
+    $('#classObjectFontSizeExtends').prop('id', id + "fontSizeExtends");
+    $('#classObjectFontSize').prop('id', id + "fontSize");
+
    $('#' + id + 's').attr("href", '#'+id)
    $('#' + id + "s").html(item.name);
    
    $('#' + id + "width").val(item.width);
+   $('#' + id + "fontSizeName").val(item.fontSizeName);
+   $('#' + id + "fontSizeExtends").val(item.fontSizeExtends);
+   $('#' + id + "fontSize").val(item.fontSize);
+   $('#' + id + "name").val(item.name);
+   $('#' + id + "extends").val(item.extendsText);
  
 
 }
@@ -240,6 +256,10 @@ function changeIdRelation(id, item) {
     $('#relationLineArrow').prop('id', id + "lineArrow");
     $('#relationLineArrowUl').prop('id', id + "lineArrowUl");
     $('#relationLeftArrow').prop('id', id + "leftArrow");
+    $('#relationRightAssociationUl').prop('id', id + "rightAssociationUl");
+    $('#relationRightAssociation').prop('id', id + "rightAssociationArrow");
+    $('#relationLeftAssociationUl').prop('id', id + "leftAssociationUl");
+    $('#relationLeftAssociation').prop('id', id + "leftAssociationArrow");
     $('#relationLeftArrowUl').prop('id', id + "leftArrowUl");
     $('#relationFontSize').prop('id', id + "fontSize");
     $('#relationStrokeWidth').prop('id', id + "strokeWidth");
@@ -250,6 +270,10 @@ function changeIdRelation(id, item) {
     $('#' + id + "height").val(item.height);
     $('#' + id + "fontSize").val(item.fontSize);
     $('#' + id + "strokeWidth").val(item.strokeWidth);
+    $('#' + id + "name").val(item.name);
+    $('#' + id + "rightAssociationArrow").html(item.rightText);
+    $('#' + id + "leftAssociationArrow").html(item.leftText);
+
     if (item.typeHead == 'AR') {
         $('#' + id + "leftArrow").html('<img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;" /> ');
     }
@@ -298,6 +322,7 @@ function changeIdRelation(id, item) {
     else if (item.typeBody  == 'DD') {
         $('#' + id + "lineArrow").html('<img src="../../Content/MenuItems/dashedLine.png" style="width:50px;" /> ');
     }
+    
 
 
 }
@@ -439,6 +464,45 @@ function changeWidth(clickedId) {
     canvasAdd(canvasItems, canvas);
 
 }
+function changeFontSizeName(clickedId) {
+    var id = findOutId(clickedId, 12);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeFontSizeName($('#' + id + "fontSizeName").val());
+
+        }
+    }
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+
+}
+function changeFontSizeExtends(clickedId) {
+    var id = findOutId(clickedId, 15);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeFontSizeExtends($('#' + id + "fontSizeExtends").val());
+
+        }
+    }
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+
+}
+function changeFontSize(clickedId) {
+    var id = findOutId(clickedId, 8);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeFontSize($('#' + id + "fontSize").val());
+
+        }
+    }
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+
+}
 function changeRightArrow(clickedId, string) {
     var id = findOutId(clickedId, 12);
     
@@ -521,6 +585,51 @@ function changeLineArrow(clickedId, string) {
         $('#' + id + "lineArrow").html('<img src="../../Content/MenuItems/dashedLine.png" style="width:50px;" /> ');
     }
    
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+}
+function changeRightAssociation(clickedId, string) {
+    var id = findOutId(clickedId, 16);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeRightAssociation(string);
+
+        }
+    }
+    
+    $('#' + id + "rightAssociationArrow").html(string);
+   
+
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+}
+function changeLeftAssociation(clickedId, string) {
+    var id = findOutId(clickedId, 16);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeLeftAssociation(string);
+
+        }
+    }
+
+    $('#' + id + "leftAssociationArrow").html(string);
+
+
+    canvas.clear();
+    canvasAdd(canvasItems, canvas);
+}
+function changeStrokeWidth(clickedId) {
+    var id = findOutId(clickedId, 11);
+
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].id == id) {
+            canvasItems[i].changeStrokeWidth($('#' + id + "strokeWidth").val());
+
+        }
+    }
+
     canvas.clear();
     canvasAdd(canvasItems, canvas);
 }

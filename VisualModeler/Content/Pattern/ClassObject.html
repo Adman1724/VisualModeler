@@ -5,20 +5,44 @@
             <div class="backgroundLi">
                 <div class="properties">
                     <label for="classObjectName">Name</label>
-                    <input class="form-control" id="classObjectName" type="text" onchange="changeName(this.id);">
+                    <div class="propertiesInline">
+
+                        <div class="propertiesBlock">
+
+                            <input class="form-control" id="classObjectName" type="text" onchange="changeName(this.id);">
+                        </div>
+                        <div class="propertiesBlockFont">
+
+                            <input class="form-control" type="number" id="classObjectFontSizeName" name="quantity" onchange="changeFontSizeName(this.id);">
+                        </div>
+                    </div>
                 </div>
                 <div class="properties" style="display:inline-block">
                     <div class="propertiesInline">
-                      
+
                         <div class="propertiesBlock">
-                            <label for="classObjectWidth">w:</label>
+                            <label for="classObjectWidth">Width:</label>
                             <input class="form-control" type="number" id="classObjectWidth" name="quantity" onchange="changeWidth(this.id);">
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="classObjectWidth">Font Size:</label>
+                            <input class="form-control" type="number" id="classObjectFontSize" name="quantity" onchange="changeFontSize(this.id);">
                         </div>
                     </div>
                 </div>
                 <div class="properties">
-                    <label for="classObjectExtends">Extends</label>
-                    <input class="form-control" id="classObjectExtends" type="text" onchange="changeExtends(this.id);">
+                    <label for="classObjectName">Extends</label>
+                    <div class="propertiesInline">
+
+                        <div class="propertiesBlock">
+
+                            <input class="form-control" id="classObjectExtends" type="text" onchange="changeExtends(this.id);">
+                        </div>
+                        <div class="propertiesBlockFont">
+
+                            <input class="form-control" type="number" id="classObjectFontSizeExtends" name="quantity" onchange="changeFontSizeExtends(this.id);">
+                        </div>
+                    </div>
                 </div>
                 <div class="properties">
                     <form>

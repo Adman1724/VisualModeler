@@ -59,7 +59,7 @@
     var canvasItems;
     var id = 1;
  
-
+    
     function addClass() {
         createClass(canvas, canvasItems, id);
         id++;
@@ -146,6 +146,28 @@
         canvas.backgroundColor = "#F2F2F2";
         canvasItems = [];
         canvasAdd(canvasItems, canvas);
+        canvas.on('object:modified', onObjectScaled);
+
+        function onObjectScaled(e) {
+            var scaledObject = e.target;
+            //updateData(canvasItems, canvas);
+            for (var i = 0; i < canvasItems.length; i++) {
+               if (canvasItems[i].group == selectedObject) {
+
+                   canvasItems[i].changeWidth(scaledObject.getWidth());
+                   $('#' + canvasItems[i].id + "width").val(canvasItems[i].width);
+                   canvasItems[i].changeHeight(scaledObject.getHeight());
+                   $('#' + canvasItems[i].id + "height").val(canvasItems[i].height);
+
+              }
+           }
+            canvas.clear();
+            canvasAdd(canvasItems, canvas);
+        }
+        canvas.on('object:selected', onObjectSelected);
+        function onObjectSelected(e) {
+            selectedObject = e.target;
+        }
 
     });
 
