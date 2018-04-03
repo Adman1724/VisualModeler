@@ -12,6 +12,7 @@
         this.id = id;
         this.rx = 30;
         this.fontSize = 17;
+        this.strokeWidth = 2;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -24,7 +25,7 @@
             width: this.width,
             height: this.height,
             stroke: 'black',
-            strokeWidth: 2,
+            strokeWidth: this.strokeWidth,
             originX: 'left',
             originY: 'top',
             rx: this.rx,
@@ -50,6 +51,11 @@
         this.draw(this.canvas);
 
     }
+    changeStrokeWidth(text) {
+        this.strokeWidth = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
+    }
     changeFontSize(text) {
         this.fontSize = parseInt(text);;
         this.initObject();
@@ -68,7 +74,11 @@
     }
     draw(canvas) {
 
-        this.group = new fabric.Group([this.head, this.nameText], {
+        this.group1 = new fabric.Group([this.head, this.nameText], {
+
+
+        });
+        this.group = new fabric.Group([this.group1], {
 
 
         });

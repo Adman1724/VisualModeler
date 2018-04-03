@@ -12,6 +12,7 @@
         this.previousPosX = posX;
         this.id = id;
         this.fontSize = 0;
+        this.strokeWidth = 2;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -20,7 +21,7 @@
             fill: 'black',
             stroke: 'black',
             strokeDashArray: [5, 5],
-            strokeWidth: this.width
+            strokeWidth: this.strokeWidth
         });
        
 
@@ -42,7 +43,12 @@
         this.draw(this.canvas);
     }
     changeWidth(text) {
-        this.width = parseInt(text);;
+        this.strokeWidth = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeStrokeWidth(text) {
+        this.strokeWidth = parseInt(text);
         this.initObject();
         this.draw(this.canvas);
     }

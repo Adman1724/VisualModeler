@@ -11,21 +11,25 @@
         this.previousPosX = posX;
         this.id = id;
         this.fontSize = 0;
+        this.strokeWidth = 2;
     }
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;
         this.terminatorBig = new fabric.Circle({
-            radius: this.height,
+            scaleX: (this.width/2)/(this.height/2),
+            radius: this.height/2,
             fill: 'white',
             stroke: 'black',
             left: 0,
             top: 0,
             originX: 'center',
-            originY: 'center'
+            originY: 'center',
+            strokeWidth: this.strokeWidth
         });
         this.terminatorSmall = new fabric.Circle({
-            radius: this.height/1.5,
+            scaleX: this.terminatorBig.scaleX,
+            radius: (this.height/2)/1.5,
             fill: 'black',
             left: 0,
             top: 0,
@@ -35,6 +39,11 @@
 
 
 
+    }
+    changeStrokeWidth(text) {
+        this.strokeWidth = parseInt(text);
+        this.initObject();
+        this.draw(this.canvas);
     }
     changeFontSize(text) {
         this.fontSize = parseInt(text);;

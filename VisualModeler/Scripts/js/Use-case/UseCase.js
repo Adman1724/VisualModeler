@@ -17,6 +17,7 @@
         this.previousPosX = posX;
         this.id = id;
         this.fontSize = 17;
+        this.strokeWidth = 2;
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -36,9 +37,9 @@
         
         this.head = new fabric.Circle({
             
-            strokeWidth: 3,
-            scaleX: this.width / this.height/2,
-            radius: this.height,
+            strokeWidth: this.strokeWidth,
+            scaleX: this.width / this.height,
+            radius: this.height/2,
             fill: '#fff',
             stroke: '#000',
             originX: 'center',
@@ -52,6 +53,11 @@
     }
     changeTitle(text) {
         this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeStrokeWidth(text) {
+        this.strokeWidth = parseInt(text);
         this.initObject();
         this.draw(this.canvas);
     }

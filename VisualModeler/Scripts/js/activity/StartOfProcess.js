@@ -11,12 +11,15 @@
         this.previousPosX = posX;
         this.id = id;
         this.fontSize = 0;
+        this.strokeWidth = 0;
     }
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;
+
         this.startOfProcessBox = new fabric.Circle({
-            radius: this.height,
+            scaleX: (this.width/2)/(this.height/2),
+            radius: this.height/2,
             fill: 'black',
             left: 0,
             top: 0
@@ -24,6 +27,11 @@
     }
     changeFontSize(text) {
         this.fontSize = parseInt(text);;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeStrokeWidth(text) {
+        this.strokeWidth = parseInt(text);
         this.initObject();
         this.draw(this.canvas);
     }
@@ -48,8 +56,8 @@
 
 
         });
-        this.group.height = this.height;
-        this.group.width = this.width;
+        this.group.height = this.height ;
+        this.group.width = this.width ;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;
 

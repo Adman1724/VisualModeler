@@ -19,6 +19,7 @@ class ClassObject {
         this.canvas = canvas;
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.strokeWidth = 2;
         this.group = new fabric.Group([], {
             top: this.previousPosX,
             left: this.previousPosY,
@@ -40,7 +41,7 @@ class ClassObject {
             width: this.width,
             height: this.fontSizeName +(( this.fontSizeExtends + (4 / 10 * this.fontSizeExtends))*2),
             stroke: 'black',
-            strokeWidth: 2,
+            strokeWidth: this.strokeWidth,
             originX: 'left',
             originY: 'top'
     });
@@ -52,7 +53,7 @@ class ClassObject {
             width: this.width,
             height: 10 + (this.lenght * this.fontSize),
             stroke: 'black',
-            strokeWidth: 2,
+            strokeWidth: this.strokeWidth,
             originX: 'left',
             originY: 'top'
         });
@@ -64,7 +65,7 @@ class ClassObject {
                 width: this.width,
                 height: 10 + (this.lenght * this.fontSize),
                 stroke: 'black',
-                strokeWidth: 2,
+                strokeWidth: this.strokeWidth,
                 originX: 'left',
                 originY: 'top'
 
@@ -130,6 +131,11 @@ class ClassObject {
     }
     changeName(text) {
         this.name = text;
+        this.initObject();
+        this.draw(this.canvas);
+    }
+    changeStrokeWidth(text) {
+        this.strokeWidth = parseInt(text);
         this.initObject();
         this.draw(this.canvas);
     }

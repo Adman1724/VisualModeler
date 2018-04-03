@@ -38,7 +38,7 @@ class ArrowClass {
             this.head = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
+                width: this.height/2,
                 height: 30,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
@@ -66,36 +66,36 @@ class ArrowClass {
             else if (this.typeBody[0] == 'L') {
                 this.typeLine = [0, 0];
             }
-            this.head1 = new fabric.Line([0, this.height / 2, this.height, 0], {
+            this.head1 = new fabric.Line([0, this.height/4, this.height/2, 0], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.head2 = new fabric.Line([0, this.height / 2, this.height, this.height], {
+            this.head2 = new fabric.Line([0, this.height/4, this.height/2, this.height/2], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.head3 = new fabric.Line([0, this.height / 2, this.height, this.height/2], {
+            this.head3 = new fabric.Line([0, this.height/4, this.height/2, this.height/4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 strokeDashArray: this.typeLine
             });
 
-            this.endArrow = this.height;
             this.groupHeadArrow = new fabric.Group([this.head1, this.head2, this.head3], {
                 left: 0,
                 top: 0
-            })
+            });
+            this.endArrow = this.groupHeadArrow.height-3;
         }
         else if (this.typeHead == 'AW') {
 
             this.head = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
-                height: this.height,
+                width: this.height/2,
+                height: this.height/2,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'white',
@@ -109,27 +109,27 @@ class ArrowClass {
         }
         else if (this.typeHead == 'AG') {
 
-            this.head1 = new fabric.Line([0, this.height / 2, this.height, 0], {
+            this.head1 = new fabric.Line([0, this.height / 4, this.height/2, 0], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.head2 = new fabric.Line([0, this.height / 2, this.height, this.height], {
+            this.head2 = new fabric.Line([0, this.height / 4, this.height/2, this.height/2], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.head3 = new fabric.Line([this.height, 0, 2 * this.height, this.height/2], {
+            this.head3 = new fabric.Line([this.height/2, 0, this.height, this.height/4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.head4 = new fabric.Line([this.height, this.height, 2 * this.height, this.height / 2], {
+            this.head4 = new fabric.Line([this.height/2, this.height/2,  this.height, this.height / 4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.endArrow = this.height * 2;
+            this.endArrow = this.height ;
             this.groupHeadArrow = new fabric.Group([this.head1, this.head2, this.head3, this.head4], {
                 left: 0,
                 top: 0
@@ -141,8 +141,8 @@ class ArrowClass {
             this.head1 = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
-                height: this.height,
+                width: this.height/2,
+                height: this.height/2,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'black',
@@ -151,8 +151,8 @@ class ArrowClass {
             this.head2 = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
-                height: this.height,
+                width: this.height/2,
+                height: this.height/2,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'black',
@@ -160,7 +160,7 @@ class ArrowClass {
             })
             this.endArrow = 2 * this.height;
             var groupHeadArrow1 = new fabric.Group([this.head1], {
-                left: this.height,
+                left: this.height/2,
                 top: 0
             })
             var groupHeadArrow2 = new fabric.Group([this.head2], {
@@ -171,7 +171,8 @@ class ArrowClass {
             this.groupHeadArrow = new fabric.Group([groupHeadArrow1, groupHeadArrow2], {
                 left: 0,
                 top: 0
-            })
+            });
+            this.endArrow = this.height;
         }
         if (this.typeBody[0] == 'D') {
             this.typeLine = [5, 5];
@@ -180,13 +181,13 @@ class ArrowClass {
             this.typeLine = [0, 0];
         }
         if (this.typeFooter == 'AR') {
-            this.footerWidth = this.height;
+            this.footerWidth = this.height/2;
         }
         else if (this.typeFooter == 'AG' || this.typeFooter == 'AC') {
-            this.footerWidth = 2 * this.height;
+            this.footerWidth = this.height;
         }
         else if (this.typeFooter == 'AB' || this.typeFooter == 'AW') {
-            this.footerWidth = this.height;
+            this.footerWidth = this.height/2;
 
         }
         else {
@@ -221,7 +222,7 @@ class ArrowClass {
         });
         this.groupBody = new fabric.Group([this.body1Line, this.nameText, this.body2Line], {
             left: this.endArrow,
-            top: (this.height - this.fontSize) / 2
+            top: (this.height/2 - this.fontSize) / 2
         })
        
         if (this.typeFooter == 'AB') {
@@ -229,7 +230,7 @@ class ArrowClass {
             this.footer = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
+                width: this.height/2,
                 height: 30,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
@@ -243,17 +244,17 @@ class ArrowClass {
             })
         }
         else if (this.typeFooter == 'AR') {
-            this.footer1 = new fabric.Line([0, 0, this.height, this.height / 2], {
+            this.footer1 = new fabric.Line([0, 0, this.height/2, this.height / 4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.footer2 = new fabric.Line([0,this.height, this.height, this.height / 2], {
+            this.footer2 = new fabric.Line([0,this.height/2, this.height/2, this.height / 4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.footer3 = new fabric.Line([0, this.height/2, this.height, this.height / 2], {
+            this.footer3 = new fabric.Line([0, this.height/4, this.height/2, this.height / 4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
@@ -270,8 +271,8 @@ class ArrowClass {
             this.footer = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
-                height: this.height,
+                width: this.height/2,
+                height: this.height/2,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'white',
@@ -285,22 +286,22 @@ class ArrowClass {
         }
         else if (this.typeFooter == 'AG') {
 
-            this.footer1 = new fabric.Line([0, this.height / 2, this.height, 0], {
+            this.footer1 = new fabric.Line([0, this.height / 4, this.height/2, 0], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.footer2 = new fabric.Line([0, this.height / 2, this.height, this.height], {
+            this.footer2 = new fabric.Line([0, this.height / 4, this.height/2, this.height/2], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.footer3 = new fabric.Line([this.height, 0, 2 * this.height, this.height / 2], {
+            this.footer3 = new fabric.Line([this.height/2, 0,  this.height, this.height / 4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
             });
-            this.footer4 = new fabric.Line([this.height, this.height, 2 * this.height, this.height / 2], {
+            this.footer4 = new fabric.Line([this.height/2, this.height/2,  this.height, this.height / 4], {
                 fill: 'black',
                 stroke: 'black',
                 strokeWidth: this.strokeWidth
@@ -317,8 +318,8 @@ class ArrowClass {
             this.footer1 = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
-                height: this.height,
+                width: this.height/2,
+                height: this.height/2,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'black',
@@ -327,8 +328,8 @@ class ArrowClass {
             this.footer2 = new fabric.Triangle({
                 top: 0,
                 left: 0,
-                width: this.height,
-                height: this.height,
+                width: this.height/2,
+                height: this.height/2,
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'black',
@@ -336,7 +337,7 @@ class ArrowClass {
             })
 
             var groupFooterArrow1 = new fabric.Group([this.footer1], {
-                left: this.height,
+                left: this.height/2,
                 top: 0
             })
             var groupFooterArrow2 = new fabric.Group([this.footer2], {
@@ -348,6 +349,7 @@ class ArrowClass {
                 left: this.groupHeadArrow.width + this.groupBody.width,
                 top: 0
             });
+            this.endArrow = this.height;
         }
         else if (this.typeFooter == 'NN') {
             this.groupFooterArrow = new fabric.Group([], {
@@ -377,6 +379,7 @@ class ArrowClass {
         this.groupText = new fabric.Group([this.leftTextBox, this.rightTextBox], {
             left: 0,
             top: 0,
+
             width: this.width
         });
 
@@ -444,8 +447,7 @@ class ArrowClass {
        
 
         this.group = new fabric.Group([this.groupArrow, this.groupText], {
-            left: this.previousPosX,
-            top: this.previousPosY
+          
         });
         this.group.height = this.height;
         this.group.width = this.width;

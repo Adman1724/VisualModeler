@@ -45,12 +45,15 @@ function changeIdActor(id, item) {
     $('#actorHeight').prop('id', id + "height");
     $('#actorWidth').prop('id', id + "width");
     $('#actorFontSize').prop('id', id + "fontSize");
+    
     $('#' + id + 's').attr("href", '#' + id)
     $('#' + id + "s").html(item.name);
     $('#' + id + "height").val(item.height);
     $('#' + id + "width").val(item.width);
     $('#' + id + "name").val(item.name);
     $('#' + id + "fontSize").val(item.fontSize);
+    $('#actorStrokeWidth').prop('id', id + "strokeWidth");
+    $('#' + id + "strokeWidth").val(item.strokeWidth);
 
 }
 function addRightMenuItemUsecase() {
@@ -76,6 +79,8 @@ function changeIdUsecase(id, item) {
     $('#' + id + "width").val(item.width);
     $('#' + id + "name").val(item.name);
     $('#' + id + "fontSize").val(item.fontSize);
+    $('#usecaseStrokeWidth').prop('id', id + "strokeWidth");
+    $('#' + id + "strokeWidth").val(item.strokeWidth);
     
 
 }
@@ -95,8 +100,12 @@ function reloadRightMenu() {
             addRightMenuItem();
             changeId(canvasItems[i].id, canvasItems[i]);
             reloadItemList(canvasItems[i].id, canvasItems[i]);
-            reloadMedodList(canvasItems[i].id, canvasItems[i]);
+            reloadMetodList(canvasItems[i].id, canvasItems[i]);
 
+        }
+        else if (canvasItems[i].type == 'arrowClass') {
+            addRightMenuItemRelation();
+            changeIdRelation(canvasItems[i].id, canvasItems[i]);
         }
     }
 }
@@ -128,6 +137,8 @@ function changeId(id, item) {
    $('#' + id + "fontSize").val(item.fontSize);
    $('#' + id + "name").val(item.name);
    $('#' + id + "extends").val(item.extendsText);
+   $('#classObjectStrokeWidth').prop('id', id + "strokeWidth");
+   $('#' + id + "strokeWidth").val(item.strokeWidth);
  
 
 }
@@ -632,4 +643,28 @@ function changeStrokeWidth(clickedId) {
 
     canvas.clear();
     canvasAdd(canvasItems, canvas);
+}
+function openSelected(clickedId, previous) {
+    for (var i = 0; i <= canvasItems.length; i++) {
+        if (i != clickedId) {
+            if ($('#' + i + 's').attr('aria-expanded') === 'true') {
+                eventFire(document.getElementById(i + 's'), 'click');
+            }
+        }
+
+    }
+    if ($('#' + clickedId + 's').attr('aria-expanded') === 'false') {
+        eventFire(document.getElementById(clickedId + 's'), 'click');
+    } 
+   
+}
+
+function eventFire(el, etype) {
+    if (el.fireEvent) {
+        el.fireEvent('on' + etype);
+    } else {
+        var evObj = document.createEvent('Events');
+        evObj.initEvent(etype, true, false);
+        el.dispatchEvent(evObj);
+    }
 }

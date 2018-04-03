@@ -54,6 +54,11 @@
 
 
 <script>
+    function reloadPage() {
+       
+            return "Do you really want to leave our brilliant application?";
+       
+    }
     var first;
     var canvas;
     var canvasItems;
@@ -156,7 +161,7 @@
 
                    canvasItems[i].changeWidth(scaledObject.getWidth());
                    $('#' + canvasItems[i].id + "width").val(canvasItems[i].width);
-                   canvasItems[i].changeHeight(scaledObject.getHeight());
+                   canvasItems[i].changeHeight(scaledObject.getHeight() );
                    $('#' + canvasItems[i].id + "height").val(canvasItems[i].height);
 
               }
@@ -166,8 +171,28 @@
         }
         canvas.on('object:selected', onObjectSelected);
         function onObjectSelected(e) {
+            var previous = 0;
+            for (var i = 0; i < canvasItems.length; i++) {
+                if (canvasItems[i].group == selectedObject) {
+
+                     previous = canvasItems[i].id;
+
+                }
+
+            }
             selectedObject = e.target;
+            for (var i = 0; i<canvasItems.length; i++) {
+                if (canvasItems[i].group == selectedObject) {
+
+                    openSelected(canvasItems[i].id, previous);
+                   
+                }
+            }
+           
         }
+
+       
+       
 
     });
 
@@ -178,7 +203,7 @@
 @{
     ViewBag.Title = "DrawMa.io";
 }
-<div class="menu">
+<div class="menu" onbeforeunload="return reloadPage()">
     <div class="title-left">
         <h2>@ViewBag.Title</h2>
         <button type="button" id="sidebarCollapse" class="btn btn-info1 navbar-btn">
@@ -230,10 +255,10 @@
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#Class" data-toggle="collapse" aria-expanded="false">Class Diagrams</a>
+                    <a href="#Class" data-toggle="collapse" id="kokot" aria-expanded="false">Class Diagrams</a>
                     <ul class="collapse list-unstyled " id="Class">
                         <div class="list-inline">
-                            <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></li>
+                            <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;"  /></a></li>
                             <li><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
