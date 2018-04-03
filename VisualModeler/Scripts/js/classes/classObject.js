@@ -21,8 +21,8 @@ class ClassObject {
         this.previousPosX = posX;
         this.strokeWidth = 2;
         this.group = new fabric.Group([], {
-            top: this.previousPosX,
-            left: this.previousPosY,
+            top: this.previousPosY,
+            left: this.previousPosX,
             width: this.width
         });
         this.id = id;

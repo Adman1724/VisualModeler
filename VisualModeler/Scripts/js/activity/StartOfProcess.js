@@ -6,9 +6,12 @@
         this.width = height;
         this.name = "StartOfProcess";
         this.height = height;
-        this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.group = new fabric.Group([], {
+            left: this.previousPosX,
+            top: this.previousPosY
+        });
         this.id = id;
         this.fontSize = 0;
         this.strokeWidth = 0;

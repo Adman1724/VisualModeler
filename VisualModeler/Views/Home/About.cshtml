@@ -63,77 +63,125 @@
     var canvas;
     var canvasItems;
     var id = 1;
- 
-    
+    var mouseX;
+    var mouseY;
+
+    function SetValues() {
+        mouseX = window.event.clientX;
+        mouseY=window.event.clientY;
+       
+
+    }  
+   
+  
     function addClass() {
-        createClass(canvas, canvasItems, id);
+       
+        
+        SetValues();
+        var width = 200;
+        createClass(canvas, canvasItems, id, mouseX-250-width/2, mouseY-56,width);
         id++;
+      
+        
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addArrowClass(tH, tB, tF) {
-        createArrowClass(canvas, canvasItems, id, tH, tB, tF);
+        SetValues();
+        var width = 300;
+        
+        createArrowClass(canvas, canvasItems, id, tH, tB, tF, mouseX - 250 - width / 2, mouseY - 56, width);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addUsecase() {
-        createUsecase(canvas, canvasItems, id);
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createUsecase(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width,height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addSystem() {
-        createSystem(canvas, canvasItems, id);
+        SetValues();
+        var width = 200;
+        var height = 200;
+        createSystem(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addActor() {
-        createActor(canvas, canvasItems, id);
+        SetValues();
+        var width = 100;
+       
+        createActor(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addObjectSeq() {
-        createObjectSeq(canvas, canvasItems, id);
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createObjectSeq(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addActivation() {
-        createActivation(canvas, canvasItems, id);
+        SetValues();
+        var width = 30;
+        var height = 250;
+        createActivation(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
 
     function addLifeline() {
-        createLifeline(canvas, canvasItems, id);
+        SetValues();
+        var width = 3;
+        var height = 250;
+        createLifeline(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, height,width);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addConditionCheck() {
-        createConditionCheck(canvas, canvasItems, id);
+        SetValues();
+        var width = 50;
+        var height = 50;
+        createConditionCheck(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addStartOfProcess() {
-        createStartOfProcess(canvas, canvasItems, id);
+        SetValues();
+        var width = 35;
+        var height = 35;
+        createStartOfProcess(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addTerminator() {
-        createTerminator(canvas, canvasItems, id);
+        SetValues();
+        var width = 35;
+        var height = 35;
+        createTerminator(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addActivityObject() {
-        createActivityObject(canvas, canvasItems, id);
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createActivityObject(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56,width, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
@@ -190,9 +238,97 @@
             }
            
         }
+        var ar1 = document.querySelector('#ar1');
+        ar1.addEventListener('dragend', function () {
+            addArrowClass('AR', 'LL', 'NN')
+        });
+        var ar2 = document.querySelector('#ar2');
+        ar2.addEventListener('dragend', function () {
+            addArrowClass('AG', 'DD', 'NN')
+        });
+        var ar3 = document.querySelector('#ar3');
+        ar3.addEventListener('dragend', function () {
+            addArrowClass('AG', 'LL', 'NN')
+        });
+        var ar4 = document.querySelector('#ar4');
+        ar4.addEventListener('dragend', function () {
+            addArrowClass('AR', 'DD', 'NN')
+        });
+        var ar5 = document.querySelector('#ar5');
+        ar5.addEventListener('dragend', function () {
+            addArrowClass('AR', 'LL', 'NN')
+        });
+        var ar6 = document.querySelector('#ar6');
+        ar6.addEventListener('dragend', function () {
+            addArrowClass('AB', 'DD', 'NN')
+        });
+        var ar7 = document.querySelector('#ar7');
+        ar7.addEventListener('dragend', function () {
+            addArrowClass('AB', 'LL', 'NN')
+        });
+        var ar8 = document.querySelector('#ar8');
+        ar8.addEventListener('dragend', function () {
+            addArrowClass('AW', 'DD', 'NN')
+        });
+        var ar9 = document.querySelector('#ar9');
+        ar9.addEventListener('dragend', function () {
+            addArrowClass('AW', 'LL', 'NN')
+        });
+        var ar10 = document.querySelector('#ar10');
+        ar10.addEventListener('dragend', function () {
+            addArrowClass('AC', 'DD', 'NN')
+        });
+        var ar11 = document.querySelector('#ar11');
+        ar11.addEventListener('dragend', function () {
+            addArrowClass('AC', 'LL', 'NN')
+        });
+        var class1 = document.querySelector('#class1');
+        class1.addEventListener('dragend', function () {
+            addClass();
+        });
+        var uscs = document.querySelector('#uscs');
+        uscs.addEventListener('dragend', function () {
+            addUsecase();
+        });
+        var act = document.querySelector('#act');
+        act.addEventListener('dragend', function () {
+            addActor();
+        });
+        var sys = document.querySelector('#sys');
+        sys.addEventListener('dragend', function () {
+            addSystem();
+        });
+        var objS = document.querySelector('#objS');
+        objS.addEventListener('dragend', function () {
+            addObjectSeq();
+        });
+        var activ = document.querySelector('#activ');
+        activ.addEventListener('dragend', function () {
+            addActivation();
+        });
+        var life = document.querySelector('#life');
+        life.addEventListener('dragend', function () {
+            addLifeline();
+        });
+        var actO = document.querySelector('#actO');
+        actO.addEventListener('dragend', function () {
+            addActivityObject();
+        });
+        var coCh = document.querySelector('#coCh');
+        coCh.addEventListener('dragend', function () {
+            addConditionCheck();
+        });
+        var stPr = document.querySelector('#stPr');
+        stPr.addEventListener('dragend', function () {
+            addStartOfProcess();
+        });
+        var ter = document.querySelector('#ter');
+        ter.addEventListener('dragend', function () {
+            addTerminator();
+        });
 
-       
-       
+
+
 
     });
 
@@ -203,7 +339,7 @@
 @{
     ViewBag.Title = "DrawMa.io";
 }
-<div class="menu" onbeforeunload="return reloadPage()">
+<div class="menu" >
     <div class="title-left">
         <h2>@ViewBag.Title</h2>
         <button type="button" id="sidebarCollapse" class="btn btn-info1 navbar-btn">
@@ -248,7 +384,7 @@
     </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper" onmousemove=SetValues()>
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="rightMenuScroll">
@@ -258,33 +394,33 @@
                     <a href="#Class" data-toggle="collapse" id="kokot" aria-expanded="false">Class Diagrams</a>
                     <ul class="collapse list-unstyled " id="Class">
                         <div class="list-inline">
-                            <li><a href="#" onclick="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;"  /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li  id="class1"draggable="true"><a href="#" onmouseup="addClass()"  > <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;"  /></a></lidraggable="true">
+                            <li id="ar1"draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar2"draggable="true"><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar3"draggable="true"> <a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar4"draggable="true"><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar5"draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></liid="ar1"draggable="true">
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar6"draggable="true"><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar7"draggable="true"><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar8"draggable="true"><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar9"draggable="true"><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar10"draggable="true"><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar11"draggable="true"><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                     </ul>
@@ -294,11 +430,11 @@
                     <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
                     <ul class="collapse list-unstyled" id="pag1">
                         <div class="list-inline">
-                            <li><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
-                            <li><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
+                            <li id="uscs"draggable="true"><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="act"draggable="true"><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="sys"draggable="true"><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
 
                         </div>
                     </ul>
@@ -308,12 +444,12 @@
                     <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
                     <ul class="collapse list-unstyled" id="seq">
                         <div class="list-inline">
-                            <li><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
-                            <li><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="objS"draggable="true"><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="activ"draggable="true"><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="life"draggable="true"><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                     </ul>
@@ -323,13 +459,13 @@
                     <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
                     <ul class="collapse list-unstyled" id="activityDiagrams">
                         <div class="list-inline">
-                            <li><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
-                            <li><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="actO"draggable="true"><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="coCh"draggable="true"><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
-                            <li><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="stPr"draggable="true"><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
+                            <li id="ter"draggable="true"><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                     </ul>

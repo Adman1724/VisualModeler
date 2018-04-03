@@ -1,15 +1,18 @@
 ﻿class Lifeline {
-    constructor(posX, posY, height, id) {
+    constructor(posX, posY, height, id,width) {
         this.posX = posX;
         this.type = 'actor';
         this.posY = posY;
-        this.width = 3;
+        this.width = width;
         this.name = "Life line";
      
         this.height = height;
-        this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.group = new fabric.Group([], {
+            left: this.previousPosX,
+            top: this.previousPosY
+        });
         this.id = id;
         this.fontSize = 0;
         this.strokeWidth = 2;

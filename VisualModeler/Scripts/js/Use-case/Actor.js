@@ -7,9 +7,13 @@
         this.h3 = this.height / 2.5;
         this.name = name;
         this.type = 'actor';
-        this.group = new fabric.Group([], {});
         this.previousPosY = posY;
         this.previousPosX = posX;
+        this.group = new fabric.Group([], {
+            left: this.previousPosX,
+            top: this.previousPosY
+        });
+      
         this.id = id;
         this.fontSize = 17;
         this.strokeWidth = 3;
