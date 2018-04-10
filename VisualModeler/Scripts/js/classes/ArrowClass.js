@@ -21,15 +21,20 @@ class ArrowClass {
             top: this.previousPosY
         });
         this.leftId;
-        this.leftObjectHitbox;
-        this.rightObjectHitbox;
+        this.leftObjectHitbox = 1;
+        this.rightObjectHitbox = 1;
         this.rightId;
+        this.leftSideX = this.posX;
+        this.leftSideY = this.posY;
+        this.rightSideX = this.posX + this.width;
+        this.rightSideY = this.posY;
         this.id = id;
         this.fontSize = 17;
         this.strokeWidth = 2;
         this.angle = 0;
         this.rightText = '0..*';
         this.leftText = '1..*';
+        this.regiterListener();
     }
     initObject() {
         this.previousPosY = this.group.top;
@@ -368,7 +373,7 @@ class ArrowClass {
         }
         this.rightTextBox = new fabric.Textbox(this.rightText, {
 
-            top: 0,
+            top: -15,
             left: this.width-10,
             fontSize: this.fontSize,
             textAlign: 'center',
@@ -377,8 +382,8 @@ class ArrowClass {
         });
         this.leftTextBox = new fabric.Textbox(this.leftText, {
 
-            top: 0,
-            left: 10,
+            top: -15,
+            left: 50,
             fontSize: this.fontSize,
             textAlign: 'center',
             originX: 'left',
@@ -446,40 +451,115 @@ class ArrowClass {
     }
 
     changeLeftId(id) {
-        debugger;
+        var hitbox = 5;
+        this.leftId = id;
+        this.recalculateLeft();
     }
 
-    changeRightId(id) {
-        var hitbox = 5;
-        this.rightId = id;
-        var p1 = {};
-        var p2 = { x: this.previousPosX + this.width, y: this.previousPosY + this.height };
-        for (var i = 0; canvasItems.length; i++) {
-            if (canvasItems[i].id == id) {
-                p1.x = canvasItems[i].hitBoxArray[hitbox].left;
-                p1.y = canvasItems[i].hitBoxArray[hitbox].top;
-                var a = p1.x1 - p2.x2;
-                var b = p1.y1 - p2.y2;
 
-                var lenght = Math.sqrt(a * a + b * b);
-                    debugger;
-                    this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
-                        //this.group.originX = 'center';
-                        //this.group.originY = 'center';
-                    this.group.setAngle(45).setCoords();
-                    this.group.width = lenght;
-                    this.canvas.renderAll();
-                this.draw(this.canvas);
+    changeLeftHitBoxId(id) {
+        //todo this.lefthitbox....
+    }
+
+    changeRightHitBoxId(id) {
+        //todo this.rightthitbox....
+    }
+
+    recalculateLeft() {
+
+         for (var i = 0; i<canvasItems.length; i++) {
+             if (canvasItems[i].id == this.leftId) {
+
+                 var xOffset = canvasItems[i].hitBoxArrayCoordinates[this.leftObjectHitbox].x;
+                 var yOffset = canvasItems[i].hitBoxArrayCoordinates[this.leftObjectHitbox].y;
+                 this.leftSideX = canvasItems[i].previousPosX + xOffset;
+                 this.leftSideY = canvasItems[i].previousPosY + yOffset;
+                 break;
+             }
+        }
+
+        var p1 = { x: this.leftSideX, y: this.leftSideY };
+        var p2 = { x: this.rightSideX, y: this.rightSideY };
+        var a = p1.x - p2.x;
+        var b = p1.y - p2.y;
+
+        var lenght = Math.sqrt(a * a + b * b);
+       // debugger;
+        this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+        this.width = lenght;
+        this.previousPosX = this.leftSideX;
+        this.previousPosY = this.leftSideY;
+        this.group.setTop(this.leftSideY);
+        this.group.setLeft(this.leftSideX);
+        this.group.setWidth = lenght;
+        this.group.setAngle(this.angle);
+        this.group.setCoords();
+        this.canvas.renderAll();
+        this.draw(this.canvas);
+        this.group.setCoords();
+        this.canvas.renderAll();
+        this.initObject();
+        this.draw(this.canvas);
+        this.canvas.trigger('object:modified', { target: this.group });     
+       
+
+    }
+
+   
+
+
+    changeRightId(id) {
+        this.rightId = id;
+        this.recalculateRight();
+    }
+
+    recalculateRight() {
+        for (var i = 0; i < canvasItems.length; i++) {
+            if (canvasItems[i].id == this.rightId) {
+                
+                var xOffset = canvasItems[i].hitBoxArrayCoordinates[this.rightObjectHitbox].x;
+                var yOffset = canvasItems[i].hitBoxArrayCoordinates[this.rightObjectHitbox].y;
+                this.rightSideX = canvasItems[i].previousPosX + xOffset;
+                this.rightSideY = canvasItems[i].previousPosY + yOffset;
                 break;
             }
         }
-       
+
+        var p1 = { x: this.leftSideX, y: this.leftSideY };
+        var p2 = { x: this.rightSideX, y: this.rightSideY };
+        var a = p1.x - p2.x;
+        var b = p1.y - p2.y;
+
+        var lenght = Math.sqrt(a * a + b * b);
+        // debugger;
+        this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+        this.width = lenght;
+        this.previousPosX = this.leftSideX;
+        this.previousPosY = this.leftSideY;
+        this.group.setTop(this.leftSideY);
+        this.group.setLeft(this.leftSideX);
+        this.group.setWidth = lenght;
+        this.group.setAngle(this.angle);
+        this.group.setCoords();
+        this.canvas.renderAll();
+        this.draw(this.canvas);
+        this.group.setCoords();
+        this.canvas.renderAll();
+        this.initObject();
+        this.draw(this.canvas);
+        this.canvas.trigger('object:modified', { target: this.group });
+
+
     }
+
+
+
 
     draw(canvas) {
         this.groupArrow = new fabric.Group([this.groupHeadArrow, this.groupFooterArrow, this.groupBody], {
             left: 0,
-            top: this.height / 2
+            top: -50,
+            angle:0   
         });
         
 
@@ -494,7 +574,25 @@ class ArrowClass {
         this.group.left = this.previousPosX;
         this.group.angle = this.angle;
         this.group.hasRotatingPoint = false;
+        this.group.lockMovementX = true;
+        this.group.lockMovementY = true;
 
 
+    }
+
+    regiterListener() {
+        this.canvas.on("mouse:up", function (e) {
+            for (var i = 0; i < canvasItems.length; i++) {
+                if (canvasItems[i].type == "arrowClass") {
+                    canvasItems[i].recalculateLeft();
+
+                    canvasItems[i].recalculateRight();
+                    //this.canvas.add(e.target);
+                    //registeredListener = true;
+
+
+                }
+            }
+        });
     }
 }

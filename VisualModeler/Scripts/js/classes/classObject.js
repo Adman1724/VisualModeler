@@ -233,19 +233,19 @@ class ClassObject {
         });
         var groupHeight = groupHeader.height + groupBody.height + groupFooter.height;
         this.hitBoxArrayCoordinates = [
-            { x: 0, y: 0 },
-            { x: 0, y: this.width / 2-3 },
-            { x: 0, y: this.width -7},
-            { x: groupHeight / 2-3, y: this.width -7},
-            { x: groupHeight - 7 - this.strokeWidth * 2, y: this.width-7 },
-            { x: groupHeight - 7 - this.strokeWidth * 2, y: this.width / 2 - 7 },
-            { x: groupHeight- 7  - this.strokeWidth*2, y: 0 },
-            { x: groupHeight / 2-3, y: 0 }];
+            { y: 0, x: 0 },
+            { y: 0, x: this.width / 2-3 },
+            { y: 0, x: this.width -7},
+            { y: groupHeight / 2-3, x: this.width -7},
+            { y: groupHeight - 7 - this.strokeWidth * 2, x: this.width-7 },
+            { y: groupHeight - 7 - this.strokeWidth * 2, x: this.width / 2 - 7 },
+            { y: groupHeight- 7  - this.strokeWidth*2, x: 0 },
+            { y: groupHeight / 2-3, x: 0 }];
         this.hitBoxArray = [];
         for (var i = 0; i < 8; i++) {
             this.hitBoxArray[i] = new fabric.Circle({
-                left: this.hitBoxArrayCoordinates[i].y,
-                top: this.hitBoxArrayCoordinates[i].x,
+                left: this.hitBoxArrayCoordinates[i].x,
+                top: this.hitBoxArrayCoordinates[i].y,
                 strokeWidth: 0.5,
                 class:'pointer',
                 radius: 6,
