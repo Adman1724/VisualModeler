@@ -17,6 +17,10 @@ function addRightMenuItem() {
         }   
     });
 }
+function addRelationItem(clickedId) {
+
+
+}
 function addRightMenuItemRelation() {
 
     $.ajax({
@@ -275,6 +279,11 @@ function changeIdRelation(id, item) {
     $('#relationFontSize').prop('id', id + "fontSize");
     $('#relationStrokeWidth').prop('id', id + "strokeWidth");
     $('#elationHeight').prop('id', id + "height"); 
+    $('#relationRightArrowConection').prop('id', id + 'relationRightArrowConection');
+    $('#relationRightArrowConectionUl').prop('id', id + 'relationRightArrowConectionUl')
+    $('#relationLeftArrowConection').prop('id', id + 'relationLeftArrowConection');
+    $('#relationLeftArrowConectionUl').prop('id', id + 'relationLeftArrowConectionUl')
+
     $('#' + id + 's').attr("href", '#' + id)
     $('#' + id + "s").html(item.name);
     $('#' + id + "width").val(item.width);
@@ -332,6 +341,21 @@ function changeIdRelation(id, item) {
     }
     else if (item.typeBody  == 'DD') {
         $('#' + id + "lineArrow").html('<img src="../../Content/MenuItems/dashedLine.png" style="width:50px;" /> ');
+    }
+   
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].type != "arrowClass") {
+            $('#' + id + "relationRightArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeRightRelationConnection(" + canvasItems[i].id + "," + item.id+");\" >" + canvasItems[i].name + "</a ></li >")
+            $('#' + id + "relationLeftArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeLeftRelationConnection(" + canvasItems[i].id + "," + item.id +");\" >" + canvasItems[i].name + "</a ></li >")
+        }
+        if (canvasItems[i].type == 'arrowClass') {
+            if (item.leftId == canvasItems[i].leftId) {
+                $('#' + id + "relationLeftArrowConection").html(item.name);
+            }
+            if (item.rightId == canvasItems[i].rightId) {
+                $('#' + id + "relationRightArrowConection").html(item.name);
+            }
+        }
     }
     
 
@@ -666,5 +690,22 @@ function eventFire(el, etype) {
         var evObj = document.createEvent('Events');
         evObj.initEvent(etype, true, false);
         el.dispatchEvent(evObj);
+    }
+}
+function changeRightRelationConnection(id, item) {
+    for (var i = 0; canvasItems.length; i++) {
+        if (canvasItems[i].id == item) {
+            canvasItems[i].changeRightId(id);
+            return;
+        }
+    }
+}
+
+function changeLeftRelationConnection(id, item) {
+    for (var i = 0; canvasItems.length; i++) {
+        if (canvasItems[i].id == item) {
+            canvasItems[i].changeLeftId(id);
+            return;
+        }
     }
 }

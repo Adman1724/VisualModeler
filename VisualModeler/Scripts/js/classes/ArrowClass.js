@@ -8,6 +8,7 @@ class ArrowClass {
         this.width = width;
         this.height = 50;
         this.name = name;
+        this.canvas = canvas;
        
         this.typeHead = typeHead;
         this.typeBody = typeBody;
@@ -19,11 +20,14 @@ class ArrowClass {
             left: this.previousPosX,
             top: this.previousPosY
         });
-        
+        this.leftId;
+        this.leftObjectHitbox;
+        this.rightObjectHitbox;
+        this.rightId;
         this.id = id;
         this.fontSize = 17;
         this.strokeWidth = 2;
-        this.angle = 270;
+        this.angle = 0;
         this.rightText = '0..*';
         this.leftText = '1..*';
     }
@@ -441,10 +445,41 @@ class ArrowClass {
         this.draw(this.canvas);
     }
 
+    changeLeftId(id) {
+        debugger;
+    }
+
+    changeRightId(id) {
+        var hitbox = 5;
+        this.rightId = id;
+        var p1 = {};
+        var p2 = { x: this.previousPosX + this.width, y: this.previousPosY + this.height };
+        for (var i = 0; canvasItems.length; i++) {
+            if (canvasItems[i].id == id) {
+                p1.x = canvasItems[i].hitBoxArray[hitbox].left;
+                p1.y = canvasItems[i].hitBoxArray[hitbox].top;
+                var a = p1.x1 - p2.x2;
+                var b = p1.y1 - p2.y2;
+
+                var lenght = Math.sqrt(a * a + b * b);
+                    debugger;
+                    this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+                        //this.group.originX = 'center';
+                        //this.group.originY = 'center';
+                    this.group.setAngle(45).setCoords();
+                    this.group.width = lenght;
+                    this.canvas.renderAll();
+                this.draw(this.canvas);
+                break;
+            }
+        }
+       
+    }
+
     draw(canvas) {
         this.groupArrow = new fabric.Group([this.groupHeadArrow, this.groupFooterArrow, this.groupBody], {
             left: 0,
-            top: this.height/2
+            top: this.height / 2
         });
         
 
@@ -457,6 +492,8 @@ class ArrowClass {
         this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;
+        this.group.angle = this.angle;
+        this.group.hasRotatingPoint = false;
 
 
     }

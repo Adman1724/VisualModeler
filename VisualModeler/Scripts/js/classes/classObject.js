@@ -231,9 +231,35 @@ class ClassObject {
             width: this.width
 
         });
+        var groupHeight = groupHeader.height + groupBody.height + groupFooter.height;
+        this.hitBoxArrayCoordinates = [
+            { x: 0, y: 0 },
+            { x: 0, y: this.width / 2-3 },
+            { x: 0, y: this.width -7},
+            { x: groupHeight / 2-3, y: this.width -7},
+            { x: groupHeight - 7 - this.strokeWidth * 2, y: this.width-7 },
+            { x: groupHeight - 7 - this.strokeWidth * 2, y: this.width / 2 - 7 },
+            { x: groupHeight- 7  - this.strokeWidth*2, y: 0 },
+            { x: groupHeight / 2-3, y: 0 }];
+        this.hitBoxArray = [];
+        for (var i = 0; i < 8; i++) {
+            this.hitBoxArray[i] = new fabric.Circle({
+                left: this.hitBoxArrayCoordinates[i].y,
+                top: this.hitBoxArrayCoordinates[i].x,
+                strokeWidth: 0.5,
+                class:'pointer',
+                radius: 6,
+                fill: 'red',
+                stroke: '#666'
+            });
+        }
+        var groupHitBox = new fabric.Group(this.hitBoxArray, {
+            top: 0,
+            left: 0
+        });
 
 
-        this.group = new fabric.Group([groupHeader, groupBody, groupFooter, groupItems, groupMetods], {
+        this.group = new fabric.Group([groupHeader, groupBody, groupFooter, groupItems, groupMetods, groupHitBox], {
            
         });
         

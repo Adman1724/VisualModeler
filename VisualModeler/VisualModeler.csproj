@@ -258,6 +258,7 @@
     <Content Include="Content\MenuItems\usecase.png" />
     <Content Include="Content\Pattern\option.html" />
     <Content Include="Content\Pattern\Relation.html" />
+    <Content Include="Content\Pattern\RelationItem.html" />
     <Content Include="Content\Pattern\Usecase.html" />
     <Content Include="Content\StyleLogin.css" />
     <Content Include="favicon.ico" />
