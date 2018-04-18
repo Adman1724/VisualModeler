@@ -430,9 +430,9 @@ class ArrowClass {
         this.draw(this.canvas);
     }
     changeWidth(text) {
-        this.width = parseInt(text);;
-        this.initObject();
-        this.draw(this.canvas);
+        //this.width = parseInt(text);;
+        //this.initObject();
+        //this.draw(this.canvas);
     }
     changeLeftArrow(text) {
         this.typeHead = text;
@@ -457,14 +457,7 @@ class ArrowClass {
     }
 
 
-    changeLeftHitBoxId(id) {
-        //todo this.lefthitbox....
-    }
-
-    changeRightHitBoxId(id) {
-        //todo this.rightthitbox....
-    }
-
+  
     recalculateLeft() {
 
          for (var i = 0; i<canvasItems.length; i++) {
@@ -531,7 +524,7 @@ class ArrowClass {
         var b = p1.y - p2.y;
 
         var lenght = Math.sqrt(a * a + b * b);
-        // debugger;
+       
         this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
         this.width = lenght;
         this.previousPosX = this.leftSideX;
@@ -547,11 +540,22 @@ class ArrowClass {
         this.canvas.renderAll();
         this.initObject();
         this.draw(this.canvas);
-        this.canvas.trigger('object:modified', { target: this.group });
+       this.canvas.trigger('object:modified', { target: this.group });
 
 
     }
 
+    changeLeftHitboxs(val) {
+        //todo this.lefthitbox....
+        this.leftObjectHitbox = val;
+       this.recalculateLeft();
+    }
+
+    changeRightHitboxs(val) {
+        //todo this.rightthitbox....
+        this.rightObjectHitbox = val;
+        this.recalculateRight();
+    }
 
 
 
@@ -581,18 +585,31 @@ class ArrowClass {
     }
 
     regiterListener() {
+
         this.canvas.on("mouse:up", function (e) {
+            var selected = canvas.getActiveObject();
             for (var i = 0; i < canvasItems.length; i++) {
                 if (canvasItems[i].type == "arrowClass") {
                     canvasItems[i].recalculateLeft();
+                    // debugger;
 
                     canvasItems[i].recalculateRight();
+                    console.log('mouse up on ' + canvasItems[i].type);
+                    //e.target.setSelected(true);
                     //this.canvas.add(e.target);
                     //registeredListener = true;
 
 
                 }
             }
+            // for (var i = 0; i < canvasItems.length; i++) {
+            //     if (canvasItems[i].group == selectedObject) {
+            if (selected != null) {
+                canvas.setActiveObject(selected);
+            }
+            //  }
+            //   }
         });
+
     }
 }

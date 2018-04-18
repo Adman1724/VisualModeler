@@ -71,6 +71,32 @@
 
 
         });
+        var groupHeight = this.group1.height;
+        this.hitBoxArrayCoordinates = [
+            { y: 0, x: 0 },
+            { y: 0, x: this.width / 2 },
+            { y: 0, x: this.width },
+            { y: groupHeight / 2, x: this.width },
+            { y: groupHeight, x: this.width },
+            { y: groupHeight, x: this.width / 2 },
+            { y: groupHeight, x: 0 },
+            { y: groupHeight / 2, x: 0 }];
+        this.hitBoxArray = [];
+        for (var i = 0; i < 8; i++) {
+            this.hitBoxArray[i] = new fabric.Circle({
+                left: this.hitBoxArrayCoordinates[i].x,
+                top: this.hitBoxArrayCoordinates[i].y,
+                strokeWidth: 0.5,
+                class: 'pointer',
+                radius: 1,
+                fill: 'black',
+                stroke: '#666'
+            });
+        }
+        var groupHitBox = new fabric.Group(this.hitBoxArray, {
+            top: 0,
+            left: 0
+        });
 
         this.group = new fabric.Group([this.group1], {
            

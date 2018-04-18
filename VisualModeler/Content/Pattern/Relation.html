@@ -32,95 +32,252 @@
                     </div>
                 </div>
                 <div class="properties">
-                    <label for="relationRightArrow">Right Arrow:</label>
-                    <div class="btn-group" style="margin:10px;">
-                        <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
-                        <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
-                        <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationRightArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;"></a>
-                        <ul class="dropdown-menu" id="relationRightArrowUl">
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AR');">
-                                    <img src="../../Content/MenuItems/arrowBlack.png" style="width:20px;" /> Arrow
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AG');">
-                                    <img src="../../Content/MenuItems/agregation.png" style="width:20px;" /> Aggregation
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AC');">
-                                    <img src="../../Content/MenuItems/composition.png" style="width:20px;" /> Composition
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AB');">
-                                    <img src="../../Content/MenuItems/arrowFullBlack.png" style="width:20px;" /> Black arrow
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AW');">
-                                    <img src="../../Content/MenuItems/arrowFullWhite.png" style="width:20px;" /> White arrow
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'NN');">
-                                    ----None----
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="btn-group" style="margin:10px;">
-                        <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
-                        <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
-                        <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationRightArrowConection"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;"></a>
-                        <ul class="dropdown-menu" id="relationRightArrowConectionUl">
-                           
-                        </ul>
-                    </div>
 
+                    <div class="propertiesBlock">
+                        <div class="propertiesType">
+                            <label for="relationRightArrow">Right side</label>
+                        </div>
+                    </div>
+                    <div class="propertiesInline">
+                        <div class="propertiesBlockArrow">
+                            <label for="relationRightArrow">Arrow:</label>
+
+                            <div class="propertiesBlock">
+
+                                <div class="btn-group" style="margin:0px; width:100%;">
+
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationRightArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;"></a>
+                                    <ul class="dropdown-menu" id="relationRightArrowUl">
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AR');">
+                                                <img src="../../Content/MenuItems/arrowBlack.png" style="width:20px;" /> Arrow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AG');">
+                                                <img src="../../Content/MenuItems/agregation.png" style="width:20px;" /> Aggregation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AC');">
+                                                <img src="../../Content/MenuItems/composition.png" style="width:20px;" /> Composition
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AB');">
+                                                <img src="../../Content/MenuItems/arrowFullBlack.png" style="width:20px;" /> Black arrow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'AW');">
+                                                <img src="../../Content/MenuItems/arrowFullWhite.png" style="width:20px;" /> White arrow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightArrow($(this).closest('ul').attr('id'), 'NN');">
+                                                ----None----
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="propertiesBlockArrow">
+
+                            <label for="relationRightArrow">Connection:</label>
+
+                            <div class="propertiesBlock">
+                                <div class="btn-group" style="margin:0px; width:100%;">
+                                    <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                                    <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationRightArrowConection"></a>
+                                    <ul class="dropdown-menu" id="relationRightArrowConectionUl"></ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="propertiesInline">
+                        <div class="propertiesBlockArrow">
+
+                            <label for="relationRightArrow">Hitbox:</label>
+
+                            <div class="propertiesBlock">
+                                <div class="btn-group" style="margin:0px; width:100%;">
+                                    <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                                    <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationRightArrowHitbox"></a>
+                                    <ul class="dropdown-menu" id="relationRightArrowConectionHBUl"></ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="relationRightAssociation">Association:</label>
+                            <div class="propertiesBlockArrow">
+                                <div class="btn-group" style="margin:0px; width:100%;">
+
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationRightAssociation"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
+                                    <ul class="dropdown-menu" id="relationRightAssociationUl">
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '1..*');">
+                                                1..*
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '1');">
+                                                1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '0..*');">
+                                                0..*
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '0..1');">
+                                                0..1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '');">
+                                                --None--
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
                 <div class="properties">
-                    <label for="relationLeftArrow">Left Arrow:</label>
-                    <div class="btn-group" style="margin:10px;">
-                        <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
-                        <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
-                        <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationLeftArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
-                        <ul class="dropdown-menu" id="relationLeftArrowUl">
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AR');">
-                                    <img src="../../Content/MenuItems/arrowBlack.png" style="width:20px;" /> Arrow
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AG');">
-                                    <img src="../../Content/MenuItems/agregation.png" style="width:20px;" /> Aggregation
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AC');">
-                                    <img src="../../Content/MenuItems/composition.png" style="width:20px;" /> Composition
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AB');">
-                                    <img src="../../Content/MenuItems/arrowFullBlack.png" style="width:20px;" /> Black arrow
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AW');">
-                                    <img src="../../Content/MenuItems/arrowFullWhite.png" style="width:20px;" /> White arrow
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'NN');">
-                                    ----None----
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
 
+                    <div class="propertiesBlock">
+                        <div class="propertiesType">
+                            <label for="relationLeftArrow">Left side</label>
+                        </div>
+                    </div>
+                    <div class="propertiesInline">
+                        <div class="propertiesBlockArrow">
+                            <label for="relationLeftArrow">Arrow:</label>
+
+                            <div class="propertiesBlock">
+
+                                <div class="btn-group" style="margin:0px; width:100%;">
+
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationLeftArrow"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;"></a>
+                                    <ul class="dropdown-menu" id="relationLeftArrowUl">
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AR');">
+                                                <img src="../../Content/MenuItems/arrowBlack.png" style="width:20px;" /> Arrow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AG');">
+                                                <img src="../../Content/MenuItems/agregation.png" style="width:20px;" /> Aggregation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AC');">
+                                                <img src="../../Content/MenuItems/composition.png" style="width:20px;" /> Composition
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AB');">
+                                                <img src="../../Content/MenuItems/arrowFullBlack.png" style="width:20px;" /> Black arrow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'AW');">
+                                                <img src="../../Content/MenuItems/arrowFullWhite.png" style="width:20px;" /> White arrow
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftArrow($(this).closest('ul').attr('id'), 'NN');">
+                                                ----None----
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="propertiesBlockArrow">
+
+                            <label for="relationLeftArrow">Connection:</label>
+
+                            <div class="propertiesBlock">
+                                <div class="btn-group" style="margin:0px; width:100%;">
+                                    <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                                    <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationLeftArrowConection"></a>
+                                    <ul class="dropdown-menu" id="relationLeftArrowConectionUl"></ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="propertiesInline">
+                        <div class="propertiesBlockArrow">
+
+                            <label for="relationLeftArrow">Hitbox:</label>
+
+                            <div class="propertiesBlock">
+                                <div class="btn-group" style="margin:0px; width:100%;">
+                                    <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
+                                    <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationLeftArrowHitbox"></a>
+                                    <ul class="dropdown-menu" id="relationLeftArrowConectionHBUl"></ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="propertiesBlock">
+                            <label for="relationLeftAssociation">Association:</label>
+                            <div class="propertiesBlockArrow">
+                                <div class="btn-group" style="margin:0px; width:100%;">
+
+                                    <a class=" btn-info2 dropdown-toggle propertyDrop" data-toggle="dropdown" href="#" id="relationLeftAssociation"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
+                                    <ul class="dropdown-menu" id="relationLeftAssociationUl">
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '1..*');">
+                                                1..*
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '1');">
+                                                1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '0..*');">
+                                                0..*
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '0..1');">
+                                                0..1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '');">
+                                                --None--
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
+
                 <div class="properties">
                     <label for="relationLine">Line Type:</label>
                     <div class="btn-group" style="margin:10px;">
@@ -151,100 +308,14 @@
                         </ul>
                     </div>
 
-                    <label for="">Left:</label>
-                    <div class="btn-group" style="margin:10px;">
-                        <!-- CURRENCY, BOOTSTRAP DROPDOWN -->
-                        <!--<a class="btn btn-primary" href="javascript:void(0);">Currency</a>-->
-                        <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationLeftArrowConection"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;"></a>
-                        <ul class="dropdown-menu" id="relationLeftArrowConectionUl"></ul>
-                    </div>
 
                 </div>
-                <div class="properties">
-                    <div class="propertiesInline">
-                        <div class="propertiesBlock">
-                            <label for="relationLeftAssociation">Left association:</label>
-                            <div class="btn-group" style="margin:10px;">
-
-                                <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationLeftAssociation"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
-                                <ul class="dropdown-menu" id="relationLeftAssociationUl">
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '1..*');">
-                                            1..*
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '1');">
-                                            1
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '0..*');">
-                                            0..*
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '0..1');">
-                                            0..1
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeLeftAssociation($(this).closest('ul').attr('id'), '');">
-                                            --None--
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="propertiesBlock">
-                            <label for="relationRightAssociation">Right association:</label>
-                            <div class="btn-group" style="margin:10px;">
-
-                                <a class=" btn-info2 dropdown-toggle" data-toggle="dropdown" href="#" id="relationRightAssociation"><img src="../../Content/MenuItems/arrowBlack.png" style="width:25px;">  </a>
-                                <ul class="dropdown-menu" id="relationRightAssociationUl">
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '1..*');">
-                                            1..*
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '1');">
-                                            1
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '0..*');">
-                                            0..*
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '0..1');">
-                                            0..1
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" onclick="changeRightAssociation($(this).closest('ul').attr('id'), '');">
-                                            --None--
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    </div>
-
-
-
-
-
 
             </div>
-        </div>
+                       
+
+                    </div>
+              
 
     </ul>
 </li>

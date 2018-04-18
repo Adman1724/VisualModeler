@@ -17,6 +17,13 @@ function addRightMenuItem() {
         }   
     });
 }
+function finddArrowAndReloadConnection() {
+    for (var i = 0; i < canvasItems.length; i++) {
+        if(canvasItems[i].type == 'arrowClass'){
+            reloadConnectionList(canvasItems[i].id);
+        }
+    }
+}
 function addRelationItem(clickedId) {
 
 
@@ -112,6 +119,7 @@ function reloadRightMenu() {
             changeIdRelation(canvasItems[i].id, canvasItems[i]);
         }
     }
+    finddArrowAndReloadConnection();
 }
 function changeId(id, item) {
  
@@ -156,6 +164,31 @@ function reloadItemList(id, item) {
     }
     
     
+}
+function reloadConnectionList(relationId) {
+    $('#' + relationId + "relationRightArrowConectionUl").html('');
+    $('#' + relationId + "relationLeftArrowConectionUl").html('');
+    for (var i = 0; i < canvasItems.length; i++) {
+        if (canvasItems[i].type != "arrowClass") {
+            $('#' + relationId + "relationRightArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeRightRelationConnection(" + canvasItems[i].id + "," + relationId + ");\" >" + canvasItems[i].name + "</a ></li >")
+            $('#' + relationId + "relationLeftArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeLeftRelationConnection(" + canvasItems[i].id + "," + relationId + ");\" >" + canvasItems[i].name + "</a ></li >")
+        }
+        if (canvasItems[i].type == 'arrowClass' && id == canvasItems[i].id) {
+            if (canvasItems[i].leftId == null) {
+            //if (canvasItems[canvasItems[i].leftId].name == null) {
+
+                $('#' + relationId + "relationLeftArrowConection").html('None');
+            }
+            else { $('#' + relationId + "relationLeftArrowConection").html(canvasItems[canvasItems[i].leftId].name); }
+            if (canvasItems[i].rightId == null) {
+           // if (canvasItems[canvasItems[i].leftId].name == null) {
+                $('#' + relationId + "relationRightArrowConection").html('None');
+            }
+            else {
+                $('#' + relationId + "relationRightArrowConection").html(canvasItems[canvasItems[i].rightId].name);}
+           
+        }
+    }
 }
 function reloadMetodList(id, item) {
     $("#" + id + "metodsList").html('');
@@ -282,7 +315,12 @@ function changeIdRelation(id, item) {
     $('#relationRightArrowConection').prop('id', id + 'relationRightArrowConection');
     $('#relationRightArrowConectionUl').prop('id', id + 'relationRightArrowConectionUl')
     $('#relationLeftArrowConection').prop('id', id + 'relationLeftArrowConection');
-    $('#relationLeftArrowConectionUl').prop('id', id + 'relationLeftArrowConectionUl')
+    $('#relationLeftArrowConectionUl').prop('id', id + 'relationLeftArrowConectionUl');
+    $('#relationLeftArrowConectionHBUl').prop('id', id + 'relationLeftArrowConectionHBUl');
+    $('#relationRightArrowConectionHBUl').prop('id', id + 'relationRightArrowConectionHBUl');
+    $('#relationRightArrowHitbox').prop('id', id + 'relationRightArrowHitbox');
+    $('#relationLeftArrowHitbox').prop('id', id + 'relationLeftArrowHitbox');
+   
 
     $('#' + id + 's').attr("href", '#' + id)
     $('#' + id + "s").html(item.name);
@@ -355,7 +393,20 @@ function changeIdRelation(id, item) {
             if (item.rightId == canvasItems[i].rightId) {
                 $('#' + id + "relationRightArrowConection").html(item.name);
             }
-        }
+        }   
+    }
+
+    for (var i = 0; i < 8; i++) {
+        $('#' + id + "relationRightArrowConectionHBUl").append("<li><a href= 'javascript:void(0);'  id= '" + i + "_relationItemHB' onclick= \"changeRightHitbox(" + (i) + "," + item.id + ");\" >" + (i + 1) + "</a ></li >")
+        $('#' + id + "relationLeftArrowConectionHBUl").append("<li><a href= 'javascript:void(0);'  id= '" + i + "_relationItemHB' onclick= \"changeLeftHitbox(" + (i) + "," + item.id + ");\" >" + (i + 1) + "</a ></li >")
+
+
+
+        $('#' + id + "relationRightArrowHitbox").html("None");
+
+        $('#' + id + "relationLeftArrowHitbox").html("None");
+
+
     }
     
 
@@ -446,6 +497,7 @@ function changeName(clickedId) {
     canvas.clear();
     canvasAdd(canvasItems, canvas);
     $('#' + id + "s").html($('#' + id + "name").val());
+    finddArrowAndReloadConnection();
 }
 function changeExtends(clickedId) {
     var id = findOutId(clickedId, 7);
@@ -472,6 +524,7 @@ function changeTitle(clickedId) {
     canvas.clear();
     canvasAdd(canvasItems, canvas);
     $('#' + id + "s").html($('#' + id + "name").val());
+    finddArrowAndReloadConnection();
 }
 function changeHeight(clickedId) {
     var id = findOutId(clickedId, 6);
@@ -693,18 +746,46 @@ function eventFire(el, etype) {
     }
 }
 function changeRightRelationConnection(id, item) {
-    for (var i = 0; canvasItems.length; i++) {
+    for (var i = 0;i< canvasItems.length; i++) {
         if (canvasItems[i].id == item) {
             canvasItems[i].changeRightId(id);
+            $('#' + item + "relationRightArrowConection").html(canvasItems[id-1].name);
             return;
         }
     }
 }
 
 function changeLeftRelationConnection(id, item) {
-    for (var i = 0; canvasItems.length; i++) {
+    for (var i = 0;i< canvasItems.length; i++) {
         if (canvasItems[i].id == item) {
             canvasItems[i].changeLeftId(id);
+            $('#' + item + "relationLeftArrowConection").html(canvasItems[id-1].name);
+           
+            return;
+        }
+    }
+
+
+   
+}
+
+function changeRightHitbox(value, item) {
+    for (var i = 0;i< canvasItems.length; i++) {
+        if (canvasItems[i].id == item) {
+            canvasItems[i].changeRightHitboxs(value);
+            $('#' + item + "relationRightArrowHitbox").html(parseInt(value) + 1);
+
+            return;
+        }
+    }
+}
+
+function changeLeftHitbox(value, item) {
+    for (var i = 0;i< canvasItems.length; i++) {
+        if (canvasItems[i].id == item) {
+            canvasItems[i].changeLeftHitboxs(value);
+
+            $('#' + item + "relationLeftArrowHitbox").html(parseInt(value)+1);
             return;
         }
     }

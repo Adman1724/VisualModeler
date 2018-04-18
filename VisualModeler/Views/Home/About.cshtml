@@ -55,9 +55,9 @@
 
 <script>
     function reloadPage() {
-       
+
             return "Do you really want to leave our brilliant application?";
-       
+
     }
     var first;
     var canvas;
@@ -69,27 +69,27 @@
     function SetValues() {
         mouseX = window.event.clientX;
         mouseY=window.event.clientY;
-       
 
-    }  
-   
-  
+
+    }
+
+
     function addClass() {
-       
-        
+
+
         SetValues();
         var width = 200;
         createClass(canvas, canvasItems, id, mouseX-250-width/2, mouseY-56,width);
         id++;
-      
-        
+
+
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
     function addArrowClass(tH, tB, tF) {
         SetValues();
         var width = 300;
-        
+
         createArrowClass(canvas, canvasItems, id, tH, tB, tF, mouseX - 250 - width / 2, mouseY - 56, width);
         id++;
         canvas.clear();
@@ -116,7 +116,7 @@
     function addActor() {
         SetValues();
         var width = 100;
-       
+
         createActor(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width);
         id++;
         canvas.clear();
@@ -189,6 +189,20 @@
     function remove() {
         removeItem(canvasItems, canvas);
     }
+    var zoom = 3;
+    function zoomIn() {
+        if (zoom < 7) zoom++;
+        var zoombox = [0.25, 0.5, 0.75,1,1.25,1.5,1.75,2]
+      
+        canvas.setZoom(zoombox[zoom]);
+    }
+    function zoomOut() {
+        if (zoom > 0) zoom--;
+        var zoombox = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+
+        canvas.setZoom(zoombox[zoom]);
+    }
+
     $(document).ready(function () {
 
         document.getElementById("can").style.height = screen.height - 170;
@@ -202,10 +216,12 @@
         canvas.on('object:modified', onObjectScaled);
 
         function onObjectScaled(e) {
+            console.log("onobjectscaled");
+            console.log(e.target);
             var scaledObject = e.target;
             //updateData(canvasItems, canvas);
             for (var i = 0; i < canvasItems.length; i++) {
-               if (canvasItems[i].group == selectedObject) {
+                if (canvasItems[i].group == scaledObject && canvasItems[i].type !== "arrowClass") {
 
                    canvasItems[i].changeWidth(scaledObject.getWidth());
                    $('#' + canvasItems[i].id + "width").val(canvasItems[i].width);
@@ -216,8 +232,10 @@
            }
             canvas.clear();
             canvasAdd(canvasItems, canvas);
+
         }
         canvas.on('object:selected', onObjectSelected);
+       
         function onObjectSelected(e) {
             var previous = 0;
             for (var i = 0; i < canvasItems.length; i++) {
@@ -233,10 +251,10 @@
                 if (canvasItems[i].group == selectedObject) {
 
                     openSelected(canvasItems[i].id, previous);
-                   
+
                 }
             }
-           
+
         }
         var ar1 = document.querySelector('#ar1');
         ar1.addEventListener('dragend', function () {
@@ -327,17 +345,45 @@
             addTerminator();
         });
 
-
+       
 
 
     });
+
+    function save() {
+        var data = JSON.stringify(canvas);
+        // clear canvas
+        canvas.clear();
+        canvasItems = [];
+
+        setTimeout(function () {
+            canvas.loadFromJSON(data, function () {
+
+                // making sure to render canvas at the end
+
+                canvas.renderAll();
+            });
+
+        }, 7000)
+
+        // and load everything from the same json
+       
+         $.ajax({
+             url: '@Url.Action("Save","Home")',
+             data: { data: data },
+                type: "post",
+                success: function (data) {
+                    $("#").append(data);
+                }
+            });
+        }
 
 </script>
 
 
 
 @{
-    ViewBag.Title = "DrawMa.io";
+    ViewBag.Title = "DrawMajo";
 }
 <div class="menu" >
     <div class="title-left">
@@ -353,34 +399,45 @@
                 <i class="material-icons">near_me</i>
                 <p class="item-box">Move</p>
             </div>
-            <div class="item-box">
-                <i class="material-icons">fullscreen</i>
-                <p class="item-box">Select</p>
-            </div>
-            <div class="item-box" onclick="remove()">
+            <!-- <div class="item-box">
+           <i class="material-icons">fullscreen</i>
+            <p class="item-box">Select</p>
+        </div>-->
+            <div class="item-box-red" onclick="remove()">
                 <i class="material-icons">close</i>
-                <p class="item-box">Remove</p>
+                <p class="item-box-red">Remove</p>
             </div>
-            <div class="item-box">
+            <div class="item-box-green"  onclick="save()">
                 <i class="material-icons">save</i>
-                <p class="item-box">Save</p>
+                <p class="item-box-green">Save</p>
             </div>
-        </div>
-        <div class="search-box">
-            <i class="material-icons">search</i>
-            <input type="text" placeholder="Search..">
+            <div class="item-box" onclick="zoomIn()">
+                <i class="material-icons">zoom_in</i>
+                <p class="item-box">In</p>
+            </div>
+            <div class="item-box-red" onclick="zoomOut()">
+                <i class="material-icons">zoom_out</i>
+                <p class="item-box-red">Out</p>
+            </div>
 
         </div>
+        <!--  <div class="search-box">
+            <i class="material-icons">search</i>
+    <input type="text" placeholder="Search..">
+        <input id="zoom" type="range" min="1" max="8" value="4" onchange="zoom()">
+
+    </div>-->
 
     </div>
     <div class="title-right">
 
+      
+
+     <div class="centringButton" style="padding-top: 3px;">   <button type="button" id="sidebarCollapseR" class="centringButton btn btn-info1 navbar-btn "><i class="material-icons md-48">reorder</i></button></div>
 
 
-        <button type="button" id="sidebarCollapseR" class="btn btn-info1 navbar-btn"><i class="material-icons md-48">reorder</i></button>
-
-
-        <button class="dropbtn"> <i class="material-icons md-48">account_box</i></button>
+        <div class="centringButton"><button class="dropbtn"> <i class="material-icons md-48">account_box</i></button></div>
+            </div>
     </div>
 </div>
 

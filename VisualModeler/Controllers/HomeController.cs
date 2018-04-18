@@ -26,5 +26,11 @@ namespace VisualModeler.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public Boolean Save(string data)
+            {
+            return true;
+        }
     }
 }

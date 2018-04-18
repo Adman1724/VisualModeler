@@ -2,7 +2,7 @@
 var posX = 0;
 var posY = 0;
 class ClassObject {
-    constructor(posX, posY, width, name, extendsBool, extendsText,canvas, id) {
+    constructor(posX, posY, width, name, extendsBool, extendsText, id) {
         this.posX = posX;
         this.posY = posY;
         this.width = width;
@@ -16,7 +16,7 @@ class ClassObject {
         this.type = 'class';
        
         this.extendsText = extendsText;
-        this.canvas = canvas;
+       // /*this.canvas*/ = canvas;
         this.previousPosY = posY;
         this.previousPosX = posX;
         this.strokeWidth = 2;
@@ -126,44 +126,44 @@ class ClassObject {
     });
     this.itemsArray.push(textItem);
     this.initObject();
-    this.draw(this.canvas);
+    this.draw();
   
     }
     changeName(text) {
         this.name = text;
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     changeStrokeWidth(text) {
         this.strokeWidth = parseInt(text);
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     changeExtends(text) {
         this.extendsText = text;
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
  
     changeWidth(text) {
         this.width = parseInt(text);;
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     changeFontSizeName(text) {
         this.fontSizeName = parseInt(text);;
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     changeFontSizeExtends(text) {
         this.fontSizeExtends = parseInt(text);;
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     changeFontSize(text) {
         this.fontSize = parseInt(text);;
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     addMetod(text) {
         this.lenghtArrayItem();
@@ -178,16 +178,16 @@ class ClassObject {
         });
         this.metodsArray.push(textItem);
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     changeHeight(text) {
 
         this.header.height = parseInt(text);
         this.initObject();
-        this.draw(this.canvas);
+        this.draw(/*this.canvas*/);
     }
     
-    draw(canvas) {
+    draw() {
        
         var groupHeader = new fabric.Group([this.header, this.extendsTextBox, this.nameText], {
             top: 0,
@@ -248,8 +248,8 @@ class ClassObject {
                 top: this.hitBoxArrayCoordinates[i].y,
                 strokeWidth: 0.5,
                 class:'pointer',
-                radius: 6,
-                fill: 'red',
+                radius: 1,
+                fill: 'black',
                 stroke: '#666'
             });
         }
