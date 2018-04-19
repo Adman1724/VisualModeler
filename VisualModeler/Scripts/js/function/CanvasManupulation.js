@@ -16,3 +16,4 @@ function removeItem(array, canvas) {
     canvas.remove(canvas.getActiveObject());
 }
 
+

@@ -31,7 +31,8 @@
            textAlign: 'center',
            width: this.width,
            originX: 'center',
-           originY: 'center'
+           originY: 'center',
+           breakWords: true
 
         });
         

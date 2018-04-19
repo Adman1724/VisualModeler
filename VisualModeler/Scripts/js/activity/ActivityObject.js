@@ -48,7 +48,7 @@
 
         });
     }
-    changeTitle(text) {
+    changeName(text) {
         this.name = text;
         this.initObject();
         this.draw(this.canvas);
