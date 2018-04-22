@@ -1,17 +1,17 @@
-﻿class UseCase {
+﻿class iStarPosition {
     constructor(posX, posY, width, name, height, id) {
         this.posX = posX;
         this.posY = posY;
         this.width = width;
         this.widthText = width;
         this.type = 'usecase';
-        this.name = name;
+        this.name = 'Position';
         this.height = height;
         this.group = new fabric.Group([], {
             top: this.posY,
             left: this.posX,
             width: this.width,
-            
+
         });
         this.previousPosY = posY;
         this.previousPosX = posX;
@@ -24,7 +24,7 @@
             posX: this.posX,
             posY: this.posY,
             type: this.type,
-            typeConstructor: 'UseCase',
+            typeConstructor: 'iStarPosition',
             width: this.width,
             widthText: this.widthText,
             height: this.height,
@@ -58,30 +58,76 @@
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;
-        this.previousWidth = this.group.width;  
+        this.previousWidth = this.group.width;
 
-       
+
         this.nameText = new fabric.Textbox(this.name, {
-            
+
             fontSize: this.fontSize,
-           textAlign: 'center',
-           width: this.width,
-           originX: 'center',
-           originY: 'center',
-           breakWords: true
+            textAlign: 'center',
+            
+            originX: 'center',
+            originY: 'center',
+            breakWords: true
 
         });
-        
-        this.head = new fabric.Circle({
-            
+
+        this.headTop = new fabric.Circle({
+
             strokeWidth: this.strokeWidth,
-            scaleX: this.width / this.height,
-            radius: this.height/2,
+            scaleX: 1,
+            radius: this.height / 4,
             fill: '#fff',
             stroke: '#000',
             originX: 'center',
             originY: 'center'
+
         });
+        this.headLeft = new fabric.Circle({
+
+            strokeWidth: this.strokeWidth,
+            scaleX: 1,
+            radius: this.height / 4,
+            fill: '#fff',
+            stroke: '#000',
+            originX: 'center',
+            originY: 'center'
+
+        });
+        this.headRight = new fabric.Circle({
+
+            strokeWidth: this.strokeWidth,
+            scaleX: 1,
+            radius: this.height / 4,
+            fill: '#fff',
+            stroke: '#000',
+            originX: 'center',
+            originY: 'center'
+
+        });
+        this.headBottom = new fabric.Circle({
+
+            strokeWidth: this.strokeWidth,
+            scaleX: 1,
+            radius: this.height / 4,
+            fill: '#fff',
+            stroke: '#000',
+            originX: 'center',
+            originY: 'center'
+
+        });
+        this.head = new fabric.Rect({
+            
+            fill: 'white',
+            width: this.height/2,
+            height: this.height/2,
+            stroke: 'white',
+            strokeWidth: this.strokeWidth,
+            originX: 'center',
+            originY: 'center'
+        });
+
+
     }
     changeFontSize(text) {
         this.fontSize = parseInt(text);
@@ -99,7 +145,7 @@
         this.draw(this.canvas);
     }
     changeHeight(text) {
-    
+
         this.height = parseInt(text);
         this.initObject();
         this.draw(this.canvas);
@@ -110,21 +156,44 @@
         this.draw(this.canvas);
     }
     draw(canvas) {
-        
-        this.group1 = new fabric.Group([this.head, this.nameText], {
-            top: 0,
-            left: 0 
+        this.groupT = new fabric.Group([this.headTop], {
+            left: 0,
+            top: -this.height/4
+
         });
+        this.groupL = new fabric.Group([this.headLeft], {
+            left: -this.height/4,
+            top: 0
+        });
+        this.groupR = new fabric.Group([this.headRight], {
+            left: this.height/4,
+            top: 0
+        });
+        this.groupB = new fabric.Group([this.headBottom], {
+            left: 0,
+            top: this.height/4
+        });
+        this.groupS = new fabric.Group([this.head, this.nameText], {
+            top: 0,
+            left:0
+        });
+       
+        this.group1 = new fabric.Group([this.groupB, this.groupL, this.groupR, this.groupT, this.groupS], {
+            top: 0,
+            left: 0
+        });
+
+
         var groupHeight = this.group1.height;
         this.hitBoxArrayCoordinates = [
             { y: 0, x: 0 },
             { y: 0, x: this.width / 2 },
-            { y: 0, x: this.width  },
-            { y: groupHeight / 2 , x: this.width  },
-            { y: groupHeight , x: this.width  },
-            { y: groupHeight , x: this.width / 2 },
-            { y: groupHeight , x: 0 },
-            { y: groupHeight / 2 , x: 0 }];
+            { y: 0, x: this.width },
+            { y: groupHeight / 2, x: this.width },
+            { y: groupHeight, x: this.width },
+            { y: groupHeight, x: this.width / 2 },
+            { y: groupHeight, x: 0 },
+            { y: groupHeight / 2, x: 0 }];
         this.hitBoxArray = [];
         for (var i = 0; i < 8; i++) {
             this.hitBoxArray[i] = new fabric.Circle({
@@ -142,7 +211,7 @@
             left: 0
         });
         this.group = new fabric.Group([this.group1], {
-          
+
         });
 
         this.group.height = this.height

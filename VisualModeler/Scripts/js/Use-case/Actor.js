@@ -18,6 +18,39 @@
         this.fontSize = 17;
         this.strokeWidth = 3;
     }
+    mapper() {
+        this.mapper = {
+            posX: this.posX,
+            posY: this.posY,
+            type: this.type,
+            typeConstructor: 'Actor',
+            width: this.width,
+            height: this.height,
+            h3: this.h3,
+            name: this.name,
+            previousPosX: this.previousPosX,
+            previousPosY: this.previousPosY,
+            id: this.id,
+            fontSize: this.fontSize,
+            strokeWidth: this.strokeWidth
+        }
+
+    }
+    loadMapper(obj) {
+        this.posX = obj.posX;
+        this.posY = obj.posY;
+        this.type = obj.type;
+        this.width = obj.width;
+        this.height = obj.height;
+        this.h3 = obj.h3;
+        this.name = obj.name;
+        this.previousPosX = obj.previousPosX;
+        this.previousPosY = obj.previousPosY;
+        this.id = obj.id;
+        this.fontSize = obj.fontSize;
+        this.strokeWidth = obj.strokeWidth;
+
+    }
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;

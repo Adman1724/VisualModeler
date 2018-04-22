@@ -447,11 +447,11 @@ function findOutId(idString, count) {
         var id = parseInt(idString[0]);
     }
     else if (idString.length == count + 2) {
-        var idString1 = idString.substr(0, 1);
+        var idString1 = idString.substr(0, 2);
         var id = parseInt(idString1);
     }
     else if (idString.length == count + 3) {
-        var idString1 = idString.substr(0, 2);
+        var idString1 = idString.substr(0, 3);
         var id = parseInt(idString1);
     }
     return id;
@@ -487,16 +487,22 @@ function addMetod(clickedId) {
 }
 function changeName(clickedId) {
     var id = findOutId(clickedId, 4);
-   
+    var arrow = false;
     for (var i = 0; i < canvasItems.length; i++) {
         if (canvasItems[i].id == id) {
+            if (canvasItems[i].type == 'arrowClass') {
+                arrow = true;
+                
+            }
             canvasItems[i].changeName($('#' + id + "name").val());
             
         }
     }
     canvas.clear();
     canvasAdd(canvasItems, canvas);
-    $('#' + id + "s").html($('#' + id + "name").val());
+    if (!arrow) {
+        $('#' + id + "s").html($('#' + id + "name").val());
+    }
     finddArrowAndReloadConnection();
 }
 function changeExtends(clickedId) {
@@ -749,17 +755,35 @@ function changeRightRelationConnection(id, item) {
     for (var i = 0;i< canvasItems.length; i++) {
         if (canvasItems[i].id == item) {
             canvasItems[i].changeRightId(id);
-            $('#' + item + "relationRightArrowConection").html(canvasItems[id-1].name);
+            $('#' + item + "relationRightArrowConection").html(canvasItems[id - 1].name);
+            if (canvasItems[i].leftId == 'undefined' || canvasItems[i].leftId == null) { left = "None" }
+            else { left = canvasItems[canvasItems[i].leftId-1].name }
+            if (canvasItems[i].rightId == 'undefined' || canvasItems[i].rightId == null) { right = "None" }
+            else { right = canvasItems[canvasItems[i].rightId-1].name }
+
+
+            canvasItems[i].name = left + " - " + right;
+            $('#' + item + "s").html(canvasItems[i].name);
             return;
         }
     }
 }
 
 function changeLeftRelationConnection(id, item) {
+    var left;
+    var right;
     for (var i = 0;i< canvasItems.length; i++) {
         if (canvasItems[i].id == item) {
             canvasItems[i].changeLeftId(id);
-            $('#' + item + "relationLeftArrowConection").html(canvasItems[id-1].name);
+            $('#' + item + "relationLeftArrowConection").html(canvasItems[id - 1].name);
+            if (canvasItems[i].leftId == 'undefined' || canvasItems[i].leftId == null){ left = "None" } 
+            else { left = canvasItems[canvasItems[i].leftId-1].name }
+            if (canvasItems[i].rightId == 'undefined' || canvasItems[i].rightId == null){ right ="None" } 
+            else { right = canvasItems[canvasItems[i].rightId-1].name }
+
+            
+            canvasItems[i].name = left + " - " + right;
+            $('#' + item + "s").html(canvasItems[i].name);
            
             return;
         }

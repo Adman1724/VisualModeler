@@ -19,6 +19,8 @@
 <script src="../../Scripts/js/Use-case/Actor.js"></script>
 <script src="../../Scripts/js/Use-case/UseCase.js"></script>
 <script src="../../Scripts/js/Use-case/System.js"></script>
+<script src="../../Scripts/js/Use-case/Note.js"></script>
+<script src="../../Scripts/js/Use-case/Package.js"></script>
 <script src="../../Scripts/js/squence/ObjectSeq.js"></script>
 <script src="../../Scripts/js/squence/Activation.js"></script>
 <script src="../../Scripts/js/squence/Lifeline.js"></script>
@@ -29,11 +31,27 @@
 <script src="../../Scripts/js/function/Creator.js"></script>
 <script src="../../Scripts/js/function/RightMenuDynamic.js"></script>
 <script src="../../Scripts/js/classes/ArrowClass.js"></script>
+<script src="../../Scripts/js/iStar/iStarActor.js"></script>
+<script src="../../Scripts/js/iStar/iStarAgent.js"></script>
+<script src="../../Scripts/js/iStar/iStarBelief.js"></script>
+<script src="../../Scripts/js/iStar/iStarGoal.js"></script>
+<script src="../../Scripts/js/iStar/iStarPosition.js"></script>
+<script src="../../Scripts/js/iStar/iStarResource.js"></script>
+<script src="../../Scripts/js/iStar/iStarRole.js"></script>
+<script src="../../Scripts/js/iStar/iStarTask.js"></script>
+<script src="../../Scripts/js/Kaos/kaosAgent.js"></script>
+<script src="../../Scripts/js/Kaos/kaosBall.js"></script>
+<script src="../../Scripts/js/Kaos/kaosEntity.js"></script>
+<script src="../../Scripts/js/Kaos/kaosEntityArrow.js"></script>
+<script src="../../Scripts/js/Kaos/kaosEntityFull.js"></script>
+<script src="../../Scripts/js/Kaos/kaosGoal.js"></script>
+<script src="../../Scripts/js/Kaos/kaosRequirement.js"></script>
+<script src="../../Scripts/js/Kaos/kaosSquare.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<!-- Bootstrap Js CDN -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -113,6 +131,24 @@
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
+    function addNote() {
+        SetValues();
+        var width = 200;
+        var height = 200;
+        createNote(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addPackage() {
+        SetValues();
+        var width = 200;
+        var height = 200;
+        createPackage(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
     function addActor() {
         SetValues();
         var width = 100;
@@ -182,6 +218,141 @@
         var width = 150;
         var height = 50;
         createActivityObject(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56,width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarActor() {
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createiStarActor(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarAgent() {
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createiStarAgent(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarRole() {
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createiStarRole(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarGoal() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createiStarGoal(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarBelief() {
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createiStarBelief(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarResource() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createiStarResource(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarPosition() {
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createiStarPosition(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addiStarTask() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createiStarTask(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosAgent() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createKaosAgent(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosBall() {
+        SetValues();
+        var width = 35;
+        var height = 35;
+        createKaosBall(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosEntity() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createKaosEntity(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosGoal() {
+        SetValues();
+        var width = 200;
+        var height = 50;
+        createKaosGoal(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosEntityArrow() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createKaosEntityArrow(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosSquare() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createKaosSquare(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
+        id++;
+        canvas.clear();
+        canvasAdd(canvasItems, canvas);
+    }
+    function addKaosRequirement() {
+        SetValues();
+        var width = 150;
+        var height = 50;
+        createKaosRequirement(canvas, canvasItems, id, mouseX - 250 - width / 2, mouseY - 56, width, height);
         id++;
         canvas.clear();
         canvasAdd(canvasItems, canvas);
@@ -316,6 +487,14 @@
         sys.addEventListener('dragend', function () {
             addSystem();
         });
+        var note = document.querySelector('#note');
+        note.addEventListener('dragend', function () {
+            addNote();
+        });
+        var pck = document.querySelector('#pck');
+        pck.addEventListener('dragend', function () {
+            addPackage();
+        });
         var objS = document.querySelector('#objS');
         objS.addEventListener('dragend', function () {
             addObjectSeq();
@@ -344,6 +523,80 @@
         ter.addEventListener('dragend', function () {
             addTerminator();
         });
+        var act1 = document.querySelector('#act1');
+        act1.addEventListener('dragend', function () {
+            addiStarActor();
+        });
+        var agn = document.querySelector('#agn');
+        agn.addEventListener('dragend', function () {
+            addiStarAgent();
+        });
+        var pos = document.querySelector('#pos');
+        pos.addEventListener('dragend', function () {
+            addiStarPosition();
+        });
+        var rol = document.querySelector('#rol');
+        rol.addEventListener('dragend', function () {
+            addiStarRole();
+        });
+        var goal1 = document.querySelector('#goal1');
+        goal1.addEventListener('dragend', function () {
+            addiStarGoal();
+        });
+        var task = document.querySelector('#task');
+        task.addEventListener('dragend', function () {
+            addiStarTask();
+        });
+        var res = document.querySelector('#res');
+        res.addEventListener('dragend', function () {
+            addiStarResource();
+        });
+        var bel = document.querySelector('#bel');
+        bel.addEventListener('dragend', function () {
+            addiStarBelief();
+        });
+        var kef = document.querySelector('#kef');
+        kef.addEventListener('dragend', function () {
+            addKaosEntityFull();
+        });
+        var ken = document.querySelector('#ken');
+        ken.addEventListener('dragend', function () {
+            addKaosEntity();
+        });
+        var kea = document.querySelector('#kea');
+        kea.addEventListener('dragend', function () {
+            addKaosEntityArrow();
+        });
+        var goal2 = document.querySelector('#goal2');
+        goal2.addEventListener('dragend', function () {
+            addKaosGoal();
+        });
+        var kbal = document.querySelector('#kbal');
+        kbal.addEventListener('dragend', function () {
+            addKaosBall();
+        });
+        var kre = document.querySelector('#kre');
+        kre.addEventListener('dragend', function () {
+            addKaosRequirement();
+        });
+        var ksq = document.querySelector('#ksq');
+        ksq.addEventListener('dragend', function () {
+            addKaosSquare();
+        });
+        var kar = document.querySelector('#kar');
+        ken.addEventListener('dragend', function () {
+            addArrowClass('AC', 'LL', 'NN');
+        });
+        var kag = document.querySelector('#kag');
+        kag.addEventListener('dragend', function () {
+            addKaosAgent();
+        });
+
+
+
+
+
+
 
        
 
@@ -351,31 +604,33 @@
     });
 
     function save() {
-        var data = JSON.stringify(canvas);
+        var array = [];
+        for (var i = 0; i < canvasItems.length; i++) {
+            canvasItems[i].mapper();
+            array.push(canvasItems[i].mapper);
+        }
+        var data = JSON.stringify(array);
         // clear canvas
         canvas.clear();
         canvasItems = [];
 
-        setTimeout(function () {
-            canvas.loadFromJSON(data, function () {
+      
+            loader(data)
+            canvasAdd(canvasItems, canvas);
+            reloadRightMenu();
 
-                // making sure to render canvas at the end
-
-                canvas.renderAll();
-            });
-
-        }, 7000)
+        
 
         // and load everything from the same json
        
-         $.ajax({
-             url: '@Url.Action("Save","Home")',
-             data: { data: data },
-                type: "post",
-                success: function (data) {
-                    $("#").append(data);
-                }
-            });
+        // $.ajax({
+          //   url: '@Url.Action("Save","Home")',
+            // data: { data: data },
+              //  type: "post",
+                //success: function (data) {
+                  //  $("#").append(data);
+               // }
+           // });
         }
 
 </script>
@@ -451,33 +706,33 @@
                     <a href="#Class" data-toggle="collapse" id="kokot" aria-expanded="false">Class Diagrams</a>
                     <ul class="collapse list-unstyled " id="Class">
                         <div class="list-inline">
-                            <li  id="class1"draggable="true"><a href="#" onmouseup="addClass()"  > <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;"  /></a></lidraggable="true">
-                            <li id="ar1"draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="class1" draggable="true"><a href="#" onmouseup="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></lidraggable="true">
+                            <li id="ar1" draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li id="ar2"draggable="true"><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar3"draggable="true"> <a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar2" draggable="true"><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar3" draggable="true"> <a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li id="ar4"draggable="true"><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar5"draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></liid="ar1"draggable="true">
+                            <li id="ar4" draggable="true"><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar5" draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></liid="ar1"draggable="true">
 
                         </div>
                         <div class="list-inline">
-                            <li id="ar6"draggable="true"><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar7"draggable="true"><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar6" draggable="true"><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar7" draggable="true"><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li id="ar8"draggable="true"><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar9"draggable="true"><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar8" draggable="true"><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar9" draggable="true"><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li id="ar10"draggable="true"><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar11"draggable="true"><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar10" draggable="true"><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ar11" draggable="true"><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                     </ul>
@@ -487,11 +742,16 @@
                     <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
                     <ul class="collapse list-unstyled" id="pag1">
                         <div class="list-inline">
-                            <li id="uscs"draggable="true"><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
-                            <li id="act"draggable="true"><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
+                            <li id="uscs" draggable="true"><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="act" draggable="true"><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
                         </div>
                         <div class="list-inline">
-                            <li id="sys"draggable="true"><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="sys" draggable="true"><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="pck" draggable="true"><a href="#" onclick="addPackage()"> <img src="~/Content/MenuItems/Package.png" alt="Image" style="width:80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="note" draggable="true"><a href="#" onclick="addNote()"> <img src="~/Content/MenuItems/Note.png" alt="Image" style="width:80px;" /></a></li>
 
                         </div>
                     </ul>
@@ -501,12 +761,12 @@
                     <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
                     <ul class="collapse list-unstyled" id="seq">
                         <div class="list-inline">
-                            <li id="objS"draggable="true"><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
-                            <li id="activ"draggable="true"><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="objS" draggable="true"><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="activ" draggable="true"><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
-                            <li id="life"draggable="true"><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="life" draggable="true"><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                     </ul>
@@ -516,8 +776,8 @@
                     <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
                     <ul class="collapse list-unstyled" id="activityDiagrams">
                         <div class="list-inline">
-                            <li id="actO"draggable="true"><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
-                            <li id="coCh"draggable="true"><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
+                            <li id="actO" draggable="true"><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
+                            <li id="coCh" draggable="true"><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
 
                         </div>
                         <div class="list-inline">
@@ -527,7 +787,63 @@
                         </div>
                     </ul>
                 </li>
+                <li>
 
+                    <a href="#iStarDiagrams" data-toggle="collapse" aria-expanded="false">i* diagrams</a>
+                    <ul class="collapse list-unstyled" id="iStarDiagrams">
+                        <div class="list-inline">
+                            <li id="act1" draggable="true"><a href="#" onclick="addiStarActor()"> <img src="~/Content/MenuItems/i_Actor@2x.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="agn" draggable="true"><a href="#" onclick="addiStarAgent()"> <img src="~/Content/MenuItems/i_Agent@2x.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="pos" draggable="true"><a href="#" onclick="addiStarPosition()"> <img src="~/Content/MenuItems/i_position.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="rol" draggable="true"><a href="#" onclick="addiStarRole()"> <img src="~/Content/MenuItems/i_Role@2x.png" alt="Image" style="width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="goal1" draggable="true"><a href="#" onclick="addiStarGoal()"> <img src="~/Content/MenuItems/i_goal.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="task" draggable="true"><a href="#" onclick="addiStarTask()"> <img src="~/Content/MenuItems/i_task.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="res" draggable="true"><a href="#" onclick="addiStarResource()"> <img src="~/Content/MenuItems/i_resource.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="bel" draggable="true"><a href="#" onclick="addiStarBelief()"> <img src="~/Content/MenuItems/i_Beliefe.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                        </div>
+                    </ul>
+                </li>
+                <li>
+
+                    <a href="#kaosDiagrams" data-toggle="collapse" aria-expanded="false">Kaos diagrams</a>
+                    <ul class="collapse list-unstyled" id="kaosDiagrams">
+                        <div class="list-inline">
+                            <li id="kef" draggable="true"><a href="#" onclick="addKaosEntitaFull()"> <img src="~/Content/MenuItems/kaosEntitaFull.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="ken" draggable="true"><a href="#" onclick="addKaosEntita()"> <img src="~/Content/MenuItems/koasEntita.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="kea" draggable="true"><a href="#" onclick="addKaosEntitaArrow()"> <img src="~/Content/MenuItems/kaosEntitaArrow.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="goal2" draggable="true"><a href="#" onclick="addKaosGoal()"> <img src="~/Content/MenuItems/kaosGoal.png" alt="Image" style="width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="kbal" draggable="true"><a href="#" onclick="addKaosBall()"> <img src="~/Content/MenuItems/kaosBall.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="kre" draggable="true"><a href="#" onclick="addKaosRequirement()"> <img src="~/Content/MenuItems/kaosRequirement.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="ksq" draggable="true"><a href="#" onclick="addKaosSquare()"> <img src="~/Content/MenuItems/kaosSquer.png" alt="Image" style="width:80px;" /></a></li>
+                            <li id="kar" draggable="true"><a href="#" onclick="addKaosArrow()"> <img src="~/Content/MenuItems/koasRelation.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                        </div>
+                        <div class="list-inline">
+                            <li id="kag" draggable="true"><a href="#" onclick="addKaosAgent()"> <img src="~/Content/MenuItems/kaosAgent.png" alt="Image" style="width:80px;" /></a></li>
+                           
+
+                        </div>
+                    </ul>
+                </li>
             </ul>
 
 

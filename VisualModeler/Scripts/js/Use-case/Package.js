@@ -1,4 +1,4 @@
-﻿class System {
+﻿class Package {
     constructor(posX, posY, width, height, name, id) {
         this.posX = posX;
         this.type = 'usecase';
@@ -12,17 +12,17 @@
             left: this.previousPosX,
             top: this.previousPosY
         });
-     
+
         this.id = id;
         this.fontSize = 17;
-        this.strokeWidth=2
+        this.strokeWidth = 2
     }
     mapper() {
         this.mapper = {
             posX: this.posX,
             posY: this.posY,
             type: this.type,
-            typeConstructor: 'System',
+            typeConstructor: 'Package',
             width: this.width,
             height: this.height,
             name: this.name,
@@ -51,7 +51,17 @@
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;
-       
+        this.small = new fabric.Rect({
+            left: 0,
+            top: 0,
+            fill: 'white',
+            width: this.width/10,
+            height: this.width/20,
+            stroke: 'black',
+            strokeWidth: this.strokeWidth,
+            originX: 'left',
+            originY: 'top'
+        });
         this.head = new fabric.Rect({
             left: 0,
             top: 0,
@@ -69,7 +79,7 @@
             left: 5,
             top: 5,
             fontSize: this.fontSize
-            
+
         });
     }
     changeName(text) {
@@ -98,8 +108,13 @@
         this.draw(this.canvas);
     }
     draw(canvas) {
-        this.group1 = new fabric.Group([this.head, this.nameText], {
+        this.group2 = new fabric.Group([this.head, this.nameText], {
+            left: 0,
+            top: this.small.height
 
+        });
+        this.group1 = new fabric.Group([this.group2, this.small], {
+            height: this.group2 + this.small.height * 2
 
         });
         var groupHeight = this.group1.height;
@@ -130,8 +145,8 @@
         });
 
         this.group = new fabric.Group([this.group1], {
-           
-            
+
+
         });
 
         //this.group.width = this.width;
@@ -139,7 +154,7 @@
         this.group.width = this.width;
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;
-        
+
 
 
     }

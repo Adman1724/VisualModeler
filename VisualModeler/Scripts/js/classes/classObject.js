@@ -26,7 +26,80 @@ class ClassObject {
             width: this.width
         });
         this.id = id;
+        this.arrayItemsText=[];
+        this.arrayMetodsText=[];
 
+    }
+    mapper() {
+        for (var i = 0; i < this.itemsArray.length; i++) {
+            var a = this.itemsArray[i].getText()
+            this.arrayItemsText.push(a);
+        }
+        for (var i = 0; i < this.metodsArray.length; i++) {
+            this.arrayMetodsText.push(this.metodsArray[i].getText());
+        }
+        this.mapper = {
+            posX: this.posX,
+            posY: this.posY,
+            type: this.type,
+            typeConstructor: 'class',
+            width: this.width,
+            height: this.height,
+            fontSizeName: this.fontSizeName,
+            fontSizeExtends: this.fontSizeExtends,
+            name: this.name,
+            previousPosX: this.previousPosX,
+            previousPosY: this.previousPosY,
+            id: this.id,
+            fontSize: this.fontSize,
+            strokeWidth: this.strokeWidth,
+            arrayMetodsText: this.arrayMetodsText,
+            arrayItemsText: this.arrayItemsText
+        }
+
+    }
+    loadMapper(obj) {
+        this.posX = obj.posX;
+        this.posY = obj.posY;
+        this.type = obj.type;
+        this.width = obj.width;
+        this.height = obj.height;
+        this.name = obj.name;
+        this.previousPosX = obj.previousPosX;
+        this.previousPosY = obj.previousPosY;
+        this.id = obj.id;
+        this.fontSize = obj.fontSize;
+        this.strokeWidth = obj.strokeWidth;
+        for (var i = 0; i < obj.arrayItemsText.length; i++) {
+            
+            var textItem = new fabric.Textbox(obj.arrayItemsText[i], {
+                top: 0,
+                left: 0,
+                background: 'red',
+                fontSize: this.fontSize,
+                width: this.width,
+                fixedWidth: this.width
+
+
+            });
+            this.itemsArray.push(textItem);
+        }
+        for (var i = 0; i < obj.arrayMetodsText.length; i++) {
+            this.lenghtArrayItem();
+            var textItem = new fabric.Textbox(obj.arrayMetodsText[i], {
+                top: 0,
+                left: 0,
+                background: 'red',
+                fontSize: this.fontSize,
+                width: this.width,
+                fixedWidth: this.width
+
+            });
+            this.metodsArray.push(textItem);
+        }
+        this.group.top = this.previousPosY;
+        this.group.left = this.previousPosX;
+        this.group.width = this.previousWidth;
 
     }
     initObject() {

@@ -17,6 +17,39 @@
         this.fontSize = 17;
         this.strokeWidth = 2;
     }
+    mapper() {
+        this.mapper = {
+            posX: this.posX,
+            posY: this.posY,
+            type: this.type,
+            typeConstructor: 'ActivityObject',
+            width: this.width,
+            height: this.height,
+            name: this.name,
+            previousPosX: this.previousPosX,
+            previousPosY: this.previousPosY,
+            id: this.id,
+            rx: this.rx,
+            fontSize: this.fontSize,
+            strokeWidth: this.strokeWidth
+        }
+        
+    }
+    loadMapper(obj) {
+        this.posX = obj.posX;
+        this.posY = obj.posY;
+        this.type = obj.type;
+        this.width = obj.width;
+        this.height = obj.height;
+        this.name = obj.name;
+        this.previousPosX = obj.previousPosX;
+        this.previousPosY = obj.previousPosY;
+        this.id = obj.id;
+        this.rx = obj.rx;
+        this.fontSize = obj.fontSize;
+        this.strokeWidth = obj.strokeWidth;
+    
+    }
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;

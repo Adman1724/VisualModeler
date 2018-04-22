@@ -8,6 +8,7 @@ class ArrowClass {
         this.width = width;
         this.height = 50;
         this.name = name;
+        this.text = 'Relation';
         this.canvas = canvas;
        
         this.typeHead = typeHead;
@@ -36,10 +37,74 @@ class ArrowClass {
         this.leftText = '1..*';
         this.regiterListener();
     }
+    mapper() {
+        this.mapper = {
+            posX: this.posX,
+            posY: this.posY,
+            type: this.type,
+            typeConstructor: 'arrowClass',
+            width: this.width,
+            height: this.height,
+            text: this.text,
+            name: this.name,
+            typeHead: this.typeHead,
+            typeBody: this.typeBody,
+            typeFooter: this.typeFooter ,
+            previousPosX: this.previousPosX,
+            previousPosY: this.previousPosY,
+            fontSize: this.fontSize,
+            strokeWidth: this.strokeWidth,
+            leftId: this.leftId,
+            leftObjectHitbox: this.leftObjectHitbox,
+            rightObjectHitbox: this.rightObjectHitbox,
+            rightId:this.rightId,
+            leftSideX: this.leftSideX,
+            leftSideY: this.leftSideY,
+            rightSideX: this.rightSideX,
+            rightSideY: this.rightSideY,
+            id: this.id = id,
+            angel: this.angle ,
+            rightText: this.rightText,
+            leftText: this.leftText
+        }
+
+    }
+    loadMapper(obj) {
+        this.posX = obj.posX;
+        this.posY= obj.posY;
+        this.type= obj.type;
+        this.width = obj.width;
+        this.height = obj.height;
+        this.text = obj.text;
+        this.name = obj.name;
+        this.typeHead = obj.typeHead;
+        this.typeBody = obj.typeBody;
+        this.typeFooter = obj.typeFooter;
+        this.previousPosX = obj.previousPosX;
+        this.previousPosY = obj.previousPosY;
+        this.fontSize = obj.fontSize;
+        this.strokeWidth = obj.strokeWidth;
+        this.leftId = obj.leftId;
+        this.leftObjectHitbox = obj.leftObjectHitbox;
+        this.rightObjectHitbox = obj.rightObjectHitbox;
+        this.rightId = obj.rightId;
+        this.leftSideX = obj.leftSideX;
+        this.leftSideY = obj.leftSideY;
+        this.rightSideX = obj.rightSideX;
+        this.rightSideY = obj.rightSideY;
+        this.id = obj.id;
+        this.angel = obj.angle;
+        this.rightText = obj.rightText;
+        this.leftText = obj.leftText;
+        this.group.top = this.previousPosY;
+        this.group.left = this.previousPosX;
+        this.group.width = this.previousWidth;
+
+    }
     initObject() {
         this.previousPosY = this.group.top;
         this.previousPosX = this.group.left;
-        this.nameText = new fabric.Textbox(this.name, {
+        this.nameText = new fabric.Textbox(this.text, {
 
             top: 0,
             left: 0 ,
@@ -56,7 +121,7 @@ class ArrowClass {
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'black',
-                angle: this.angle
+                angle: 270
             })
             this.endArrow = this.head.height;
             this.groupHeadArrow = new fabric.Group([this.head], {
@@ -112,7 +177,7 @@ class ArrowClass {
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'white',
-                angle: this.angle
+                angle: 270
             })
             this.endArrow = this.head.height;
             this.groupHeadArrow = new fabric.Group([this.head], {
@@ -169,7 +234,7 @@ class ArrowClass {
                 stroke: 'black',
                 strokeWidth: this.strokeWidth,
                 fill: 'black',
-                angle: this.angle
+                angle: 270
             })
             this.endArrow = 2 * this.height;
             var groupHeadArrow1 = new fabric.Group([this.head1], {
@@ -226,7 +291,7 @@ class ArrowClass {
             strokeWidth: this.strokeWidth 
         });
        
-        this.nameText = new fabric.Textbox(this.name, {
+        this.nameText = new fabric.Textbox(this.text, {
 
             top: 0-this.fontSize/2,
             left: this.body1Line.width ,
@@ -405,7 +470,7 @@ class ArrowClass {
         this.draw(this.canvas);
     }
     changeName(text) {
-        this.name = text;
+        this.text = text;
         this.initObject();
         this.draw(this.canvas);
     }
