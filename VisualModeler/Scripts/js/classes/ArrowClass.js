@@ -99,6 +99,7 @@ class ArrowClass {
         this.group.top = this.previousPosY;
         this.group.left = this.previousPosX;
         this.group.width = this.previousWidth;
+       
 
     }
     initObject() {

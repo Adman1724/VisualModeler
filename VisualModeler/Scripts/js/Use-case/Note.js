@@ -46,6 +46,9 @@
         this.id = obj.id;
         this.fontSize = obj.fontSize;
         this.strokeWidth = obj.strokeWidth;
+        this.group.top = this.previousPosY;
+        this.group.left = this.previousPosX;
+       
 
     }
     initObject() {

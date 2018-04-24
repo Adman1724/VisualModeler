@@ -173,7 +173,7 @@ function reloadConnectionList(relationId) {
             $('#' + relationId + "relationRightArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeRightRelationConnection(" + canvasItems[i].id + "," + relationId + ");\" >" + canvasItems[i].name + "</a ></li >")
             $('#' + relationId + "relationLeftArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeLeftRelationConnection(" + canvasItems[i].id + "," + relationId + ");\" >" + canvasItems[i].name + "</a ></li >")
         }
-        if (canvasItems[i].type == 'arrowClass' && id == canvasItems[i].id) {
+        if (canvasItems[i].type == 'arrowClass' && relationId == canvasItems[i].id) {
             if (canvasItems[i].leftId == null) {
             //if (canvasItems[canvasItems[i].leftId].name == null) {
 
@@ -328,7 +328,7 @@ function changeIdRelation(id, item) {
     $('#' + id + "height").val(item.height);
     $('#' + id + "fontSize").val(item.fontSize);
     $('#' + id + "strokeWidth").val(item.strokeWidth);
-    $('#' + id + "name").val(item.name);
+    $('#' + id + "name").val(item.text);
     $('#' + id + "rightAssociationArrow").html(item.rightText);
     $('#' + id + "leftAssociationArrow").html(item.leftText);
 
@@ -385,26 +385,33 @@ function changeIdRelation(id, item) {
         if (canvasItems[i].type != "arrowClass") {
             $('#' + id + "relationRightArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeRightRelationConnection(" + canvasItems[i].id + "," + item.id+");\" >" + canvasItems[i].name + "</a ></li >")
             $('#' + id + "relationLeftArrowConectionUl").append("<li><a href= 'javascript:void(0);'  id= '" + canvasItems[i].id + "_relationItem' onclick= \"changeLeftRelationConnection(" + canvasItems[i].id + "," + item.id +");\" >" + canvasItems[i].name + "</a ></li >")
+            
         }
-        if (canvasItems[i].type == 'arrowClass') {
+        if (item.leftId == canvasItems[i].id) {
+            $('#' + id + "relationLeftArrowConection").html(canvasItems[i].name);
+        }
+        if (item.rightId == canvasItems[i].id) {
+            $('#' + id + "relationRightArrowConection").html(canvasItems[i].name);
+        }
+       /* else if (canvasItems[i].type == 'arrowClass') {
             if (item.leftId == canvasItems[i].leftId) {
                 $('#' + id + "relationLeftArrowConection").html(item.name);
             }
             if (item.rightId == canvasItems[i].rightId) {
                 $('#' + id + "relationRightArrowConection").html(item.name);
             }
-        }   
+        } */  
     }
 
     for (var i = 0; i < 8; i++) {
         $('#' + id + "relationRightArrowConectionHBUl").append("<li><a href= 'javascript:void(0);'  id= '" + i + "_relationItemHB' onclick= \"changeRightHitbox(" + (i) + "," + item.id + ");\" >" + (i + 1) + "</a ></li >")
         $('#' + id + "relationLeftArrowConectionHBUl").append("<li><a href= 'javascript:void(0);'  id= '" + i + "_relationItemHB' onclick= \"changeLeftHitbox(" + (i) + "," + item.id + ");\" >" + (i + 1) + "</a ></li >")
 
+        
 
+        $('#' + id + "relationRightArrowHitbox").html(item.rightObjectHitbox);
 
-        $('#' + id + "relationRightArrowHitbox").html("None");
-
-        $('#' + id + "relationLeftArrowHitbox").html("None");
+        $('#' + id + "relationLeftArrowHitbox").html(item.leftObjectHitbox);
 
 
     }
@@ -728,10 +735,10 @@ function changeStrokeWidth(clickedId) {
     canvasAdd(canvasItems, canvas);
 }
 function openSelected(clickedId, previous) {
-    for (var i = 0; i <= canvasItems.length; i++) {
+    for (var i = 0; i < canvasItems.length; i++) {
         if (i != clickedId) {
-            if ($('#' + i + 's').attr('aria-expanded') === 'true') {
-                eventFire(document.getElementById(i + 's'), 'click');
+            if ($('#' + canvasItems[i].id + 's').attr('aria-expanded') === 'true') {
+                eventFire(document.getElementById(canvasItems[i].id + 's'), 'click');
             }
         }
 
@@ -755,11 +762,11 @@ function changeRightRelationConnection(id, item) {
     for (var i = 0;i< canvasItems.length; i++) {
         if (canvasItems[i].id == item) {
             canvasItems[i].changeRightId(id);
-            $('#' + item + "relationRightArrowConection").html(canvasItems[id - 1].name);
+            $('#' + item + "relationRightArrowConection").html(canvasItems[id].name);
             if (canvasItems[i].leftId == 'undefined' || canvasItems[i].leftId == null) { left = "None" }
-            else { left = canvasItems[canvasItems[i].leftId-1].name }
+            else { left = canvasItems[canvasItems[i].leftId].name }
             if (canvasItems[i].rightId == 'undefined' || canvasItems[i].rightId == null) { right = "None" }
-            else { right = canvasItems[canvasItems[i].rightId-1].name }
+            else { right = canvasItems[canvasItems[i].rightId].name }
 
 
             canvasItems[i].name = left + " - " + right;
@@ -775,11 +782,11 @@ function changeLeftRelationConnection(id, item) {
     for (var i = 0;i< canvasItems.length; i++) {
         if (canvasItems[i].id == item) {
             canvasItems[i].changeLeftId(id);
-            $('#' + item + "relationLeftArrowConection").html(canvasItems[id - 1].name);
+            $('#' + item + "relationLeftArrowConection").html(canvasItems[id].name);
             if (canvasItems[i].leftId == 'undefined' || canvasItems[i].leftId == null){ left = "None" } 
-            else { left = canvasItems[canvasItems[i].leftId-1].name }
+            else { left = canvasItems[canvasItems[i].leftId].name }
             if (canvasItems[i].rightId == 'undefined' || canvasItems[i].rightId == null){ right ="None" } 
-            else { right = canvasItems[canvasItems[i].rightId-1].name }
+            else { right = canvasItems[canvasItems[i].rightId].name }
 
             
             canvasItems[i].name = left + " - " + right;

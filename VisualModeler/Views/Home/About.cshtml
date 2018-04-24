@@ -33,25 +33,24 @@
 <script src="../../Scripts/js/classes/ArrowClass.js"></script>
 <script src="../../Scripts/js/iStar/iStarActor.js"></script>
 <script src="../../Scripts/js/iStar/iStarAgent.js"></script>
-<script src="../../Scripts/js/iStar/iStarBelief.js"></script>
-<script src="../../Scripts/js/iStar/iStarGoal.js"></script>
+
 <script src="../../Scripts/js/iStar/iStarPosition.js"></script>
 <script src="../../Scripts/js/iStar/iStarResource.js"></script>
 <script src="../../Scripts/js/iStar/iStarRole.js"></script>
 <script src="../../Scripts/js/iStar/iStarTask.js"></script>
-<script src="../../Scripts/js/Kaos/kaosAgent.js"></script>
+
 <script src="../../Scripts/js/Kaos/kaosBall.js"></script>
-<script src="../../Scripts/js/Kaos/kaosEntity.js"></script>
+
 <script src="../../Scripts/js/Kaos/kaosEntityArrow.js"></script>
 <script src="../../Scripts/js/Kaos/kaosEntityFull.js"></script>
-<script src="../../Scripts/js/Kaos/kaosGoal.js"></script>
+
 <script src="../../Scripts/js/Kaos/kaosRequirement.js"></script>
 <script src="../../Scripts/js/Kaos/kaosSquare.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!--<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -80,7 +79,8 @@
     var first;
     var canvas;
     var canvasItems;
-    var id = 1;
+    var id = 0;
+    var remove = false;
     var mouseX;
     var mouseY;
 
@@ -357,14 +357,12 @@
         canvas.clear();
         canvasAdd(canvasItems, canvas);
     }
-    function remove() {
-        removeItem(canvasItems, canvas);
-    }
+
     var zoom = 3;
     function zoomIn() {
         if (zoom < 7) zoom++;
         var zoombox = [0.25, 0.5, 0.75,1,1.25,1.5,1.75,2]
-      
+
         canvas.setZoom(zoombox[zoom]);
     }
     function zoomOut() {
@@ -375,6 +373,51 @@
     }
 
     $(document).ready(function () {
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        var modal1 = document.getElementById('myModal1');
+
+        // Get the button that opens the modal
+        var btn1 = document.getElementById("myBtn1");
+        btn1.onclick = function () {
+            modal1.style.display = "block";
+        }
+        var span1 = document.getElementsByClassName("close")[1];
+
+        // When the user clicks on <span> (x), close the modal
+        span1.onclick = function () {
+            modal1.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal1) {
+                modal1.style.display = "none";
+            }
+        }
 
         document.getElementById("can").style.height = screen.height - 170;
         var canvasOptions = {
@@ -392,7 +435,9 @@
             var scaledObject = e.target;
             //updateData(canvasItems, canvas);
             for (var i = 0; i < canvasItems.length; i++) {
-                if (canvasItems[i].group == scaledObject && canvasItems[i].type !== "arrowClass") {
+
+
+                if (canvasItems[i].group == scaledObject && canvasItems[i].type !== "arrowClass" && !remove) {
 
                    canvasItems[i].changeWidth(scaledObject.getWidth());
                    $('#' + canvasItems[i].id + "width").val(canvasItems[i].width);
@@ -406,7 +451,7 @@
 
         }
         canvas.on('object:selected', onObjectSelected);
-       
+
         function onObjectSelected(e) {
             var previous = 0;
             for (var i = 0; i < canvasItems.length; i++) {
@@ -415,14 +460,25 @@
                      previous = canvasItems[i].id;
 
                 }
+                if (remove) {
+                    if (canvasItems[i].group == canvas.getActiveObject()) {
+                        canvasItems.splice(i, 1);
+                    }
+
+                    reloadRightMenu();
+                    canvas.remove(canvas.getActiveObject());
+
+                }
 
             }
-            selectedObject = e.target;
-            for (var i = 0; i<canvasItems.length; i++) {
-                if (canvasItems[i].group == selectedObject) {
+            if (!remove) {
+                selectedObject = e.target;
+                for (var i = 0; i < canvasItems.length; i++) {
+                    if (canvasItems[i].group == selectedObject) {
 
-                    openSelected(canvasItems[i].id, previous);
+                        openSelected(canvasItems[i].id, previous);
 
+                    }
                 }
             }
 
@@ -598,31 +654,67 @@
 
 
 
-       
+
 
 
     });
+    
 
-    function save() {
+    function saveImage() {
+        var base64 = canvas.toDataURL({
+            format: 'png',
+            quality: 1
+        });
+        var link = document.createElement("a");
+
+        link.setAttribute("href", base64);
+        link.setAttribute("download", "DrawMajoSave");
+        link.click();
+    }
+    function load(event) {
+        
+            var input = event.target;
+            var data;
+            var reader = new FileReader();
+            reader.onload = function () {
+                data = reader.result;
+              
+            };
+            data=reader.readAsText(input.files[0]);
+        
+        loader(data)
+        canvasAdd(canvasItems, canvas);
+        reloadRightMenu();
+    }
+
+    function saveDrawMajo() {
         var array = [];
         for (var i = 0; i < canvasItems.length; i++) {
             canvasItems[i].mapper();
             array.push(canvasItems[i].mapper);
         }
         var data = JSON.stringify(array);
+        var pom = document.createElement('a');
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+        pom.setAttribute('download', 'DrawMajo.dwmj');
+
+        if (document.createEvent) {
+            var event = document.createEvent('MouseEvents');
+            event.initEvent('click', true, true);
+            pom.dispatchEvent(event);
+        }
+        else {
+            pom.click();
+        }
         // clear canvas
-        canvas.clear();
-        canvasItems = [];
-
-      
-            loader(data)
-            canvasAdd(canvasItems, canvas);
-            reloadRightMenu();
-
         
 
+
+           
+
+
         // and load everything from the same json
-       
+
         // $.ajax({
           //   url: '@Url.Action("Save","Home")',
             // data: { data: data },
@@ -631,16 +723,18 @@
                   //  $("#").append(data);
                // }
            // });
-        }
+    }
+ 
 
 </script>
+
 
 
 
 @{
     ViewBag.Title = "DrawMajo";
 }
-<div class="menu" >
+<div class="menu">
     <div class="title-left">
         <h2>@ViewBag.Title</h2>
         <button type="button" id="sidebarCollapse" class="btn btn-info1 navbar-btn">
@@ -650,21 +744,26 @@
     </div>
     <div class="title-center">
         <div class="item-container">
-            <div class="item-box">
+            <div class="item-box" id="moveButton" onclick="move();">
                 <i class="material-icons">near_me</i>
                 <p class="item-box">Move</p>
             </div>
             <!-- <div class="item-box">
-           <i class="material-icons">fullscreen</i>
-            <p class="item-box">Select</p>
-        </div>-->
-            <div class="item-box-red" onclick="remove()">
+       <i class="material-icons">fullscreen</i>
+        <p class="item-box">Select</p>
+    </div>-->
+            <div class="item-box-red" id="removeButton" onclick="removeItems()">
                 <i class="material-icons">close</i>
                 <p class="item-box-red">Remove</p>
             </div>
-            <div class="item-box-green"  onclick="save()">
-                <i class="material-icons">save</i>
+            <div class="item-box-green" id="myBtn">
+                <i class="material-icons ">save</i>
                 <p class="item-box-green">Save</p>
+
+            </div>
+            <div class="item-box" id="myBtn1">
+                <i class="material-icons">file_upload</i>
+                <p class="item-box">Load</p>
             </div>
             <div class="item-box" onclick="zoomIn()">
                 <i class="material-icons">zoom_in</i>
@@ -674,193 +773,216 @@
                 <i class="material-icons">zoom_out</i>
                 <p class="item-box-red">Out</p>
             </div>
-
+            
         </div>
         <!--  <div class="search-box">
-            <i class="material-icons">search</i>
-    <input type="text" placeholder="Search..">
-        <input id="zoom" type="range" min="1" max="8" value="4" onchange="zoom()">
+                <i class="material-icons">search</i>
+        <input type="text" placeholder="Search..">
+            <input id="zoom" type="range" min="1" max="8" value="4" onchange="zoom()">
 
-    </div>-->
+        </div>-->
 
     </div>
     <div class="title-right">
 
-      
 
-     <div class="centringButton" style="padding-top: 3px;">   <button type="button" id="sidebarCollapseR" class="centringButton btn btn-info1 navbar-btn "><i class="material-icons md-48">reorder</i></button></div>
+
+        <div class="centringButton" style="padding-top: 3px;">   <button type="button" id="sidebarCollapseR" class="centringButton btn btn-info1 navbar-btn "><i class="material-icons md-48">reorder</i></button></div>
 
 
         <div class="centringButton"><button class="dropbtn"> <i class="material-icons md-48">account_box</i></button></div>
+    </div>
+</div>
+</div>
+<div id="windowForAssign">
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p style="color:black;">Save As: </p>
+            <a href="#saveImg" onclick="saveImage();">PNG</a><br>
+            <a href="#saveDRMJ" onclick="saveDrawMajo();">DrawMajo</a><br>
+
+        </div>
+
+    </div>
+    <div id="myModal1" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p style="color:black;">Load: </p>
+            <input type="file" id="Loadfiles" name="Loadfiles[]" onchange='load(event)' />
+
+        </div>
+
+    </div>
+    <div class="wrapper" onmousemove=SetValues()>
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="rightMenuScroll">
+
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#Class" data-toggle="collapse" id="kokot" aria-expanded="false">Class Diagrams</a>
+                        <ul class="collapse list-unstyled " id="Class">
+                            <div class="list-inline">
+                                <li id="class1" draggable="true"><a href="#" onmouseup="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></lidraggable="true">
+                                <li id="ar1" draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="ar2" draggable="true"><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="ar3" draggable="true"> <a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="ar4" draggable="true"><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="ar5" draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></liid="ar1"draggable="true">
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="ar6" draggable="true"><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="ar7" draggable="true"><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="ar8" draggable="true"><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="ar9" draggable="true"><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="ar10" draggable="true"><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="ar11" draggable="true"><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
+                        <ul class="collapse list-unstyled" id="pag1">
+                            <div class="list-inline">
+                                <li id="uscs" draggable="true"><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
+                                <li id="act" draggable="true"><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
+                            </div>
+                            <div class="list-inline">
+                                <li id="sys" draggable="true"><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="pck" draggable="true"><a href="#" onclick="addPackage()"> <img src="~/Content/MenuItems/Package.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="note" draggable="true"><a href="#" onclick="addNote()"> <img src="~/Content/MenuItems/Note.png" alt="Image" style="width:80px;" /></a></li>
+
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
+                        <ul class="collapse list-unstyled" id="seq">
+                            <div class="list-inline">
+                                <li id="objS" draggable="true"><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
+                                <li id="activ" draggable="true"><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="life" draggable="true"><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
+                        <ul class="collapse list-unstyled" id="activityDiagrams">
+                            <div class="list-inline">
+                                <li id="actO" draggable="true"><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
+                                <li id="coCh" draggable="true"><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="stPr" draggable="true"><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
+                                <li id="ter" draggable="true"><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
+
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a href="#iStarDiagrams" data-toggle="collapse" aria-expanded="false">i* diagrams</a>
+                        <ul class="collapse list-unstyled" id="iStarDiagrams">
+                            <div class="list-inline">
+                                <li id="act1" draggable="true"><a href="#" onclick="addiStarActor()"> <img src="~/Content/MenuItems/i_Actor@2x.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="agn" draggable="true"><a href="#" onclick="addiStarAgent()"> <img src="~/Content/MenuItems/i_Agent@2x.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="pos" draggable="true"><a href="#" onclick="addiStarPosition()"> <img src="~/Content/MenuItems/i_position.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="rol" draggable="true"><a href="#" onclick="addiStarRole()"> <img src="~/Content/MenuItems/i_Role@2x.png" alt="Image" style="width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="goal1" draggable="true"><a href="#" onclick="addiStarGoal()"> <img src="~/Content/MenuItems/i_goal.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="task" draggable="true"><a href="#" onclick="addiStarTask()"> <img src="~/Content/MenuItems/i_task.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="res" draggable="true"><a href="#" onclick="addiStarResource()"> <img src="~/Content/MenuItems/i_resource.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="bel" draggable="true"><a href="#" onclick="addiStarBelief()"> <img src="~/Content/MenuItems/i_Beliefe.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+
+                        <a href="#kaosDiagrams" data-toggle="collapse" aria-expanded="false">Kaos diagrams</a>
+                        <ul class="collapse list-unstyled" id="kaosDiagrams">
+                            <div class="list-inline">
+                                <li id="kef" draggable="true"><a href="#" onclick="addKaosEntitaFull()"> <img src="~/Content/MenuItems/kaosEntitaFull.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="ken" draggable="true"><a href="#" onclick="addKaosEntita()"> <img src="~/Content/MenuItems/koasEntita.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="kea" draggable="true"><a href="#" onclick="addKaosEntitaArrow()"> <img src="~/Content/MenuItems/kaosEntitaArrow.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="goal2" draggable="true"><a href="#" onclick="addKaosGoal()"> <img src="~/Content/MenuItems/kaosGoal.png" alt="Image" style="width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="kbal" draggable="true"><a href="#" onclick="addKaosBall()"> <img src="~/Content/MenuItems/kaosBall.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="kre" draggable="true"><a href="#" onclick="addKaosRequirement()"> <img src="~/Content/MenuItems/kaosRequirement.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="ksq" draggable="true"><a href="#" onclick="addKaosSquare()"> <img src="~/Content/MenuItems/kaosSquer.png" alt="Image" style="width:80px;" /></a></li>
+                                <li id="kar" draggable="true"><a href="#" onclick="addKaosArrow()"> <img src="~/Content/MenuItems/koasRelation.png" alt="Image" style=" width: 80px;" /></a></li>
+
+                            </div>
+                            <div class="list-inline">
+                                <li id="kag" draggable="true"><a href="#" onclick="addKaosAgent()"> <img src="~/Content/MenuItems/kaosAgent.png" alt="Image" style="width:80px;" /></a></li>
+
+
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+
+
             </div>
+        </nav>
+
+        <div class="can" id="can">
+            <canvas id="c" width="1900" height="1000" />
+        </div>
+
+
+        <nav id="sidebarR">
+            <div class="rightMenuScroll">
+
+                <ul id="rightMenuScrollInsert" class="list-unstyled components"></ul>
+            </div>
+        </nav>
+
     </div>
 </div>
-
-<div class="wrapper" onmousemove=SetValues()>
-    <!-- Sidebar Holder -->
-    <nav id="sidebar">
-        <div class="rightMenuScroll">
-
-            <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="#Class" data-toggle="collapse" id="kokot" aria-expanded="false">Class Diagrams</a>
-                    <ul class="collapse list-unstyled " id="Class">
-                        <div class="list-inline">
-                            <li id="class1" draggable="true"><a href="#" onmouseup="addClass()"> <img src="~/Content/MenuItems/class.png" alt="Image" style="width:80px;" /></a></lidraggable="true">
-                            <li id="ar1" draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="ar2" draggable="true"><a href="#" onclick="addArrowClass('AG','DD','NN')"> <img src="~/Content/MenuItems/agregation_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar3" draggable="true"> <a href="#" onclick="addArrowClass('AG','LL','NN')"> <img src="~/Content/MenuItems/agregation_Line.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="ar4" draggable="true"><a href="#" onclick="addArrowClass('AR','DD','NN')"> <img src="~/Content/MenuItems/arrowBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar5" draggable="true"><a href="#" onclick="addArrowClass('AR','LL','NN')"> <img src="~/Content/MenuItems/arrowBlack_fullLine.png" alt="Image" style="width:80px;" /></a></liid="ar1"draggable="true">
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="ar6" draggable="true"><a href="#" onclick="addArrowClass('AB','DD','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar7" draggable="true"><a href="#" onclick="addArrowClass('AB','LL','NN')"> <img src="~/Content/MenuItems/arrowFullBlack_line.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="ar8" draggable="true"><a href="#" onclick="addArrowClass('AW','DD','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar9" draggable="true"><a href="#" onclick="addArrowClass('AW','LL','NN')"> <img src="~/Content/MenuItems/arrowFullWhite_line.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="ar10" draggable="true"><a href="#" onclick="addArrowClass('AC','DD','NN')"> <img src="~/Content/MenuItems/composition_dashedLine.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ar11" draggable="true"><a href="#" onclick="addArrowClass('AC','LL','NN')"> <img src="~/Content/MenuItems/composition_line.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#pag1" data-toggle="collapse" aria-expanded="false">Use-Case</a>
-                    <ul class="collapse list-unstyled" id="pag1">
-                        <div class="list-inline">
-                            <li id="uscs" draggable="true"><a href="#" onclick="addUsecase()"> <img src="~/Content/MenuItems/usecase.png" alt="Image" style="width:100px;" /></a></li>
-                            <li id="act" draggable="true"><a href="#" onclick="addActor()"> <img src="~/Content/MenuItems/actor.png" alt="Image" style="width:50px;" /></a></li>
-                        </div>
-                        <div class="list-inline">
-                            <li id="sys" draggable="true"><a href="#" onclick="addSystem()"> <img src="~/Content/MenuItems/system.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="pck" draggable="true"><a href="#" onclick="addPackage()"> <img src="~/Content/MenuItems/Package.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="note" draggable="true"><a href="#" onclick="addNote()"> <img src="~/Content/MenuItems/Note.png" alt="Image" style="width:80px;" /></a></li>
-
-                        </div>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#seq" data-toggle="collapse" aria-expanded="false">Sequence diagrams</a>
-                    <ul class="collapse list-unstyled" id="seq">
-                        <div class="list-inline">
-                            <li id="objS" draggable="true"><a href="#" onclick="addObjectSeq()"> <img src="~/Content/MenuItems/objectseq.png" alt="Image" style="width:100px;" /></a></li>
-                            <li id="activ" draggable="true"><a href="#" onclick="addActivation()"> <img src="~/Content/MenuItems/activation.png" alt="Image" style=" height: 50px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="life" draggable="true"><a href="#" onclick="addLifeline()"> <img src="~/Content/MenuItems/lifeline.png" alt="Image" style=" height: 50px;" /></a></li>
-
-                        </div>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#activityDiagrams" data-toggle="collapse" aria-expanded="false">Activity diagrams</a>
-                    <ul class="collapse list-unstyled" id="activityDiagrams">
-                        <div class="list-inline">
-                            <li id="actO" draggable="true"><a href="#" onclick="addActivityObject()"> <img src="~/Content/MenuItems/activita.png" alt="Image" style="width:100px;" /></a></li>
-                            <li id="coCh" draggable="true"><a href="#" onclick="addConditionCheck()"> <img src="~/Content/MenuItems/condition_check.png" alt="Image" style=" height: 50px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="stPr" draggable="true"><a href="#" onclick="addStartOfProcess()"> <img src="~/Content/MenuItems/start_of_proces.png" alt="Image" style="width:50px;" /></a></li>
-                            <li id="ter" draggable="true"><a href="#" onclick="addTerminator()"> <img src="~/Content/MenuItems/terminator.png" alt="Image" style=" height: 50px;" /></a></li>
-
-                        </div>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#iStarDiagrams" data-toggle="collapse" aria-expanded="false">i* diagrams</a>
-                    <ul class="collapse list-unstyled" id="iStarDiagrams">
-                        <div class="list-inline">
-                            <li id="act1" draggable="true"><a href="#" onclick="addiStarActor()"> <img src="~/Content/MenuItems/i_Actor@2x.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="agn" draggable="true"><a href="#" onclick="addiStarAgent()"> <img src="~/Content/MenuItems/i_Agent@2x.png" alt="Image" style=" width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="pos" draggable="true"><a href="#" onclick="addiStarPosition()"> <img src="~/Content/MenuItems/i_position.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="rol" draggable="true"><a href="#" onclick="addiStarRole()"> <img src="~/Content/MenuItems/i_Role@2x.png" alt="Image" style="width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="goal1" draggable="true"><a href="#" onclick="addiStarGoal()"> <img src="~/Content/MenuItems/i_goal.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="task" draggable="true"><a href="#" onclick="addiStarTask()"> <img src="~/Content/MenuItems/i_task.png" alt="Image" style=" width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="res" draggable="true"><a href="#" onclick="addiStarResource()"> <img src="~/Content/MenuItems/i_resource.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="bel" draggable="true"><a href="#" onclick="addiStarBelief()"> <img src="~/Content/MenuItems/i_Beliefe.png" alt="Image" style=" width: 80px;" /></a></li>
-
-                        </div>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#kaosDiagrams" data-toggle="collapse" aria-expanded="false">Kaos diagrams</a>
-                    <ul class="collapse list-unstyled" id="kaosDiagrams">
-                        <div class="list-inline">
-                            <li id="kef" draggable="true"><a href="#" onclick="addKaosEntitaFull()"> <img src="~/Content/MenuItems/kaosEntitaFull.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="ken" draggable="true"><a href="#" onclick="addKaosEntita()"> <img src="~/Content/MenuItems/koasEntita.png" alt="Image" style=" width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="kea" draggable="true"><a href="#" onclick="addKaosEntitaArrow()"> <img src="~/Content/MenuItems/kaosEntitaArrow.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="goal2" draggable="true"><a href="#" onclick="addKaosGoal()"> <img src="~/Content/MenuItems/kaosGoal.png" alt="Image" style="width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="kbal" draggable="true"><a href="#" onclick="addKaosBall()"> <img src="~/Content/MenuItems/kaosBall.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="kre" draggable="true"><a href="#" onclick="addKaosRequirement()"> <img src="~/Content/MenuItems/kaosRequirement.png" alt="Image" style=" width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="ksq" draggable="true"><a href="#" onclick="addKaosSquare()"> <img src="~/Content/MenuItems/kaosSquer.png" alt="Image" style="width:80px;" /></a></li>
-                            <li id="kar" draggable="true"><a href="#" onclick="addKaosArrow()"> <img src="~/Content/MenuItems/koasRelation.png" alt="Image" style=" width: 80px;" /></a></li>
-
-                        </div>
-                        <div class="list-inline">
-                            <li id="kag" draggable="true"><a href="#" onclick="addKaosAgent()"> <img src="~/Content/MenuItems/kaosAgent.png" alt="Image" style="width:80px;" /></a></li>
-                           
-
-                        </div>
-                    </ul>
-                </li>
-            </ul>
-
-
-        </div>
-    </nav>
-
-    <div class="can" id="can">
-        <canvas id="c" width="1900" height="1000" />
-    </div>
-
-
-    <nav id="sidebarR">
-        <div class="rightMenuScroll">
-
-            <ul id="rightMenuScrollInsert" class="list-unstyled components"></ul>
-        </div>
-    </nav>
-
-</div>
-
